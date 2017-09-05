@@ -15,6 +15,8 @@
 /// specific buttons, etc.). Code has language very different from the one we are
 /// using in specifications.
 /// 
+/// TODO: This assembly layout maybe a good layout for application?
+/// 
 /// </remarks>
 [CompilerGenerated]
 internal class AssemblyDoc

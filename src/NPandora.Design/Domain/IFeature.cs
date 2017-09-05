@@ -1,4 +1,4 @@
-﻿namespace NPandora.Feature
+﻿namespace NPandora.Domain
 {
     /// <summary>
     /// This interface is responsible for being a fundamental "atom" of the application.

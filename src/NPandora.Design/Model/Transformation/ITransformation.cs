@@ -1,4 +1,4 @@
-﻿using NPandora.Feature;
+﻿using NPandora.Domain;
 
 namespace NPandora.Model.Transformation
 {

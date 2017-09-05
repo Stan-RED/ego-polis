@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NPandora.Core\NPandora.Core.csproj" />
+    <ProjectReference Include="..\NPandora.Design\NPandora.Design.csproj" />
   </ItemGroup>
 
 </Project>
