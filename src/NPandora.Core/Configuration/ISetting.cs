@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NPandora.Model.Validation;
+using System;
 
 namespace NPandora.Configuration
 {
@@ -44,6 +45,7 @@ namespace NPandora.Configuration
     /// </remarks>
     /// <example>
     ///     TODO:Examples.
+    ///     <see cref="MissingValueException"/>.
     /// </example>
     public interface ISetting<TValue>
     {
