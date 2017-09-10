@@ -3,6 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
     <RootNamespace>Codesophy</RootNamespace>
+    <Version>0.0.1-alpha1</Version>
+    <Description />
+    <Copyright>Copyright (c) 2017 Stanislav S. Yarmonov</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Stanislav S. Yarmonov</Authors>
+    <Company />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
