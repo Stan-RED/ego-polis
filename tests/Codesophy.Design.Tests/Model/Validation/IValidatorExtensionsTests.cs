@@ -1,7 +1,7 @@
 ﻿using Codesophy.Quality;
 using NSubstitute;
-using NUnit.Framework;
 using System;
+using Xunit;
 
 namespace Codesophy.Model.Validation
 {
@@ -9,8 +9,7 @@ namespace Codesophy.Model.Validation
     {
         private IValidator<string> _validator;
 
-        [SetUp]
-        public void SetUp()
+        public IValidatorExtensionsTests()
         {
             _validator = Substitute.For<IValidator<string>>();
         }
@@ -21,7 +20,7 @@ namespace Codesophy.Model.Validation
         /// <see cref="IValidatorExtensions.Ensure{TModel}(IValidator{TModel}, TModel)"/>
         /// method.
         /// </summary>
-        [Test]
+        [Fact]
         public void Ensure_ValidateReturnsException_ExceptionThrown()
         {
             var expected = new TestException();
@@ -29,19 +28,21 @@ namespace Codesophy.Model.Validation
 
             var actual = Assert.Throws<TestException>(() => _validator.Ensure("model"));
 
-            Assert.That(actual, Is.EqualTo(expected));
+            Assert.Equal(expected, actual);
         }
 
         /// <summary>
         /// If no exception is returned from <see cref="IValidator{TModel}"/> then
         /// model expected to be valid we can let things go on.
         /// </summary>
-        [Test]
+        [Fact]
         public void Ensure_ValidateReturnsNull_NoExceptionThrown()
         {
             _validator.Validate(Arg.Any<string>()).Returns((Exception)null);
 
-            Assert.DoesNotThrow(() => _validator.Ensure("model"));
+            var e = Record.Exception(() => _validator.Ensure("model"));
+
+            Assert.Null(e);
         }
     }
 }
