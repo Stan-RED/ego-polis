@@ -3,17 +3,17 @@
     /// <summary>
     /// This interface is responsible for being a fundamental "atom" of the application.
     /// </summary>
-    /// <typeparam name="TGiven">
+    /// <typeparam name="TWhen">
     /// Structure of the information that is provided to the feature.
     /// </typeparam>
-    /// <typeparam name="TResult">
+    /// <typeparam name="TThen">
     /// Structure of the result we expect from the future.
     /// </typeparam>
     /// <remarks>
     /// <para>
     /// If we purify some application's feature from its representation (e.g. UI input/output),
-    /// then it becomes a clean concept where we have some <typeparamref name="TGiven"/> as
-    /// input and expects <typeparamref name="TResult"/> from the feature.
+    /// then it becomes a clean concept where we have some <typeparamref name="TWhen"/> as
+    /// input and expects <typeparamref name="TThen"/> from the feature.
     /// </para>
     /// 
     /// <para>
@@ -37,18 +37,19 @@
     /// The idea of the feature also coupled with BDD and its Given-When-Then pattern.
     /// </para>
     /// 
+    /// TODO:Should it be IProcess?
     /// </remarks>
-    public interface IFeature<in TGiven, out TResult>
+    public interface IFeature<in TWhen, out TThen>
     {
         /// <summary>
-        /// Produce the feature results for the <paramref name="given"/> input.
+        /// Produce the feature results for the <paramref name="when"/> input.
         /// </summary>
-        /// <param name="given">
+        /// <param name="when">
         /// Feature's input.
         /// </param>
         /// <returns>
         /// Result, expected from the feature.
         /// </returns>
-        TResult When(TGiven given);
+        TThen When(TWhen when);
     }
 }
