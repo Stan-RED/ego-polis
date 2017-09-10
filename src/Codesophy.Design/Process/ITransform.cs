@@ -1,6 +1,6 @@
 ﻿using Codesophy.Domain;
 
-namespace Codesophy.Model.Transformation
+namespace Codesophy.Process
 {
     /// <summary>
     /// TODO:Responsible for defining transformation contract bwetween
@@ -9,7 +9,9 @@ namespace Codesophy.Model.Transformation
     /// </summary>
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
-    public interface ITransformation<TRequest, TResponse>
+    /// TODO:Probably it should be a part of feature/processing namespace and
+    /// called "ITransform".
+    public interface ITransform<TRequest, TResponse>
         : IFeature<TRequest, TResponse>
     {
 

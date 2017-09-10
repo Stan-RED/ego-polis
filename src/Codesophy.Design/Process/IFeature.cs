@@ -1,4 +1,4 @@
-﻿namespace Codesophy.Domain
+﻿namespace Codesophy.Process
 {
     /// <summary>
     /// This interface is responsible for being a fundamental "atom" of the application.
