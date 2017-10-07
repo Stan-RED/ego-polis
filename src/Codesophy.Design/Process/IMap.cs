@@ -10,7 +10,7 @@
     /// TODO:More detailed explanation of differences in semantics between IConvert,
     /// IMap, etc.
     public interface IMap<TSource, TDestination>
-        : IFeature<TSource, TDestination>
+        : IProcess<TSource, TDestination>
     {
 
     }

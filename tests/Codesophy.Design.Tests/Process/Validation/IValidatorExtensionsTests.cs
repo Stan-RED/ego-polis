@@ -1,9 +1,9 @@
-﻿using Codesophy.Quality;
+﻿using System;
+using Codesophy.Quality;
 using NSubstitute;
-using System;
 using Xunit;
 
-namespace Codesophy.Model.Validation
+namespace Codesophy.Process.Validation
 {
     public class IValidatorExtensionsTests
     {
@@ -24,7 +24,7 @@ namespace Codesophy.Model.Validation
         public void Ensure_ValidateReturnsException_ExceptionThrown()
         {
             var expected = new TestException();
-            _validator.Validate(Arg.Any<string>()).Returns(expected);
+            _validator.When(Arg.Any<string>()).Returns(expected);
 
             var actual = Assert.Throws<TestException>(() => _validator.Ensure("model"));
 
@@ -38,7 +38,7 @@ namespace Codesophy.Model.Validation
         [Fact]
         public void Ensure_ValidateReturnsNull_NoExceptionThrown()
         {
-            _validator.Validate(Arg.Any<string>()).Returns((Exception)null);
+            _validator.When(Arg.Any<string>()).Returns((Exception)null);
 
             var e = Record.Exception(() => _validator.Ensure("model"));
 

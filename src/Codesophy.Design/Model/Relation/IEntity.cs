@@ -1,4 +1,4 @@
-﻿namespace Codesophy.Model
+﻿namespace Codesophy.Model.Relation
 {
     /// <summary>
     /// This interface is responsible for model -> entity dependency declaration.

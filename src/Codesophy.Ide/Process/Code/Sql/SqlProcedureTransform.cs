@@ -12,7 +12,7 @@ namespace Codesophy.Process.Code.Sql
     /// </summary>
     public class SqlProcedureTransform : IConvert<Type, SqlFunctionExpression>
     {
-        SqlFunctionExpression IFeature<Type, SqlFunctionExpression>.When(Type when)
+        SqlFunctionExpression IProcess<Type, SqlFunctionExpression>.When(Type when)
         {
             throw new NotImplementedException();
         }

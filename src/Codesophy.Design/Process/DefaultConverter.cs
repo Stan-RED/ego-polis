@@ -19,7 +19,7 @@ namespace Codesophy.Process
         /// </summary>
         /// <param name="given"></param>
         /// <returns></returns>
-        TDestination IFeature<TSource, TDestination>.When(TSource given)
+        TDestination IProcess<TSource, TDestination>.When(TSource given)
         {
             var converter = TypeDescriptor.GetConverter(typeof(TDestination));
 

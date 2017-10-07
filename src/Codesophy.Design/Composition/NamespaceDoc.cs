@@ -7,6 +7,9 @@ namespace Codesophy.Composition
     /// </summary>
     /// <remarks>
     /// 
+    /// TODO:Purposes. Define application patterns (console app, windows service,
+    /// multi-tier, etc.), reusable parts of applications. E.g. security, diagnostics.
+    /// 
     /// <para>
     /// TODO:Composition is responsible for building application from smaller blocks
     /// down to "atoms". E.g. Application = Security + Infrastructure + ...
@@ -26,6 +29,7 @@ namespace Codesophy.Composition
     /// 
     /// TODO:Basic composition class. Composition operations and logic (and, or, ...).
     /// Aggregating compositions, quick compositions (like Func/Action composition).
+    /// 
     /// </remarks>
     [CompilerGenerated]
     internal class NamespaceDoc

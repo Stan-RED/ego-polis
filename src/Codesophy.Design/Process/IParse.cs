@@ -10,7 +10,7 @@
     /// IMap, IParse, etc.
     /// TODO: IParseStream
     public interface IParse<TSource, TDestination>
-        : IFeature<TSource, TDestination>
+        : IProcess<TSource, TDestination>
     {
 
     }

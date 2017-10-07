@@ -3,6 +3,7 @@
     /// <summary>
     /// This interface is responsible for being a fundamental "atom" of the application.
     /// </summary>
+    /// 
     /// <typeparam name="TWhen">
     /// Structure of the information that is provided to the feature.
     /// </typeparam>
@@ -29,7 +30,7 @@
     /// Compared to another "atom" like function it may have another services injected
     /// by IoC-container for example. Also it has not so strict signature as functions
     /// have. For example, the same object instance may be processed by different
-    /// <see cref="IFeature{TGiven,TResult}">features</see> that will use only some
+    /// <see cref="IProcess{TWhen, TThen}">features</see> that will use only some
     /// part (polymorphic) or interface from this instance.
     /// </para>
     /// 
@@ -39,7 +40,7 @@
     /// 
     /// TODO:Should it be IProcess?
     /// </remarks>
-    public interface IFeature<in TWhen, out TThen>
+    public interface IProcess<in TWhen, out TThen>
     {
         /// <summary>
         /// Produce the feature results for the <paramref name="when"/> input.

@@ -1,4 +1,4 @@
-﻿namespace Codesophy.Model.Validation
+﻿namespace Codesophy.Process.Validation
 {
     /// <summary>
     /// Useful method extensions for <see cref="IValidator{TModel}"/>.
@@ -14,7 +14,7 @@
         /// <param name="model"></param>
         public static void Ensure<TModel>(this IValidator<TModel> validator, TModel model)
         {
-            var exception = validator.Validate(model);
+            var exception = validator.When(model);
 
             if (exception != null)
             {
