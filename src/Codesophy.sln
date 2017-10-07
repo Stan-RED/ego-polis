@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{45CE38D3-2D0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codesophy.Ide", "Codesophy.Ide\Codesophy.Ide.csproj", "{E8B535F2-CEB6-4B19-9C29-F58D0ACCB0AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codesophy.Xml", "Codesophy.Xml\Codesophy.Xml.csproj", "{1829F57C-0EF5-4954-B79E-AB5A01477EC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{E8B535F2-CEB6-4B19-9C29-F58D0ACCB0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B535F2-CEB6-4B19-9C29-F58D0ACCB0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8B535F2-CEB6-4B19-9C29-F58D0ACCB0AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1829F57C-0EF5-4954-B79E-AB5A01477EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1829F57C-0EF5-4954-B79E-AB5A01477EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1829F57C-0EF5-4954-B79E-AB5A01477EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1829F57C-0EF5-4954-B79E-AB5A01477EC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{98064C81-133E-4CD0-96E7-BF6937351813} = {45CE38D3-2D00-4AA8-AA1C-EE1A28A6FD7B}
 		{032A3410-BDF5-4748-90CF-A09ABD647931} = {1A7D94F4-4AD9-4A4C-8F0E-2834B9C6DAC9}
 		{E8B535F2-CEB6-4B19-9C29-F58D0ACCB0AA} = {45CE38D3-2D00-4AA8-AA1C-EE1A28A6FD7B}
+		{1829F57C-0EF5-4954-B79E-AB5A01477EC4} = {45CE38D3-2D00-4AA8-AA1C-EE1A28A6FD7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F80BCBB-6BD3-45B7-93AA-D5BBC9ECABD7}

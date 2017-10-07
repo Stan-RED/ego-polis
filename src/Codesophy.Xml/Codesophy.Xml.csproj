@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Codesophy.Design\Codesophy.Design.csproj" />
-    <ProjectReference Include="..\Codesophy.Xml\Codesophy.Xml.csproj" />
   </ItemGroup>
 
 </Project>
