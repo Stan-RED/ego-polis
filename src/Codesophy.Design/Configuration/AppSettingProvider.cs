@@ -1,4 +1,6 @@
-﻿namespace Codesophy.Configuration
+﻿using Codesophy.Process;
+
+namespace Codesophy.Configuration
 {
     /// <summary>
     /// TODO:Implementation of the <see cref="ISettingProvider{TKey, TValue}"/> that
@@ -8,9 +10,10 @@
     {
         #region ISettingProvider interface ---------------------------------------------------------
         /// <inheritdoc />
-        ISetting<string> ISettingProvider<string, string>.Get(string key)
+        ISetting<string> IProcess<string, ISetting<string>>.When(string when)
         {
-            throw new System.NotImplementedException(); //WORK:
+            // TODO:
+            throw new System.NotImplementedException();
         }
         #endregion ---------------------------------------------------------------------------------
     }

@@ -21,6 +21,7 @@ namespace Codesophy.Process
     /// 
     /// TODO:Validation and other namespaces
     /// 
+    /// TODO:Reactive processes
     /// </remarks>
     [CompilerGenerated]
     internal class NamespaceDoc

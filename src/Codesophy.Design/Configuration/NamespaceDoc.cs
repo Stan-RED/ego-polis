@@ -3,10 +3,24 @@
 namespace Codesophy.Configuration
 {
     /// <summary>
-    /// TODO:
+    /// The way application is running may depends on its runtime environment
+    /// that may provide some settings using environmental variables,
+    /// configuration files, etc.
     /// </summary>
+    /// 
     /// <remarks>
-    /// TODO:Implement setting()s for app.config. Some IApplicationSettings interface
+    /// <para>
+    /// The essential atom of the configuration is a <see cref="ISetting{TValue}"/>
+    /// contract. That provides the setting's value we are looking for.
+    /// </para>
+    /// 
+    /// <para>
+    /// Multiple similar settings from the same source may be aggregated using
+    /// some specific <see cref="ISettingProvider{TKey, TValue}"/> that can fetch
+    /// values from <see cref="AppSettingProvider">app.config</see> file.
+    /// </para>
+    /// 
+    /// TODO:Implement settings for app.config. Some IApplicationSettings interface
     /// with wrapper for app.config -> appSettings. With prefixes and other key
     /// transformation support.
     /// 
