@@ -4,39 +4,38 @@ using System;
 namespace Codesophy.Configuration
 {
     /// <summary>
-    /// <see cref="ISetting{TValue}"/> implementation to get settings from
-    /// &lt;appSettings&gt; section in .config files.
+    /// TODO:
     /// </summary>
-    /// <typeparam name="TValue">
-    /// Setting value type.
-    /// </typeparam>
-    public class AppSetting<TValue> : ISetting<TValue>, IHasUniqueName
+    /// <remarks>
+    /// TODO:Share with <see cref="AppSetting{TValue}"/>.
+    /// </remarks>
+    public class EnvironmentVariable<TValue> : ISetting<TValue>, IHasUniqueName
     {
         private readonly string _Name;
         private readonly TValue _Value;
         private readonly bool _Exists;
 
-        private AppSetting(string name, TValue value, bool exists)
+        private EnvironmentVariable(string name, TValue value, bool exists)
         {
             _Name = name ?? throw new ArgumentNullException(nameof(name));
             _Value = value;
             _Exists = exists;
         }
 
-        public AppSetting(string name, TValue value)
+        public EnvironmentVariable(string name, TValue value)
             : this(name, value, true)
         {
 
         }
 
-        public AppSetting(string name)
+        public EnvironmentVariable(string name)
             : this(name, default(TValue), false)
         {
 
         }
 
-        public static AppSetting<TValue> NotExists(string name)
-            => new AppSetting<TValue>(name, default(TValue), false)
+        public static EnvironmentVariable<TValue> NotExists(string name)
+            => new EnvironmentVariable<TValue>(name, default(TValue), false)
         ;
 
         #region -- IHasUniqueName interface --------------------------------------------------------
@@ -52,7 +51,7 @@ namespace Codesophy.Configuration
 
         /// <inheritdoc />
         Exception ISetting<TValue>.Exception(Exception innerException)
-            => new AppSettingException(_Name, innerException)
+            => new EnvironmentVariableException(_Name, innerException)
         ;
         #endregion ---------------------------------------------------------------------------------
     }

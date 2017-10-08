@@ -25,6 +25,8 @@
     /// 
     /// TODO:Name of the genric parameter can be used as name to sync with other generic
     /// templates and stored in some static IEntityExtensions property. IsEntity extension?
+    /// TODO:Entity is a glue between other classes (view models, requests, exceptions,
+    /// samples, etc.).
     /// </remarks>
     public interface IEntity<TEntity>
     {

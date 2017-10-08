@@ -47,6 +47,7 @@ namespace Codesophy.Configuration
     ///     TODO:Examples.
     ///     <see cref="MissingValueException"/>.
     /// </example>
+    /// TODO:Setting exception defines "where happened", inner exception - "what happened".
     public interface ISetting<TValue>
     {
         TValue Value { get; }

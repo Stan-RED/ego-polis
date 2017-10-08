@@ -12,6 +12,7 @@ namespace Codesophy.Configuration
     /// <remarks>
     /// TODO:For providers like registry we can implement nultiple
     /// <see cref="ISettingProvider{TKey, TValue}"/> contracts for each type (DWORD, string, bin).
+    /// May be add a sample for such purposes.
     /// </remarks>
     public interface ISettingProvider<TKey, TValue>
         : IFactory<TKey, ISetting<TValue>>

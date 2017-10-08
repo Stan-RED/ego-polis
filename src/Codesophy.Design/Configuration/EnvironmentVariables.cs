@@ -4,10 +4,11 @@ using Codesophy.Process;
 namespace Codesophy.Configuration
 {
     /// <summary>
-    /// TODO:Implementation of the <see cref="ISettingProvider{TKey, TValue}"/> that
-    /// peeks settings from &lt;appSettings&gt; section of the *.config files.
+    /// TODO:Temporary solution. Refine among with <see cref="AppSettingProvider"/>
+    /// probably using some shareable <see cref="DictionarySettingProvider"/>.
+    /// And add more tests.
     /// </summary>
-    public class AppSettingProvider : ISettingProvider<string, string>
+    public class EnvironmentVariables : ISettingProvider<string, string>
     {
         private IDictionary<string, string> _dictionary;
 
@@ -17,13 +18,13 @@ namespace Codesophy.Configuration
         {
             //TODO:
             return _dictionary.TryGetValue(when, out string value)
-                ? new AppSetting<string>(when, value)
-                : AppSetting<string>.NotExists(when)
+                ? new EnvironmentVariable<string>(when, value)
+                : EnvironmentVariable<string>.NotExists(when)
             ;
         }
         #endregion ---------------------------------------------------------------------------------
 
-        public AppSettingProvider(IDictionary<string, string> dictionary)
+        public EnvironmentVariables(IDictionary<string, string> dictionary)
         {
             _dictionary = dictionary;
         }

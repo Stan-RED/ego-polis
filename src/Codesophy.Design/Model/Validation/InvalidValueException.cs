@@ -1,4 +1,5 @@
-﻿using Codesophy.Configuration;
+﻿using System;
+using Codesophy.Configuration;
 
 namespace Codesophy.Model.Validation
 {
@@ -25,7 +26,7 @@ namespace Codesophy.Model.Validation
     /// </para>
     /// 
     /// </remarks>
-    public abstract class InvalidValueException
+    public abstract class InvalidValueException : Exception
     {
 
     }
