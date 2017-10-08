@@ -1,4 +1,4 @@
-﻿namespace Codesophy.Process
+﻿namespace Codesophy.Process.Parse
 {
     /// <summary>
     /// TODO:Responsible for parsing <typeparamref name="TSource">source</typeparamref>
