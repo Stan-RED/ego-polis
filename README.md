@@ -57,6 +57,7 @@ processes.
 ## Coding rules
 
 TODO:
+* [Implicitly typed variables](media/2017/10/implicit-vs-explicit-vars/index.md)
 
 ### Class layout
 
@@ -79,25 +80,6 @@ Q: Constructors first?
 A: In a properly designed class, constructor is just a boring place where
    dependencies are injected and assigned to class members. Absolutely no
    reason to see it first. 
-
-### Implicitly typed variables
-
-There are some debates around "var" keyword usage, but from my point it's
-absolutely clear, because implicit and explicit types have absolutely different
-semantics. If you think that:
-
-```IFoo foo = new Foo();```
-
-Is just a straightforward assignment, you're wrong. This statement can easily
-involve hidden logic called "implicit casting". The sample is easy:
-
-```string i = 10;```
-
-So explicit assignment has semantics "try to cast 10 into string type".
-Implicit just says "Store this value here as it is". So use type declaration
-depends on the goal. In most of the cases it will be just "var".
-
-And this also much shorter than and easier to type.
 
 ### Explicit interfaces
 
