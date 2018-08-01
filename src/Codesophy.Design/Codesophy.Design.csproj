@@ -1,7 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.3;net45;</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
     <RootNamespace>Codesophy</RootNamespace>
     <Version>0.0.1-alpha1</Version>
     <Description />
@@ -9,14 +10,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Stanislav S. Yarmonov</Authors>
     <Company />
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\$(TargetFramework)\Codesophy.Core.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
 
 </Project>
