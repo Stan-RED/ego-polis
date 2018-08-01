@@ -2,5 +2,11 @@
 bin/
 obj/
 
+# Node.JS packages
+node_modules/
+
 # Visual Studio files
 .vs/
+
+# JetBrains IDEs (e.g. Rider)
+.idea/
