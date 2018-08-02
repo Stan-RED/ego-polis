@@ -1,4 +1,4 @@
-﻿namespace Codesophy.Model.Code
+﻿namespace Codesophy.Code
 {
     /// <summary>
     /// TODO:Code expression for constants. Each constant has just its

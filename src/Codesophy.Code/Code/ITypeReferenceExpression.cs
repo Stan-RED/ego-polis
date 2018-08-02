@@ -1,4 +1,4 @@
-﻿namespace Codesophy.Model.Code
+﻿namespace Codesophy.Code
 {
     /// <summary>
     /// TODO:Expression to reference some type.

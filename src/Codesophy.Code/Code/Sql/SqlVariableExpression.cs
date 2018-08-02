@@ -1,6 +1,7 @@
 ﻿using System;
+using Codesophy.Model;
 
-namespace Codesophy.Model.Code.Sql
+namespace Codesophy.Code.Sql
 {
     /// <summary>
     /// TODO:

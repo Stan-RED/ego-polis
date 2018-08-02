@@ -1,4 +1,6 @@
-﻿namespace Codesophy.Model.Code.Sql
+﻿using Codesophy.Model;
+
+namespace Codesophy.Code.Sql
 {
     /// <summary>
     /// TODO:

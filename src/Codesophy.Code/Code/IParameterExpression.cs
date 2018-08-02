@@ -1,4 +1,6 @@
-﻿namespace Codesophy.Model.Code
+﻿using Codesophy.Model;
+
+namespace Codesophy.Code
 {
     /// <summary>
     /// TODO:Function's parameter.

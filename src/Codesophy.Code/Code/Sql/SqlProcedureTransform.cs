@@ -1,7 +1,7 @@
 ﻿using System;
-using Codesophy.Model.Code.Sql;
+using Codesophy.Process;
 
-namespace Codesophy.Process.Code.Sql
+namespace Codesophy.Code.Sql
 {
     /// <summary>
     /// TODO: This transformation is responsible for processing some <see cref="Type"/>

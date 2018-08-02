@@ -1,9 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Codesophy.Process.Code
+namespace Codesophy.Code
 {
     /// <summary>
-    /// TODO:Code processing stuff (parsing/generation/translation).
+    /// TODO: Code as models (AST, expression and other stuff)
+    /// and processing stuff (parsing/generation/translation).
     /// </summary>
     [CompilerGenerated]
     internal class NamespaceDoc

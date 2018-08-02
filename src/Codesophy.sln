@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codesophy.Design", "Codesop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codesophy.Xml", "Codesophy.Xml\Codesophy.Xml.csproj", "{AA278186-B0B5-4AA1-9BA4-0F09C494B7E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codesophy.Ide", "Codesophy.Ide\Codesophy.Ide.csproj", "{1BCB255C-1BD2-49F7-B152-DCD994830A73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codesophy.Code", "Codesophy.Code\Codesophy.Code.csproj", "{1BCB255C-1BD2-49F7-B152-DCD994830A73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codesophy.Ide.Server", "Codesophy.Ide.Server\Codesophy.Ide.Server.csproj", "{3F3AAE5F-DFEF-40BA-81CA-6C533B3E87A9}"
 EndProject

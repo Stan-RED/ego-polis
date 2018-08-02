@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Codesophy.Model.Code
+namespace Codesophy.Code
 {
     /// <summary>
     /// TODO:Function signature.

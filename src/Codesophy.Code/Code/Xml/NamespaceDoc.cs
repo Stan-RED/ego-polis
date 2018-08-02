@@ -1,9 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Codesophy.Model.Code.Sql
+namespace Codesophy.Code.Xml
 {
     /// <summary>
-    /// TODO:Expressions are the way to describe SQL code as object models.
+    /// TODO: Here I want to put XDocElement and other stuff for XML
+    /// documentation support.
     /// </summary>
     [CompilerGenerated]
     internal class NamespaceDoc
