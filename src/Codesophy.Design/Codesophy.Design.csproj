@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Version>0.0.1-alpha1</Version>
     <TargetFramework>netstandard2.0</TargetFramework>
 
     <RootNamespace>Codesophy</RootNamespace>
-    <Version>0.0.1-alpha1</Version>
     <Description />
     <Copyright>Copyright (c) 2017 Stanislav S. Yarmonov</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
