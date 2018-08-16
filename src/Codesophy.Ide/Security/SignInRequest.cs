@@ -1,4 +1,4 @@
-namespace Codesophy.Ide.Security
+namespace Codesophy.Security
 {
     /// <todo>
     /// Primitive sample. Later interface with identity+security token
