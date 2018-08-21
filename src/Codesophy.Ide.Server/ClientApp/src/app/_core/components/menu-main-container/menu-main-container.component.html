@@ -1,0 +1,25 @@
+<div #container
+     [ngDraggable]="isContainerHandleDraggable"
+     [bounds]="bounds"
+     [handle]="containerHandle"
+     [inBounds]="true"
+     [position]="containerHandlePosition"
+
+     (started)="containerHandleDragStart($event)"
+     (stopped)="containerHandleDrop($event)"
+     (movingOffset)="containerHandleMovingOffset($event)"
+
+     class="app-menu-main-container"
+>
+  <div #containerHandle
+
+       appLongPress
+       [longPressingAfter]="1500"
+       (longPress)="containerHandleLongPress()"
+
+       class="app-menu-main-handle"
+  >
+    Long click/tap & drag to replace main menu to the right/left.
+  </div>
+  <app-menu-main [isMenuOnTheRight]="isContainerOnTheRight()"></app-menu-main>
+</div>

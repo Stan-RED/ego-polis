@@ -1,0 +1,22 @@
+<div
+  *ngFor="let item of menuItems; let i = index;"
+  [ngDraggable]="isDraggable[i]"
+  [bounds]="container"
+  [inBounds]="true"
+  [position]="position[i]"
+  [resetTranslateYEvery]="height"
+
+  appLongPress
+  [longPressingAfter]="1500"
+  (longPress)="longPress(i)"
+
+  (click)="click(i)"
+
+  (started)="dragStart($event, i)"
+  (stopped)="drop($event, i)"
+  (movingOffset)="movingOffset($event, i)"
+
+  class="app-menu-item"
+>
+  {{item.label}}
+</div>

@@ -1,0 +1,15 @@
+.app-menu-main-container {
+  margin: 10px;
+  width: 200px;
+  user-select: none;
+  position: relative;
+}
+
+.app-menu-main-handle {
+  border: solid 1px black;
+  font-size: smaller;
+
+  &.ng-draggable {
+    border: solid 1px #00a8e6;
+  }
+}

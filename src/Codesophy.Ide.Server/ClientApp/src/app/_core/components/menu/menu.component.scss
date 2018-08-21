@@ -1,0 +1,9 @@
+.app-menu-item {
+  border: solid 1px black;
+  margin: 5px;
+  position: relative;
+
+  &.ng-draggable {
+    border-color: #00a8e6;
+  }
+}
