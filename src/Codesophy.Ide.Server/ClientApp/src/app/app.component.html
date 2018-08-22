@@ -1,8 +1,23 @@
-<div #conatiner class="app-container">
-  <app-menu-main-container [bounds]="conatiner">
-  </app-menu-main-container>
+<!--<div #conatiner class="app-container">-->
+<!--<app-menu-main-container [bounds]="conatiner">-->
+<!--</app-menu-main-container>-->
 
-  <div class="app-content">
-    Content
+<!--<div class="app-content">-->
+<!--Content-->
+<!--</div>-->
+<!--</div>-->
+
+<header>
+  <mat-toolbar color="primary">Angular 6 Bootstrap 4 Example</mat-toolbar>
+</header>
+
+<section class="container">
+  <div class="row">
+    <mat-card class="col-md-6">1</mat-card> <!-- we use mat-card instead of div -->
+    <mat-card class="col-md-6">2</mat-card>
+    <mat-card class="col-md-6 d-block d-lg-none">3</mat-card> <!-- will be hidden on large screens -->
+    <mat-card class="col-md-6 d-block d-lg-none">4</mat-card>
   </div>
-</div>
+</section>
+
+<footer></footer>

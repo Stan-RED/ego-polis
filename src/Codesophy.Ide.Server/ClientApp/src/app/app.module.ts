@@ -13,8 +13,8 @@ import { SharedModule } from './_shared/shared.module';
     AppComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     // AngularDraggableModule,
     CoreModule,
     SharedModule,

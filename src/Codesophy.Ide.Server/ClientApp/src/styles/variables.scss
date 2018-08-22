@@ -1,0 +1,17 @@
+// Variables
+// TODO: use map-get
+
+// WORK: get from bootstrap variables?
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// Removes bootstrap's underline from button links.
+$link-hover-decoration: none;
+
+$link-color: #3f51b5;
+$link-hover-color: currentColor;

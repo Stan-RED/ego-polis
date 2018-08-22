@@ -1,7 +1,13 @@
 /**
  * @angular.
  */
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
+
+/**
+ * @material.
+ */
+import { MatCardModule } from "@angular/material/card";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 /**
  * App's.
@@ -11,7 +17,7 @@ import { NgModule } from '@angular/core';
 // import * as fromComponents from './components';
 
 // Directives.
-import * as fromDirectives from './directives';
+import * as fromDirectives from "./directives";
 
 // Guards.
 // import * as fromGuards from './guards';
@@ -21,29 +27,31 @@ import * as fromDirectives from './directives';
 
 // Modules for import and for export.
 export const reexportedModules: any[] = [
-    // TranslateModule
+  // TranslateModule
+  MatCardModule,
+  MatToolbarModule
 ];
 
 @NgModule({
-    imports: [
-        ...reexportedModules,
-    ],
-    declarations: [
-      // ...fromComponents.components,
-      ...fromDirectives.directives,
-      // ...fromPipes.pipes,
-    ],
-    exports: [
-        // ...fromComponents.components,
-        ...fromDirectives.directives,
-        // ...fromPipes.pipes,
-        ...reexportedModules,
-    ],
-    entryComponents: [
-    ],
-    providers: [
-      // ...fromPipes.pipes,
-      // ...fromGuards.guards
-    ]
+  imports: [
+    ...reexportedModules,
+  ],
+  declarations: [
+    // ...fromComponents.components,
+    ...fromDirectives.directives,
+    // ...fromPipes.pipes,
+  ],
+  exports: [
+    // ...fromComponents.components,
+    ...fromDirectives.directives,
+    // ...fromPipes.pipes,
+    ...reexportedModules,
+  ],
+  entryComponents: [],
+  providers: [
+    // ...fromPipes.pipes,
+    // ...fromGuards.guards
+  ]
 })
-export class SharedModule {}
+export class SharedModule {
+}
