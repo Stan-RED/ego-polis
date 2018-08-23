@@ -1,9 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
 @import "./styles/variables";
 
 @import '~bootstrap/scss/bootstrap-reboot';
 @import '~bootstrap/scss/bootstrap-grid';
 
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+//@import '~@fortawesome/fontawesome-free/scss/brands';
+
 @import "./styles/bootstrap-reset";
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+// Once per project.
+@include mat-core();
+
+// Imports custom themes.
+@import './styles/themes/default.scss';
+@import './styles/themes/dark.scss';
+
+// Specify theme class on app holder.
+// Naming pattern: contains '-theme' string.
+.default-theme {
+  @include angular-material-theme($default-theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}

@@ -5,13 +5,13 @@ import { SharedModule } from "../_shared/shared.module";
 import { throwIfAlreadyLoaded } from "./module-import-guard";
 
 // Components.
-import * as fromComponents from './components';
+import * as fromComponents from "./components";
 
 // Containers.
 // import * as fromContainers from './containers';
 
 // Services.
-// import * as fromServices from './services';
+import * as fromServices from "./services";
 
 @NgModule({
   imports: [
@@ -27,7 +27,7 @@ import * as fromComponents from './components';
     ...fromComponents.components
   ],
   providers: [
-    // ...fromServices.services,
+    ...fromServices.services,
   ]
 })
 export class CoreModule {

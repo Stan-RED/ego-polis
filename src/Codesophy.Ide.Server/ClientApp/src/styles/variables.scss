@@ -13,5 +13,7 @@ $grid-breakpoints: (
 // Removes bootstrap's underline from button links.
 $link-hover-decoration: none;
 
-$link-color: #3f51b5;
-$link-hover-color: currentColor;
+//$link-color: #3f51b5;
+//$link-hover-color: currentColor;
+
+$fa-font-path: '../node_modules/@fortawesome/fontawesome-free/webfonts';

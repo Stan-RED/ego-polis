@@ -8,16 +8,37 @@
 <!--</div>-->
 
 <header>
-  <mat-toolbar color="primary">Angular 6 Bootstrap 4 Example</mat-toolbar>
+  <mat-toolbar color="primary">Codesophy.Ide.Server</mat-toolbar>
 </header>
 
-<section class="container">
-  <div class="row">
-    <mat-card class="col-md-6">1</mat-card> <!-- we use mat-card instead of div -->
-    <mat-card class="col-md-6">2</mat-card>
-    <mat-card class="col-md-6 d-block d-lg-none">3</mat-card> <!-- will be hidden on large screens -->
-    <mat-card class="col-md-6 d-block d-lg-none">4</mat-card>
-  </div>
-</section>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content>
+    <div class="container">
+      <div class="row">
+        <div class="icon-form-field">
+          <mat-icon fontSet="fas" fontIcon="fa-paint-brush" color="accent"></mat-icon>
+          <mat-form-field>
+            <mat-select [placeholder]="'Choose theme'"
+                        [ngModel]="theme?.themeCssClass"
+                        (selectionChange)="onThemeChange($event)"
+                        name="themes">
+              <mat-option *ngFor="let t of theme.availableThemes" [value]="t.cssClass">
+                {{ t.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-card class="col-md-6">1</mat-card>
+        <mat-card class="col-md-6">2</mat-card>
+        <mat-card class="col-md-6 d-block d-lg-none">3</mat-card>
+        <mat-card class="col-md-6 d-block d-lg-none">4</mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+  <mat-sidenav mode="side" position="end" opened>Sidenav content</mat-sidenav>
+</mat-sidenav-container>
 
 <footer></footer>
