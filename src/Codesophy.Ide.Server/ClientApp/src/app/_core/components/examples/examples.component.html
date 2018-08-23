@@ -1,0 +1,234 @@
+<div class="row">
+  <mat-card>
+    <div class="icon-form-field">
+      <mat-icon fontSet="fas" fontIcon="fa-paint-brush" color="accent"></mat-icon>
+      <mat-form-field>
+        <mat-select [placeholder]="'Choose a theme'"
+                    [ngModel]="theme?.themeCssClass"
+                    (selectionChange)="onThemeChange($event)"
+                    name="themes">
+          <mat-option *ngFor="let t of theme.availableThemes" [value]="t.cssClass">
+            {{ t.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-card>
+</div>
+
+<!--Examples from https://github.com/angular/material2-->
+<div class="row">
+
+  <mat-card class="col-md-6">
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Input">
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <textarea matInput placeholder="Textarea"></textarea>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <mat-select placeholder="Select">
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Form field appearance variants
+    </mat-card-title>
+
+    <mat-card-content>
+      <p>
+        <mat-form-field appearance="legacy">
+          <mat-label>Legacy form field</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix fontSet="fas" fontIcon="fa-smile"></mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="standard">
+          <mat-label>Standard form field</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix fontSet="fas" fontIcon="fa-smile"></mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Fill form field</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix fontSet="fas" fontIcon="fa-smile"></mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Outline form field</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix fontSet="fas" fontIcon="fa-smile"></mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Form field with error messages
+    </mat-card-title>
+
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Prefix & suffix
+    </mat-card-title>
+
+    <mat-card-content>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix fontSet="fas" [fontIcon]="hide ? 'fa-eye' : 'fa-eye-slash'"
+                    (click)="hide = !hide"></mat-icon>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Amount" type="number" class="example-right-align">
+          <span matPrefix>$&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Checkbox
+    </mat-card-title>
+    <mat-card-content>
+      <mat-checkbox>Check me!</mat-checkbox>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Basic radios
+    </mat-card-title>
+    <mat-card-content>
+      <mat-radio-group>
+        <mat-radio-button value="1">Option 1</mat-radio-button>
+        <mat-radio-button value="2">Option 2</mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Select with form field features
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-select placeholder="Favorite animal" [formControl]="animalControl" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let animal of animals" [value]="animal">
+            {{animal.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+        <mat-hint>{{animalControl.value?.sound}}</mat-hint>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Disabled select
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-select placeholder="Choose an option" [disabled]="true">
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Multiple selection
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-select placeholder="Toppings" [formControl]="toppings" multiple>
+          <mat-select-trigger>
+            {{toppings.value ? toppings.value[0] : ''}}
+            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+        (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+          </mat-select-trigger>
+          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Slider
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        <mat-slider></mat-slider>
+      </p>
+
+      <p>
+        <mat-slider
+          thumbLabel
+          [displayWith]="formatLabel"
+          tickInterval="1000"
+          min="1"
+          max="100000"></mat-slider>
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Basic slide-toggles
+    </mat-card-title>
+    <mat-card-content>
+      <mat-slide-toggle>Slide me!</mat-slide-toggle>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="col-md-6">
+    <mat-card-title>
+      Datepicker
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+</div>

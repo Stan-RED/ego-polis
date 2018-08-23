@@ -1,5 +1,4 @@
 import { Component, HostBinding } from "@angular/core";
-import { MatSelectChange } from "@angular/material";
 
 import { ThemeService } from "./_core/services";
 
@@ -14,10 +13,6 @@ export class AppComponent {
   }
 
   constructor(public theme: ThemeService) {
-  }
-
-  onThemeChange(event: MatSelectChange) {
-    this.theme.change(event.value);
   }
 
   log(msg: string) {

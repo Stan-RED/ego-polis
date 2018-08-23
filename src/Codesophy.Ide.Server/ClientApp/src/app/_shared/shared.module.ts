@@ -2,27 +2,32 @@
  * @angular.
  */
 import { NgModule } from "@angular/core";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /**
  * @material.
  */
+import { MatNativeDateModule } from "@angular/material";
+
 import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 /**
  * App's.
@@ -44,23 +49,30 @@ import * as fromDirectives from "./directives";
 export const reexportedModules: any[] = [
   // TranslateModule
   FormsModule,
+  ReactiveFormsModule,
+
+  MatNativeDateModule,
 
   MatButtonModule,
-  MatToolbarModule,
-  MatSelectModule,
-  MatTabsModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
-  MatChipsModule,
   MatCardModule,
-  MatSidenavModule,
   MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatIconModule,
-  MatTooltipModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
   MatSnackBarModule,
-  MatSlideToggleModule
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
 ];
 
 @NgModule({
