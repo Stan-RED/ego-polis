@@ -1,0 +1,11 @@
+@import "./custom-palettes";
+
+$aqua-theme-primary: mat-palette($mat-aqua, 700, 300, 900);
+$aqua-theme-accent: mat-palette($mat-light-green-sea);
+$aqua-theme-warn: mat-palette($mat-red, A200);
+
+$aqua-theme: mat-light-theme(
+    $aqua-theme-primary,
+    $aqua-theme-accent,
+    $aqua-theme-warn
+);

@@ -14,7 +14,10 @@ export class ThemeService {
       cssClass: `default-theme`,
       label: `Default`
     },
-
+    {
+      cssClass: `aqua-theme`,
+      label: `Aqua`
+    },
     {
       cssClass: `dark-theme`,
       label: `Dark`
