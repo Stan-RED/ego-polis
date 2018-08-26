@@ -1,0 +1,45 @@
+<div class="root">
+  <mat-icon
+    color="accent"
+    matTooltip="App logo"
+    aria-label="Logo"
+    fontSet="fas"
+    fontIcon="fa-terminal"
+    class="app-logo"
+  ></mat-icon>
+
+  <button
+    *ngFor="let item of rootItems"
+    mat-icon-button
+    (click)="toggleSidebar(item)"
+    [matBadge]="item?.badge"
+    matBadgePosition="above before"
+    [matBadgeDescription]="item?.badgeDescription"
+    [matBadgeHidden]="!item?.badge"
+    [matTooltip]="item?.tooltip"
+  >
+    <mat-icon [attr.aria-label]="item?.tooltip" fontSet="fas" [fontIcon]="item?.icon"></mat-icon>
+  </button>
+
+  <mat-divider></mat-divider>
+  <button mat-icon-button matTooltip="Add item">
+    <mat-icon aria-label="Add item" fontSet="fas" fontIcon="fa-plus"></mat-icon>
+  </button>
+
+  <div class="app-bottom-center">
+    <mat-divider></mat-divider>
+    <button mat-icon-button matTooltip="Settings">
+      <mat-icon aria-label="Settings" fontSet="fas" fontIcon="fa-cog"></mat-icon>
+    </button>
+  </div>
+</div>
+<!-- /.root -->
+
+<div *ngIf="isSideNavOpened" class="context">
+  <mat-nav-list>
+    <mat-list-item *ngFor="let item of rootItem?.children">
+      <a matLine [href]="item?.route">{{ item?.label }}</a>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
+<!-- /.context -->

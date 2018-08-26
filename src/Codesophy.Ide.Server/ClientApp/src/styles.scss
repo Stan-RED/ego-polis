@@ -18,12 +18,24 @@
 @import './styles/themes/default.scss';
 @import './styles/themes/dark.scss';
 
+// Imports custom component themes.
+@import 'app/_core/components/sidebar/sidebar.component.scss-theme';
+
+@mixin custom-components-theme($theme) {
+  @include sidebar-component-theme($theme);
+  // ...another components.
+}
+
 // Specify theme class on app holder.
 // Naming pattern: contains '-theme' string.
 .default-theme {
   @include angular-material-theme($default-theme);
+  @include bootstrap-resets-theme($default-theme);
+  @include custom-components-theme($default-theme);
 }
 
 .dark-theme {
   @include angular-material-theme($dark-theme);
+  @include bootstrap-resets-theme($dark-theme);
+  @include custom-components-theme($dark-theme);
 }

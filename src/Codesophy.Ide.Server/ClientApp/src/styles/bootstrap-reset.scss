@@ -1,4 +1,4 @@
-// Resets after bootstrap before angular material.
+// Resets some styles after bootstrap to prepare for angular material.
 
 * {
   &:active,
@@ -9,4 +9,13 @@
 
 label {
   margin-bottom: 0;
+}
+
+
+@mixin bootstrap-resets-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  a {
+    color: mat-color($primary);
+  }
 }

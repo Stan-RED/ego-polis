@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.root {
+  border-left: 1px solid;
+  padding: .5rem 0;
+
+  & > button,
+  & > mat-divider {
+    display: block;
+    margin: .5rem;
+  }
+}
+
+.app-logo {
+  display: block;
+  margin: 1rem auto;
+}
+
+.app-bottom-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+::ng-deep .mat-badge-content {
+  left: 0 !important;
+  top: 0 !important;
+}
