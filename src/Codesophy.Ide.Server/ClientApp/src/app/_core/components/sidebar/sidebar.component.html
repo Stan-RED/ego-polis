@@ -1,4 +1,4 @@
-<div class="root">
+<div class="app-sidebar-root">
   <mat-icon
     matTooltip="App logo"
     aria-label="Logo"
@@ -33,13 +33,13 @@
     </button>
   </div>
 </div>
-<!-- /.root -->
+<!-- /.app-sidebar-root -->
 
-<div *ngIf="isSideNavOpened" [@enterAnimation] class="context">
+<div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-context">
   <mat-nav-list>
     <mat-list-item *ngFor="let item of rootItem?.children">
       <a matLine [href]="item?.route">{{ item?.label }}</a>
     </mat-list-item>
   </mat-nav-list>
 </div>
-<!-- /.context -->
+<!-- /.app-sidebar-context -->
