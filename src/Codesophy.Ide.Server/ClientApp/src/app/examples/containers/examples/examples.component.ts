@@ -1,10 +1,9 @@
 // Examples from https://github.com/angular/material2
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatDialog, MatPaginator, MatSelectChange, MatSnackBar, MatTableDataSource } from "@angular/material";
+import { MatDialog, MatPaginator, MatSnackBar, MatTableDataSource } from "@angular/material";
 
-import { ThemeService } from "../../services";
-import { DialogComponent } from "./dialog/dialog.component";
+import { DialogComponent } from "../../components/dialog/dialog.component";
 
 export interface Animal {
   name: string;
@@ -72,7 +71,6 @@ export class ExamplesComponent implements OnInit {
 
 
   constructor(
-    public theme: ThemeService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private _formBuilder: FormBuilder
@@ -114,9 +112,5 @@ export class ExamplesComponent implements OnInit {
     }
 
     return value;
-  }
-
-  onThemeChange(event: MatSelectChange) {
-    this.theme.change(event.value);
   }
 }

@@ -42,12 +42,12 @@ export class SidebarComponent {
       tooltip: "Inbox messages",
       children: [
         {
-          label: "Item 1",
-          route: "#"
+          label: "Dashboard",
+          route: "/dashboard"
         },
         {
-          label: "Item 2",
-          route: "#"
+          label: "Examples",
+          route: "/examples"
         }
       ]
     },

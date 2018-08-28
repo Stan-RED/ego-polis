@@ -8,11 +8,16 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './_core/core.module';
 import { SharedModule } from './_shared/shared.module';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppRoutingModule } from "./app-routing.module";
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     // AngularDraggableModule,

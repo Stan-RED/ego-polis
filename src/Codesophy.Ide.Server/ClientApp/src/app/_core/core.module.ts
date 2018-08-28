@@ -26,9 +26,6 @@ import * as fromServices from "./services";
     // ...fromContainers.containers,
     ...fromComponents.components
   ],
-  entryComponents: [
-    fromComponents.DialogComponent
-  ],
   providers: [
     ...fromServices.services,
   ]
