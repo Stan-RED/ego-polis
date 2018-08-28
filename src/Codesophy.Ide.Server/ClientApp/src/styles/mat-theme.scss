@@ -75,6 +75,12 @@
           padding-top: 0;
         }
       }
+
+      &:not(.mat-focused) {
+        .mat-form-field-underline {
+          display: none;
+        }
+      }
     }
   }
 }
