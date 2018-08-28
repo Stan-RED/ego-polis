@@ -59,6 +59,26 @@
   }
 }
 
+@mixin theme-mat-form-field-appearance() {
+  .mat-form-field {
+    &.mat-form-field-appearance-fill {
+      .mat-form-field-flex {
+        box-shadow: inset 0 3px 1px -2px rgba(0, 0, 0, .2),
+        inset 0 2px 2px 0 rgba(0, 0, 0, .14),
+        inset 0 1px 5px 0 rgba(0, 0, 0, .12);
+      }
+
+      // ISSUE: resets unwanted padding.
+      & {
+      //&:not(.mat-form-field-hide-placeholder) {
+        .mat-form-field-flex {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+}
+
 @mixin app-core-mat-theme($theme) {
   //$primary: map-get($theme, primary);
   //$accent: map-get($theme, accent);
@@ -73,4 +93,5 @@
   @include theme-set-mat-card-header-icons-color(mat-color($foreground, disabled-button));
 
   @include theme-mat-tooltip-typography();
+  @include theme-mat-form-field-appearance();
 }
