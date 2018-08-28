@@ -5,7 +5,7 @@ import { ThemeService } from "./_core/services";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
   @HostBinding("class") get themeCssClass() {
