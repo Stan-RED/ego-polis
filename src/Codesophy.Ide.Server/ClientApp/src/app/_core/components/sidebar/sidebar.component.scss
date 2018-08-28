@@ -18,7 +18,7 @@ $sidebar: (
     line-height: unset;
   }
 
-  ::ng-deep .mat-button-ripple{
+  ::ng-deep .mat-button-ripple {
     border-radius: 0;
   }
 }
@@ -30,10 +30,11 @@ $sidebar: (
 }
 
 .root {
+  position: relative;
   border-left: 1px solid;
   padding: .5rem 0;
 
-  & > mat-divider {
+  mat-divider {
     display: block;
     margin: .5rem;
   }
