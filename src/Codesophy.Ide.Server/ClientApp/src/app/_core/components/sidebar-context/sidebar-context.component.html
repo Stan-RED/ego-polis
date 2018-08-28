@@ -1,0 +1,12 @@
+<h2>
+  {{contextItem?.description}}
+</h2>
+
+<mat-card *ngFor="let item of contextItem?.items" (click)="trigger(item)" class="sidebar-context-item">
+  <mat-card-title>
+    {{item?.label}}
+  </mat-card-title>
+  <mat-card-subtitle *ngIf="!!item?.description">
+    {{item?.description}}
+  </mat-card-subtitle>
+</mat-card>

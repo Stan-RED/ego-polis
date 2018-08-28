@@ -4,14 +4,22 @@ import { animate, style, transition, trigger } from "@angular/animations";
 export interface SidebarContextItem {
   label: string;
   route: string;
+
+  description?: string;
 }
 
+export interface SidebarContext {
+  items: Array<SidebarContextItem>;
+  description?: string;
+}
+
+// TODO: badge > 99 ? badge = 99 ?
 export interface SidebarRootItem {
   icon: string;
   action?: () => void;
   badge?: number;
   badgeDescription?: string;
-  children?: Array<SidebarContextItem>;
+  children?: SidebarContext;
   tooltip?: string;
 }
 
@@ -40,31 +48,39 @@ export class SidebarComponent {
       icon: "fa-envelope-open",
       badge: 18,
       tooltip: "Inbox messages",
-      children: [
-        {
-          label: "Dashboard",
-          route: "/dashboard"
-        },
-        {
-          label: "Examples",
-          route: "/examples"
-        }
-      ]
+      children: {
+        items: [
+          {
+            label: "Dashboard",
+            route: "/dashboard",
+            description: "Click to navigate"
+          },
+          {
+            label: "Examples",
+            route: "/examples",
+            description: "Click to navigate"
+          }
+        ],
+        description: "App links"
+      }
     },
     {
       icon: "fa-tasks",
       badge: 2,
       tooltip: "Tasks",
-      children: [
-        {
-          label: "Task 1",
-          route: "#"
-        },
-        {
-          label: "Task 2",
-          route: "#"
-        }
-      ]
+      children: {
+        items: [
+          {
+            label: "Task 1",
+            route: "#"
+          },
+          {
+            label: "Task 2",
+            route: "#"
+          }
+        ],
+        description: "App tasks"
+      }
     },
     {
       icon: "fa-desktop",

@@ -36,10 +36,6 @@
 <!-- /.app-sidebar-root -->
 
 <div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-context">
-  <mat-nav-list>
-    <mat-list-item *ngFor="let item of rootItem?.children">
-      <a matLine [href]="item?.route">{{ item?.label }}</a>
-    </mat-list-item>
-  </mat-nav-list>
+  <app-sidebar-context [contextItem]="rootItem?.children"></app-sidebar-context>
 </div>
 <!-- /.app-sidebar-context -->
