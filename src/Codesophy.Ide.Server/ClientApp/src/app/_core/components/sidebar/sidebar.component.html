@@ -15,10 +15,15 @@
     matBadgePosition="above before"
     [matBadgeDescription]="item?.badgeDescription"
     [matBadgeHidden]="!item?.badge"
-    [matTooltip]="item?.tooltip"
     [class.app-active]="isActive(i)"
   >
-    <mat-icon [attr.aria-label]="item?.tooltip" fontSet="fas" [fontIcon]="item?.icon"></mat-icon>
+    <mat-icon
+      [matTooltip]="item?.tooltip"
+      matTooltipPosition="left"
+      matTooltipShowDelay="500"
+      [attr.aria-label]="item?.tooltip"
+      fontSet="fas"
+      [fontIcon]="item?.icon"></mat-icon>
   </button>
 
   <mat-divider></mat-divider>

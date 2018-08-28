@@ -53,6 +53,12 @@
   }
 }
 
+@mixin theme-mat-tooltip-typography() {
+  .mat-tooltip {
+    font-size: .8rem;
+  }
+}
+
 @mixin app-core-mat-theme($theme) {
   //$primary: map-get($theme, primary);
   //$accent: map-get($theme, accent);
@@ -65,4 +71,6 @@
   @include theme-mat-card-corners();
   @include theme-mat-card-actions-positioning();
   @include theme-set-mat-card-header-icons-color(mat-color($foreground, disabled-button));
+
+  @include theme-mat-tooltip-typography();
 }
