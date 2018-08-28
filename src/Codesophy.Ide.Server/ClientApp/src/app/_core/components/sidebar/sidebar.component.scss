@@ -27,7 +27,7 @@
   transform: translate(-50%, 0);
 }
 
-::ng-deep .mat-badge-content {
+:host ::ng-deep .mat-badge-content {
   left: 0 !important;
   top: 0 !important;
 }
