@@ -1,3 +1,11 @@
+// Sets border-radius on cards.
+@mixin theme-mat-card-corners() {
+  // Rewrites .mat-card style.
+  mat-card.mat-card {
+    border-radius: .2rem;
+  }
+}
+
 // Positions card actions.
 @mixin theme-mat-card-actions-positioning() {
   mat-card {
@@ -13,4 +21,23 @@
       right: 1.5rem;
     }
   }
+}
+
+// Sets card actions color.
+@mixin theme-set-mat-card-actions-color($color) {
+  mat-card mat-card-actions {
+    color: $color;
+  }
+}
+
+@mixin app-core-mat-theme($theme) {
+  //$primary: map-get($theme, primary);
+  //$accent: map-get($theme, accent);
+  //$warn: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  //$background: map-get($theme, background);
+
+  @include theme-mat-card-corners();
+  @include theme-mat-card-actions-positioning();
+  @include theme-set-mat-card-actions-color(mat-color($foreground, disabled-button));
 }

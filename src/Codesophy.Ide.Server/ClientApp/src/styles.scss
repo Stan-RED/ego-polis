@@ -31,30 +31,28 @@
   // ...another components.
 }
 
+// Composes the theme.
+@mixin app-compose-theme($theme) {
+  @include angular-material-theme($theme);
+  @include bootstrap-resets-theme($theme);
+  @include app-core-mat-theme($theme);
+  @include custom-components-theme($theme);
+}
+
 // Specify theme class on app holder.
 // Naming pattern: contains '-theme' string.
 .default-theme {
-  @include angular-material-theme($default-theme);
-  @include bootstrap-resets-theme($default-theme);
-  @include custom-components-theme($default-theme);
+  @include app-compose-theme($default-theme);
 }
 
 .adx-theme {
-  @include angular-material-theme($adx-theme);
-  @include bootstrap-resets-theme($adx-theme);
-  @include custom-components-theme($adx-theme);
+  @include app-compose-theme($adx-theme);
 }
 
 .aqua-theme {
-  @include angular-material-theme($aqua-theme);
-  @include bootstrap-resets-theme($aqua-theme);
-  @include custom-components-theme($aqua-theme);
+  @include app-compose-theme($aqua-theme);
 }
 
 .dark-theme {
-  @include angular-material-theme($dark-theme);
-  @include bootstrap-resets-theme($dark-theme);
-  @include custom-components-theme($dark-theme);
+  @include app-compose-theme($dark-theme);
 }
-
-@include theme-mat-card-actions-positioning();
