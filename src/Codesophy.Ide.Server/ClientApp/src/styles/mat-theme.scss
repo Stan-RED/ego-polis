@@ -1,8 +1,27 @@
+@mixin theme-mat-card-spacing() {
+  mat-card {
+    margin-bottom: 30px;
+  }
+}
+
 // Sets border-radius on cards.
 @mixin theme-mat-card-corners() {
   // Rewrites .mat-card style.
   mat-card.mat-card {
     border-radius: .2rem;
+  }
+}
+
+// Sets title styles.
+@mixin theme-mat-card-title() {
+  mat-card-title {
+    font-size: 1.2rem;
+    display: flex;
+
+    & > mat-icon {
+      font-size: 1.6rem;
+      margin-right: .8rem;
+    }
   }
 }
 
@@ -13,7 +32,7 @@
 
     mat-card-actions {
       position: absolute;
-      top: 1rem;
+      top: .75rem;
       z-index: 9;
     }
 
@@ -24,9 +43,12 @@
 }
 
 // Sets card actions color.
-@mixin theme-set-mat-card-actions-color($color) {
-  mat-card mat-card-actions {
-    color: $color;
+@mixin theme-set-mat-card-header-icons-color($color) {
+  mat-card {
+    mat-card-actions,
+    mat-card-title mat-icon {
+      color: $color;
+    }
   }
 }
 
@@ -37,7 +59,9 @@
   $foreground: map-get($theme, foreground);
   //$background: map-get($theme, background);
 
+  @include theme-mat-card-spacing();
+  @include theme-mat-card-title();
   @include theme-mat-card-corners();
   @include theme-mat-card-actions-positioning();
-  @include theme-set-mat-card-actions-color(mat-color($foreground, disabled-button));
+  @include theme-set-mat-card-header-icons-color(mat-color($foreground, disabled-button));
 }
