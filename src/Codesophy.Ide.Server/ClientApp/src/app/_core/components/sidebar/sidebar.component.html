@@ -35,7 +35,7 @@
 </div>
 <!-- /.root -->
 
-<div *ngIf="isSideNavOpened" class="context">
+<div *ngIf="isSideNavOpened" [@enterAnimation] class="context">
   <mat-nav-list>
     <mat-list-item *ngFor="let item of rootItem?.children">
       <a matLine [href]="item?.route">{{ item?.label }}</a>
