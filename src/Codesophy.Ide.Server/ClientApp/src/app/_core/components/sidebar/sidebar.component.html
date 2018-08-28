@@ -1,6 +1,5 @@
 <div class="root">
   <mat-icon
-    color="accent"
     matTooltip="App logo"
     aria-label="Logo"
     fontSet="fas"
@@ -9,7 +8,7 @@
   ></mat-icon>
 
   <button
-    *ngFor="let item of rootItems"
+    *ngFor="let item of rootItems; let i = index"
     mat-icon-button
     (click)="toggleSidebar(item)"
     [matBadge]="item?.badge"
@@ -17,13 +16,14 @@
     [matBadgeDescription]="item?.badgeDescription"
     [matBadgeHidden]="!item?.badge"
     [matTooltip]="item?.tooltip"
+    [class.app-active]="isActive(i)"
   >
     <mat-icon [attr.aria-label]="item?.tooltip" fontSet="fas" [fontIcon]="item?.icon"></mat-icon>
   </button>
 
   <mat-divider></mat-divider>
   <button mat-icon-button matTooltip="Add item">
-    <mat-icon aria-label="Add item" fontSet="fas" fontIcon="fa-plus"></mat-icon>
+    <mat-icon aria-label="Add item" fontSet="fas" fontIcon="fa-plus-circle"></mat-icon>
   </button>
 
   <div class="app-bottom-center">

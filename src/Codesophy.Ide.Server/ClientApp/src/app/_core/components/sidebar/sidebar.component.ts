@@ -76,6 +76,10 @@ export class SidebarComponent {
   isSideNavOpened = false;
   rootItem: SidebarRootItem;
 
+  isActive(index: number) {
+    return this.isSideNavOpened && this.rootItems[index] === this.rootItem;
+  }
+
   toggleSidebar(item: SidebarRootItem) {
     const hasItemChanged: boolean = this.rootItem !== item;
 

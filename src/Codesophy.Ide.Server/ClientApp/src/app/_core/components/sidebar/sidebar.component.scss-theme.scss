@@ -1,9 +1,7 @@
 @import '~@angular/material/theming';
 
-// WORK: Active state of opened buttons (using ripple).
-
 @mixin sidebar-component-theme($theme) {
-  //$primary: map-get($theme, primary);
+  $primary: map-get($theme, primary);
   //$accent: map-get($theme, accent);
   //$warn: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
@@ -12,6 +10,20 @@
   app-sidebar {
     .root {
       border-left-color: mat-color($foreground, divider);
+
+      button {
+        color: mat-color($foreground, disabled-button);
+
+        &:active,
+        &.app-active {
+          border-left-color: mat-color($primary);
+          color: mat-color($primary);
+        }
+      }
+
+      .mat-badge-content {
+        background-color: mat-color($primary);
+      }
     }
   }
 }

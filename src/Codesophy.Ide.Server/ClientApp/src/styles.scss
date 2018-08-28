@@ -16,6 +16,7 @@
 
 // Imports custom themes.
 @import './styles/themes/default.scss';
+@import './styles/themes/adx.scss';
 @import './styles/themes/aqua.scss';
 @import './styles/themes/dark.scss';
 
@@ -33,6 +34,12 @@
   @include angular-material-theme($default-theme);
   @include bootstrap-resets-theme($default-theme);
   @include custom-components-theme($default-theme);
+}
+
+.adx-theme {
+  @include angular-material-theme($adx-theme);
+  @include bootstrap-resets-theme($adx-theme);
+  @include custom-components-theme($adx-theme);
 }
 
 .aqua-theme {

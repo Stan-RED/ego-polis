@@ -11,6 +11,10 @@ export interface Theme {
 export class ThemeService {
   availableThemes: Array<Theme> = [
     {
+      cssClass: `adx-theme`,
+      label: `Adx`
+    },
+    {
       cssClass: `default-theme`,
       label: `Default`
     },

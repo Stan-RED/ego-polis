@@ -1,3 +1,28 @@
+@import "../../../../styles/helpers";
+
+$sidebar: (
+  button : (
+    size : 56px,
+    badge: (
+      size : 18px,
+      font-size: 0.7rem,
+      offset: 30%
+    )
+  )
+);
+
+// Resets default mat round button styles.
+@mixin mat-button-square() {
+  .mat-icon-button {
+    border-radius: 0;
+    line-height: unset;
+  }
+
+  ::ng-deep .mat-button-ripple{
+    border-radius: 0;
+  }
+}
+
 :host {
   display: flex;
   flex-direction: row;
@@ -8,11 +33,23 @@
   border-left: 1px solid;
   padding: .5rem 0;
 
-  & > button,
   & > mat-divider {
     display: block;
     margin: .5rem;
   }
+
+  button {
+    display: block;
+    width: map-deep-get($sidebar, "button", "size");
+    height: map-deep-get($sidebar, "button", "size");
+
+    &:active,
+    &.app-active {
+      border-left: 2px solid;
+    }
+  }
+
+  @include mat-button-square();
 }
 
 .app-logo {
@@ -27,7 +64,18 @@
   transform: translate(-50%, 0);
 }
 
-:host ::ng-deep .mat-badge-content {
-  left: 0 !important;
-  top: 0 !important;
+:host ::ng-deep {
+  .mat-badge-content {
+    left: map-deep-get($sidebar, "button", "badge", "offset") !important;
+    top: map-deep-get($sidebar, "button", "badge", "offset") !important;
+    transform: translate(-(map-deep-get($sidebar, "button", "badge", "offset")), -(map-deep-get($sidebar, "button", "badge", "offset"))) !important;
+  }
+
+  .mat-badge-medium .mat-badge-content {
+    width: map-deep-get($sidebar, "button", "badge", "size");
+    height: map-deep-get($sidebar, "button", "badge", "size");
+    line-height: map-deep-get($sidebar, "button", "badge", "size");
+
+    font-size: map-deep-get($sidebar, "button", "badge", "font-size");
+  }
 }
