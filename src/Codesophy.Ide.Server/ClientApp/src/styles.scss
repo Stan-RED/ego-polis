@@ -23,6 +23,9 @@
 // Imports custom component themes.
 @import 'app/_core/components/sidebar/sidebar.component.scss-theme';
 
+// Imports core mat-rewrites.
+@import './styles/mat-theme.scss';
+
 @mixin custom-components-theme($theme) {
   @include sidebar-component-theme($theme);
   // ...another components.
@@ -53,3 +56,5 @@
   @include bootstrap-resets-theme($dark-theme);
   @include custom-components-theme($dark-theme);
 }
+
+@include theme-mat-card-actions-positioning();

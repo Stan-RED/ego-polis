@@ -1,0 +1,16 @@
+// Positions card actions.
+@mixin theme-mat-card-actions-positioning() {
+  mat-card {
+    position: relative;
+
+    mat-card-actions {
+      position: absolute;
+      top: 1rem;
+      z-index: 9;
+    }
+
+    .mat-card-actions-align-end {
+      right: 1.5rem;
+    }
+  }
+}
