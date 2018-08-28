@@ -72,11 +72,11 @@ export class SidebarComponent {
         items: [
           {
             label: "Task 1",
-            route: "#"
+            route: "/"
           },
           {
             label: "Task 2",
-            route: "#"
+            route: "/"
           }
         ],
         description: "App tasks"

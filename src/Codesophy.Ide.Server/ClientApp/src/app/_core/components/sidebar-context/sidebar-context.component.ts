@@ -11,9 +11,12 @@ import { SidebarContext, SidebarContextItem } from "../sidebar/sidebar.component
 export class SidebarContextComponent {
   @Input() contextItem: SidebarContext;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   trigger(item: SidebarContextItem) {
-    this.router.navigate([item.route]);
+    if (item.route) {
+      this.router.navigate([item.route]);
+    }
   }
 }

@@ -32,6 +32,7 @@
 
     mat-card-actions {
       position: absolute;
+      // WORK: Fix top in case no icon before title.
       top: .75rem;
       z-index: 9;
     }
