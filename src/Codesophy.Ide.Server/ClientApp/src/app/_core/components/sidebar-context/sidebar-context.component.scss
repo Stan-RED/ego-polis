@@ -1,6 +1,7 @@
 :host {
-  margin: 1.5rem;
   display: block;
+  min-width: 18rem;
+  margin: 1.5rem;
 }
 
 h2 {
@@ -10,7 +11,6 @@ h2 {
 }
 
 .sidebar-context-item {
-  min-width: 18rem;
   padding: .8rem 1.2rem;
   margin-bottom: .6rem;
   cursor: pointer;
