@@ -1,3 +1,29 @@
+@import "core-mixins";
+
+@mixin theme-mat-core-state-disabled() {
+  .mat-option-disabled,
+  .mat-optgroup-disabled,
+  .mat-pseudo-checkbox-disabled,
+  .mat-button-toggle-disabled,
+  .mat-calendar-body-disabled,
+  .mat-disabled,
+  .mat-tab-header-pagination-disabled,
+
+  .mat-checkbox-disabled,
+  [aria-disabled='true'],
+  .mat-list-item-disabled,
+  .mat-radio-disabled .mat-radio-label,
+  .mat-select-disabled .mat-select-trigger,
+  .mat-disabled .mat-slide-toggle-label,
+  .mat-slider-disabled,
+  .mat-button[disabled], .mat-flat-button[disabled], .mat-icon-button[disabled], .mat-stroked-button[disabled],
+  .mat-tab-disabled .mat-tab-label-content,
+  .mat-form-field-disabled input,
+  .mat-form-field-disabled textarea {
+    @include app-state-disabled();
+  }
+}
+
 @mixin theme-mat-card-spacing() {
   mat-card {
     margin-bottom: 30px;
@@ -91,6 +117,8 @@
   //$warn: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   //$background: map-get($theme, background);
+
+  @include theme-mat-core-state-disabled();
 
   @include theme-mat-card-spacing();
   @include theme-mat-card-title();

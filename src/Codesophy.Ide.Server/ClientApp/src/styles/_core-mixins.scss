@@ -1,0 +1,5 @@
+@mixin app-state-disabled() {
+  cursor: not-allowed !important;
+  outline: none;
+  //pointer-events: none;
+}
