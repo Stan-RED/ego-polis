@@ -1,4 +1,4 @@
-<div class="app-sidebar-root">
+<div class="app-sidebar-toolbar">
   <mat-icon
     matTooltip="App logo"
     aria-label="Logo"
@@ -48,7 +48,7 @@
     </button>
   </div>
 </div>
-<!-- /.app-sidebar-root -->
+<!-- /.app-sidebar-toolbar -->
 
 <div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-context">
   <app-sidebar-context [contextItem]="rootItem?.children"></app-sidebar-context>
