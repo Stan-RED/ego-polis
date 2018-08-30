@@ -111,7 +111,8 @@
   }
 }
 
-@mixin app-core-mat-theme($theme) {
+// Styles over @angular/material theme.
+@mixin app-over-mat-theme($theme) {
   //$primary: map-get($theme, primary);
   //$accent: map-get($theme, accent);
   //$warn: map-get($theme, accent);

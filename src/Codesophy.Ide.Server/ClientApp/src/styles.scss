@@ -7,8 +7,6 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 //@import '~@fortawesome/fontawesome-free/scss/brands';
 
-@import "./styles/bootstrap-reset";
-
 @import '~@angular/material/theming';
 
 // Once per project.
@@ -23,20 +21,20 @@
 // Imports custom component themes.
 @import 'app/_core/components/sidebar/sidebar.component.scss-theme';
 
-// Imports core mat-rewrites.
-@import './styles/mat-theme.scss';
-
-@mixin custom-components-theme($theme) {
+@mixin app-custom-components-theme($theme) {
   @include sidebar-component-theme($theme);
   // ...another components.
 }
+// Imports style rewrites.
+@import "./styles/theme-over-bootstrap";
+@import './styles/theme-over-mat';
 
 // Composes the theme.
 @mixin app-compose-theme($theme) {
+  @include app-over-bootstrap-theme($theme);
   @include angular-material-theme($theme);
-  @include bootstrap-resets-theme($theme);
-  @include app-core-mat-theme($theme);
-  @include custom-components-theme($theme);
+  @include app-over-mat-theme($theme);
+  @include app-custom-components-theme($theme);
 }
 
 // Specify theme class on app holder.
