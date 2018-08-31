@@ -13,10 +13,10 @@
 @include mat-core();
 
 // Imports custom themes.
-@import './styles/themes/default.scss';
-@import './styles/themes/adx.scss';
-@import './styles/themes/aqua.scss';
-@import './styles/themes/dark.scss';
+@import './styles/themes/default';
+@import './styles/themes/adx';
+@import './styles/themes/aqua';
+@import './styles/themes/dark';
 
 // Imports custom component themes.
 @import 'app/_core/components/sidebar/sidebar.component.scss-theme';
