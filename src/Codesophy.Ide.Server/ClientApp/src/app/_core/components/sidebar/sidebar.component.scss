@@ -46,7 +46,8 @@ $sidebar: (
 
     &:active,
     &.app-active {
-      border-left: 2px solid;
+      border-left-style: solid;
+      border-left-width: 2px;
     }
   }
 
@@ -79,4 +80,12 @@ $sidebar: (
 
     font-size: map-deep-get($sidebar, "button", "badge", "font-size");
   }
+}
+
+.app-sidebar-toolbar-child-container {
+  position: absolute;
+  left: map-deep-get($sidebar, "button", "size");
+  z-index: 9;
+  height: 100%;
+  overflow: hidden;
 }

@@ -6,3 +6,11 @@
   }
   @return $value;
 }
+
+@function rgba-to-rgb($rgba) {
+  $red: red($rgba);
+  $green: green($rgba);
+  $blue: blue($rgba);
+
+  @return rgb($red, $green, $blue);
+}

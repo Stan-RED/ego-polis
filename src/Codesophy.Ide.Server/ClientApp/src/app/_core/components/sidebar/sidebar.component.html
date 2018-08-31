@@ -50,7 +50,12 @@
 </div>
 <!-- /.app-sidebar-toolbar -->
 
-<div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-context">
-  <app-sidebar-context [contextItem]="rootItem?.children"></app-sidebar-context>
+<app-sidebar-context></app-sidebar-context>
+
+<div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-toolbar-child-container">
+  <app-sidebar-toolbar-child
+    [item]="rootItem?.children"
+  ></app-sidebar-toolbar-child>
 </div>
-<!-- /.app-sidebar-context -->
+
+

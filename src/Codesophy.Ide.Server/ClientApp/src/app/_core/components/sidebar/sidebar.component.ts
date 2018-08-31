@@ -1,25 +1,25 @@
 import { Component } from "@angular/core";
 import { animate, style, transition, trigger } from "@angular/animations";
 
-export interface SidebarContextItem {
+export interface SidebarToolbarChildItem {
   label: string;
   route: string;
 
   description?: string;
 }
 
-export interface SidebarContext {
-  items: Array<SidebarContextItem>;
+export interface SidebarToolbarChild {
+  items: Array<SidebarToolbarChildItem>;
   description?: string;
 }
 
 // TODO: badge > 99 ? badge = 99 ?
-export interface SidebarRootItem {
+export interface SidebarToolbarItem {
   icon: string;
   action?: () => void;
   badge?: number;
   badgeDescription?: string;
-  children?: SidebarContext;
+  children?: SidebarToolbarChild;
   tooltip?: string;
 }
 
@@ -43,7 +43,7 @@ export interface SidebarRootItem {
   styleUrls: ["./sidebar.component.scss"]
 })
 export class SidebarComponent {
-  rootItems: Array<SidebarRootItem> = [
+  rootItems: Array<SidebarToolbarItem> = [
     {
       icon: "fa-envelope-open",
       badge: 18,
@@ -105,13 +105,13 @@ export class SidebarComponent {
   ];
 
   isSideNavOpened = false;
-  rootItem: SidebarRootItem;
+  rootItem: SidebarToolbarItem;
 
   isActive(index: number) {
     return this.isSideNavOpened && this.rootItems[index] === this.rootItem;
   }
 
-  toggleSidebar(item: SidebarRootItem) {
+  toggleSidebar(item: SidebarToolbarItem) {
     const hasItemChanged: boolean = this.rootItem !== item;
 
     if (hasItemChanged) {

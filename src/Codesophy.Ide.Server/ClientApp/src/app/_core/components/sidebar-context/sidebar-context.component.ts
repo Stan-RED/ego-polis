@@ -1,22 +1,12 @@
-import { Component, Input } from "@angular/core";
-import { Router } from "@angular/router";
-
-import { SidebarContext, SidebarContextItem } from "../sidebar/sidebar.component";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-sidebar-context",
   templateUrl: "./sidebar-context.component.html",
-  styleUrls: ["./sidebar-context.component.scss"]
+  styleUrls: [
+    "./sidebar-context.component.scss",
+    "../sidebar/sidebar-panel.component.scss"
+  ]
 })
 export class SidebarContextComponent {
-  @Input() contextItem: SidebarContext;
-
-  constructor(private router: Router) {
-  }
-
-  trigger(item: SidebarContextItem) {
-    if (item.route) {
-      this.router.navigate([item.route]);
-    }
-  }
 }

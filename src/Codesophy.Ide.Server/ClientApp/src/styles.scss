@@ -22,7 +22,7 @@
 @import 'app/_core/components/sidebar/sidebar.component.scss-theme';
 
 @mixin app-custom-components-theme($theme) {
-  @include sidebar-component-theme($theme);
+  @include app-sidebar-component-theme($theme);
   // ...another components.
 }
 // Imports style rewrites.

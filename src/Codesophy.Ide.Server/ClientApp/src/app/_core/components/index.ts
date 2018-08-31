@@ -4,6 +4,7 @@ import { MenuMainContainerComponent } from './menu-main-container/menu-main-cont
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarContextComponent } from './sidebar-context/sidebar-context.component';
+import { SidebarToolbarChildComponent } from './sidebar-toolbar-child/sidebar-toolbar-child.component';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 
 export const components: any[] = [
@@ -13,6 +14,7 @@ export const components: any[] = [
 
   SidebarComponent,
   SidebarContextComponent,
+  SidebarToolbarChildComponent,
   ThemeSwitcherComponent
 ];
 
@@ -22,4 +24,5 @@ export * from './menu-main-container/menu-main-container.component';
 
 export * from './sidebar/sidebar.component';
 export * from './sidebar-context/sidebar-context.component';
+export * from './sidebar-toolbar-child/sidebar-toolbar-child.component';
 export * from './theme-switcher/theme-switcher.component';
