@@ -1,15 +1,12 @@
-<mat-card class="col-md-3">
-  <div class="icon-form-field">
-    <mat-icon fontSet="fas" fontIcon="fa-paint-brush" color="accent"></mat-icon>
-    <mat-form-field>
-      <mat-select [placeholder]="'Choose the theme'"
-                  [ngModel]="theme?.themeCssClass"
-                  (selectionChange)="onThemeChange($event)"
-                  name="themes">
-        <mat-option *ngFor="let t of theme.availableThemes" [value]="t.cssClass">
-          {{ t.label }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+<mat-card>
+  <mat-form-field>
+    <mat-select [placeholder]="'Choose the theme'"
+                [ngModel]="theme?.themeCssClass"
+                (selectionChange)="onThemeChange($event)"
+                name="themes">
+      <mat-option *ngFor="let t of theme.availableThemes" [value]="t.cssClass">
+        {{ t.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </mat-card>
