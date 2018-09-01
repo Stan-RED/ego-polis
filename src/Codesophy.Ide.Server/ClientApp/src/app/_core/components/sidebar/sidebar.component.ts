@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Type } from "@angular/core";
 import { animate, style, transition, trigger } from "@angular/animations";
+
+import { SearchComponent } from "../search/search.component";
 
 export interface SidebarToolbarChildItem {
   label: string;
@@ -9,8 +11,9 @@ export interface SidebarToolbarChildItem {
 }
 
 export interface SidebarToolbarChild {
-  items: Array<SidebarToolbarChildItem>;
+  items?: Array<SidebarToolbarChildItem>;
   description?: string;
+  component?: Type<any>
 }
 
 // TODO: badge > 99 ? badge = 99 ?
@@ -44,6 +47,13 @@ export interface SidebarToolbarItem {
 })
 export class SidebarComponent {
   rootItems: Array<SidebarToolbarItem> = [
+    {
+      icon: "fa-search",
+      tooltip: "Search",
+      children: {
+        component: SearchComponent
+      },
+    },
     {
       icon: "fa-envelope-open",
       badge: 18,

@@ -28,6 +28,9 @@ import * as fromServices from "./services";
   ],
   providers: [
     ...fromServices.services,
+  ],
+  entryComponents: [
+    ...fromComponents.entryComponents
   ]
 })
 export class CoreModule {
