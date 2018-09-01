@@ -1,15 +1,38 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+/**
+ * @angular.
+ */
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
 
-import { AngularDraggableModule } from 'angular2-draggable';
+/**
+ * @ngrx.
+ */
+import { EffectsModule } from "@ngrx/effects";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { StoreModule } from "@ngrx/store";
+import { RouterStateSerializer, StoreRouterConnectingModule } from "@ngrx/router-store";
 
-import { AppComponent } from './app.component';
-import { CoreModule } from './_core/core.module';
-import { SharedModule } from './_shared/shared.module';
+import { AngularDraggableModule } from "angular2-draggable";
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+/**
+ * App's.
+ */
+import { CoreModule } from "./_core/core.module";
+import { SharedModule } from "./_shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
+
+import { AppComponent } from "./app.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+
+import {
+  CustomRouterStateSerializer,
+  effects,
+  metaReducers,
+  reducers,
+} from "./_core/store";
+
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -23,8 +46,15 @@ import { AppRoutingModule } from "./app-routing.module";
     // AngularDraggableModule,
     CoreModule,
     SharedModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreRouterConnectingModule,
+    environment.production ? [] : StoreDevtoolsModule.instrument({maxAge: 50}),
+    EffectsModule.forRoot(effects),
   ],
-  providers: [],
+  providers: [
+    {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
