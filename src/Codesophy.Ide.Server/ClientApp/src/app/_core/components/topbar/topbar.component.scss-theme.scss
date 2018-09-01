@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+
+@mixin app-topbar-component-theme-breadcrumbs($theme) {
+  //$primary: map-get($theme, primary);
+  //$accent: map-get($theme, accent);
+  //$warn: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  //$background: map-get($theme, background);
+  //$custom: map-get($theme, app-theme-custom);
+
+  .app-breadcrumbs {
+    .app-breadcrumbs-link,
+    .app-breadcrumbs-divider{
+      color: mat-color($foreground, hint-text);
+    }
+  }
+}
+
+@mixin app-topbar-component-theme($theme) {
+  @include app-topbar-component-theme-breadcrumbs($theme);
+}

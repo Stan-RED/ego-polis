@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule, Optional, SkipSelf } from "@angular/core";
+import { RouterModule } from '@angular/router';
 
 import { SharedModule } from "../_shared/shared.module";
 import { throwIfAlreadyLoaded } from "./module-import-guard";
@@ -16,7 +17,8 @@ import * as fromServices from "./services";
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   declarations: [
     // ...fromContainers.containers,
