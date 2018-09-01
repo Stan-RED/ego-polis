@@ -1,3 +1,11 @@
+<app-sidebar-context></app-sidebar-context>
+
+<div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-toolbar-child-container">
+  <app-sidebar-toolbar-child
+    [item]="rootItem?.children"
+  ></app-sidebar-toolbar-child>
+</div>
+
 <div class="app-sidebar-toolbar">
   <mat-icon
     matTooltip="App logo"
@@ -16,6 +24,7 @@
     [matBadgeDescription]="item?.badgeDescription"
     [matBadgeHidden]="!item?.badge"
     [class.app-active]="isActive(i)"
+    [class.app-has-child]="!!item?.children"
   >
     <mat-icon
       [matTooltip]="item?.tooltip"
@@ -39,6 +48,16 @@
   <div class="app-bottom-center">
     <button mat-icon-button>
       <mat-icon
+        matTooltip="Account"
+        matTooltipPosition="left"
+        aria-label="Account"
+        fontSet="fas"
+        fontIcon="fa-user-circle"
+      ></mat-icon>
+    </button>
+
+    <button mat-icon-button>
+      <mat-icon
         matTooltip="Settings"
         matTooltipPosition="left"
         aria-label="Settings"
@@ -48,14 +67,3 @@
     </button>
   </div>
 </div>
-<!-- /.app-sidebar-toolbar -->
-
-<app-sidebar-context></app-sidebar-context>
-
-<div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-toolbar-child-container">
-  <app-sidebar-toolbar-child
-    [item]="rootItem?.children"
-  ></app-sidebar-toolbar-child>
-</div>
-
-

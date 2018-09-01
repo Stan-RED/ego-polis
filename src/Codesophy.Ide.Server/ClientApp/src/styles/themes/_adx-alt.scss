@@ -1,0 +1,18 @@
+@import "../custom-palettes";
+@import "../helpers";
+@import "./adx";
+
+$adx-alt-theme: $adx-theme;
+
+$adx-alt-theme-custom: (
+  sidebar: (
+    active: (
+      color: white,
+      background-color: #303030
+    )
+  )
+);
+
+$custom: map-get($adx-alt-theme, app-theme-custom);
+$custom: non-destructive-map-merge($custom, $adx-alt-theme-custom);
+$adx-alt-theme: map_merge($adx-alt-theme, (app-theme-custom: $custom));

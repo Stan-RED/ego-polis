@@ -23,6 +23,27 @@ $sidebar: (
   }
 }
 
+@mixin app-sidebar-borders() {
+  .app-sidebar-toolbar button {
+    &:active,
+    &.app-active {
+      z-index: 99;
+      border-style: solid;
+      border-width: 1px;
+
+      &.app-has-child {
+        border-left-width: 0;
+      }
+    }
+  }
+
+  .app-sidebar-toolbar-child-container {
+    right: map-deep-get($sidebar, "button", "size") - 1px;
+    border-style: solid;
+    border-width: 1px;
+  }
+}
+
 :host {
   display: flex;
   flex-direction: row;
@@ -43,12 +64,6 @@ $sidebar: (
     display: block;
     width: map-deep-get($sidebar, "button", "size");
     height: map-deep-get($sidebar, "button", "size");
-
-    &:active,
-    &.app-active {
-      border-left-style: solid;
-      border-left-width: 2px;
-    }
   }
 
   @include mat-button-square();
@@ -84,8 +99,10 @@ $sidebar: (
 
 .app-sidebar-toolbar-child-container {
   position: absolute;
-  left: map-deep-get($sidebar, "button", "size");
+  right: map-deep-get($sidebar, "button", "size");
   z-index: 9;
   height: 100%;
   overflow: hidden;
 }
+
+@include app-sidebar-borders();

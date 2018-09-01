@@ -15,6 +15,7 @@
 // Imports custom themes.
 @import './styles/themes/default';
 @import './styles/themes/adx';
+@import './styles/themes/adx-alt';
 @import './styles/themes/aqua';
 @import './styles/themes/dark';
 
@@ -45,6 +46,10 @@
 
 .adx-theme {
   @include app-compose-theme($adx-theme);
+}
+
+.adx-alt-theme {
+  @include app-compose-theme($adx-alt-theme);
 }
 
 .aqua-theme {

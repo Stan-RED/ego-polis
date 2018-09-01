@@ -8,13 +8,14 @@
   //$warn: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
+  $custom: map-get($theme, app-theme-custom);
 
-  & {
-    background-color: mat-color($background, background);
+  app-sidebar {
+    background-color: map-deep-get($custom, sidebar, background-color);
 
     .app-sidebar-toolbar {
       button {
-        color: mat-color($foreground, disabled-button);
+        color: map-deep-get($custom, sidebar, button, color),
       }
 
       .mat-badge-content {
@@ -30,26 +31,24 @@
   //$warn: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
+  $custom: map-get($theme, app-theme-custom);
 
-  .app-sidebar-toolbar {
-    button {
-      &:active,
-      &.app-active {
-        color: mat-color($foreground, text);
-        background-color: rgba-to-rgb(mat-color($background, status-bar));
-        border-left-color: mat-color($primary);
-      }
-    }
+  mat-sidenav {
+    overflow: visible;
   }
 
-  .app-sidebar-toolbar-child-container {
-    background-color: rgba-to-rgb(mat-color($background, status-bar));
+  app-sidebar {
+    .app-sidebar-toolbar-child-container,
+    .app-sidebar-toolbar button:active,
+    .app-sidebar-toolbar button.app-active {
+      color: map-deep-get($custom, sidebar, active, color);
+      background-color: map-deep-get($custom, sidebar, active, background-color);
+      border-color: similar-color(map-deep-get($custom, sidebar, active, background-color));
+    }
   }
 }
 
 @mixin app-sidebar-component-theme($theme) {
-  app-sidebar {
-    @include app-sidebar-component-core($theme);
-    @include app-sidebar-component-toolbar-child-opened($theme);
-  }
+  @include app-sidebar-component-core($theme);
+  @include app-sidebar-component-toolbar-child-opened($theme);
 }

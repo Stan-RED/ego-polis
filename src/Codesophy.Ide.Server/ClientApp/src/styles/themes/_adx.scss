@@ -1,4 +1,5 @@
 @import "../custom-palettes";
+@import "../helpers";
 
 $adx-theme-primary: mat-palette($mat-blue-edge);
 $adx-theme-accent:  mat-palette($mat-electric);
@@ -51,3 +52,18 @@ $adx-theme: map_merge($adx-theme, (background: $background));
 $foreground: map-get($adx-theme, foreground);
 $foreground: map_merge($foreground, $adx-theme-foreground);
 $adx-theme: map_merge($adx-theme, (foreground: $foreground));
+
+$adx-theme-custom: (
+  sidebar: (
+    background-color: mat-color(map-get($adx-theme, background), background),
+    button: (
+      color: mat-color(map-get($adx-theme, foreground), disabled-button),
+    ),
+    active: (
+      color: mat-color(map-get($adx-theme, foreground), text),
+      background-color: darken(rgba-to-rgb(mat-color(map-get($adx-theme, background), status-bar)), 5%)
+    )
+  )
+);
+
+$adx-theme: map_merge($adx-theme, (app-theme-custom: $adx-theme-custom));

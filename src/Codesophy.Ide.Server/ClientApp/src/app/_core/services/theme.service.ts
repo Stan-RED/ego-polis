@@ -15,6 +15,10 @@ export class ThemeService {
       label: `Adx`
     },
     {
+      cssClass: `adx-alt-theme`,
+      label: `Adx alt`
+    },
+    {
       cssClass: `default-theme`,
       label: `Default`
     },
