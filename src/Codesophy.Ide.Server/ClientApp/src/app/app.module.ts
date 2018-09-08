@@ -24,6 +24,7 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { FeedComponent } from "./feed/feed.component";
 
 import {
   CustomRouterStateSerializer,
@@ -37,7 +38,8 @@ import { environment } from "../environments/environment";
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    FeedComponent
   ],
   imports: [
     AppRoutingModule,

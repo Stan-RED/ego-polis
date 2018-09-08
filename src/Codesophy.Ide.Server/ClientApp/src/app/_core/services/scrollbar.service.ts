@@ -1,5 +1,5 @@
 import PerfectScrollbar from "perfect-scrollbar";
-import { Inject, Injectable, OnDestroy } from "@angular/core";
+import { AfterViewInit, Inject, Injectable, OnDestroy } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { NavigationEnd, Router } from "@angular/router";
 import { Subscription } from "rxjs";
@@ -25,6 +25,7 @@ export class ScrollbarService implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  // Should be called AfterViewInit in every component that has additional scrollbar container(s) (except the main one).
   init() {
     // Destroys all existing scrollbars.
     this.scrollbars.forEach(scrollbar => scrollbar.destroy());

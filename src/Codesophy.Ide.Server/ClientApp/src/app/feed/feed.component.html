@@ -1,0 +1,61 @@
+<div #scrollContainer class="app-feed-items app-scrollbar-container">
+  <ng-container *ngFor="let item of feed$ | async; let i = index">
+    <div
+      *ngIf="hasToShowDate$(item, i) | async"
+      class="app-feed-date"
+    >
+      {{getLocaleDateString(item)}}
+    </div>
+
+    <div
+      class="app-feed-item"
+      [class.app-feed-item-by-current-user]="isAuthoredByCurrentUser(item)"
+    >
+      <div
+        *ngIf="!isAuthoredByCurrentUser(item)"
+        class="app-feed-item-avatar-container"
+      >
+        <img
+          *ngIf="hasToShowAvatar$(item, i) | async"
+          [src]="item.author.avatarPath"
+          [alt]="item.author.username"
+          [matTooltip]="item.author.username"
+          class="app-feed-item-avatar"
+        />
+      </div>
+      <div class="app-feed-item-text">
+        {{item.text}}
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="app-feed-controls">
+  <mat-form-field appearance="fill" class="app-feed-controls-textarea">
+    <textarea
+      matInput
+      placeholder="Type a message here"
+      (keydown.shift.enter)="send($event)"
+      [(ngModel)]="currentMessage"
+    ></textarea>
+  </mat-form-field>
+
+  <div class="app-feed-controls-buttons">
+    <button mat-icon-button (click)="send()">
+      <mat-icon
+        matTooltip="Send (Shift + Enter)"
+        aria-label="Send (Shift + Enter)"
+        fontSet="fas"
+        fontIcon="fa-envelope"
+      ></mat-icon>
+    </button>
+    <button mat-icon-button (click)="attach()">
+      <mat-icon
+        matTooltip="Attach"
+        aria-label="Attach"
+        fontSet="fas"
+        fontIcon="fa-paperclip"
+      ></mat-icon>
+    </button>
+  </div>
+</div>

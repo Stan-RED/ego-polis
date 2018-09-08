@@ -1,0 +1,79 @@
+@mixin app-feed-add-space-for-scrollbar() {
+  .app-feed-items {
+    padding-right: .7rem;
+  }
+}
+
+@mixin app-feed-avatar() {
+  .app-feed-item {
+    &:not(.app-feed-item-by-current-user) {
+      padding-left: 3.5em;
+    }
+
+    .app-feed-item-avatar-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      &,
+      img {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+}
+
+:host {
+  display: block;
+}
+
+.app-feed-items {
+  height: 30rem;
+  display: flex;
+  margin-bottom: 2rem;
+  flex-direction: column;
+}
+
+.app-feed-date {
+  margin-bottom: 1rem;
+  align-self: center;
+}
+
+.app-feed-item {
+  position: relative;
+  max-width: 75%;
+  align-self: flex-start;
+
+  .app-feed-item-text {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: .3rem;
+    white-space: pre-wrap;
+  }
+
+  &.app-feed-item-by-current-user {
+    align-self: flex-end;
+  }
+}
+
+.app-feed-controls {
+  display: flex;
+  flex-direction: row;
+
+  .app-feed-controls-textarea {
+    flex: 1;
+
+    textarea {
+      resize: none;
+    }
+  }
+
+  .app-feed-controls-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@include app-feed-add-space-for-scrollbar();
+@include app-feed-avatar();
