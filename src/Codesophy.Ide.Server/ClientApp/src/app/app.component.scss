@@ -28,6 +28,12 @@
 //  order: 2
 //}
 
+mat-sidenav-content {
+  height: 100vh;
+  max-height: 100vh;
+}
+
 .app-container {
-  margin-top: 2rem;
+  padding-top: 2rem;
+  height: 100%;
 }

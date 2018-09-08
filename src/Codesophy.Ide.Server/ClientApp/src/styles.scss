@@ -61,3 +61,5 @@
 .dark-theme {
   @include app-compose-theme($dark-theme);
 }
+
+@import './styles/3d-party/index';
