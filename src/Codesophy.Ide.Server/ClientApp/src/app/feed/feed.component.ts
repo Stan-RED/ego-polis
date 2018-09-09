@@ -1,22 +1,27 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { BehaviorSubject, Observable, of } from "rxjs";
+import { last } from "lodash-es";
 import { map } from "rxjs/operators";
 
 import { feed, usersList } from "./feed-sample";
 import { ScrollbarService } from "../_core/services";
 
-export type Feed = Array<FeedItem>;
-
-export interface UserProfile {
-  id: number;
-  username: string;
-  avatarPath: string
+export interface Feed {
+  id: string;
+  items: Array<FeedItem>;
 }
 
 export interface FeedItem {
+  id: string;
   author: UserProfile;
   timestamp: number;
   text: string;
+}
+
+export interface UserProfile {
+  id: string;
+  username: string;
+  avatarPath: string
 }
 
 @Component({
@@ -35,6 +40,12 @@ export class FeedComponent implements OnInit, AfterViewInit, OnDestroy {
   currentUser: UserProfile = this.usersList.find(item => item.username === `Stan`);
   tempInterval: any;
 
+  // TODO: Store in cookies?
+  lastViewedItemId = `19`;
+
+  // Indicates previous scrollTop of feed container.
+  previousScrollTop: number;
+
   constructor(private scrollbar: ScrollbarService) {
   }
 
@@ -42,15 +53,14 @@ export class FeedComponent implements OnInit, AfterViewInit, OnDestroy {
     // Sends test message repetitively.
     this.tempInterval = setInterval(() => {
       this.tempSendTestMessage();
-    }, 5000);
+    }, 7000);
   }
 
   ngAfterViewInit() {
     // We have additional scrollbar container, so scrollbars should be reinitialized.
     this.scrollbar.init();
 
-    // Scrolls down to last messages.
-    this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    this.scrollToLastViewedItem();
   }
 
   ngOnDestroy() {
@@ -79,7 +89,7 @@ export class FeedComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Shows when the author changes.
     return this.feed$.pipe(
-      map(feed => feed[index - 1].author.id !== feed[index].author.id)
+      map(feed => feed.items[index - 1].author.id !== feed.items[index].author.id)
     );
   }
 
@@ -91,7 +101,7 @@ export class FeedComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // TODO: use isSameDay or similar logic?
     return this.feed$.pipe(
-      map(feed => feed[index].timestamp - feed[index - 1].timestamp >= 1000 * 60 * 60 * 24)
+      map(feed => feed.items[index].timestamp - feed.items[index - 1].timestamp >= 1000 * 60 * 60 * 24)
     );
   }
 
@@ -111,14 +121,54 @@ export class FeedComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  hasUnviewedItems$(): Observable<boolean> {
+    return this.feed$.pipe(
+      map(feed => last(feed.items).id !== this.lastViewedItemId)
+    );
+  }
+
+  isViewed$(item: FeedItem, index: number): Observable<boolean> {
+    return this.feed$.pipe(
+      map(feed => {
+        const lastViewedItemIndex = feed.items.findIndex(item => item.id === this.lastViewedItemId);
+        return index <= lastViewedItemIndex;
+      })
+    );
+  }
+
+  scroll() {
+    const scrollTop = this.scrollContainer.nativeElement.scrollTop;
+
+    // In case scrolling down - marks viewed items as viewed.
+    if (!this.previousScrollTop || scrollTop > this.previousScrollTop) {
+      const unviewedItems: Array<HTMLElement> = this.scrollContainer.nativeElement.querySelectorAll(`.app-feed-item-is-not-viewed`);
+
+      for (let i = 0, len = unviewedItems.length; i < len; i++) {
+        // Marks the element as viewed if full element's dimensions are in the view.
+        if (scrollTop + this.scrollContainer.nativeElement.getBoundingClientRect().height >= unviewedItems[i].offsetTop + unviewedItems[i].offsetHeight) {
+          // Awaits a little to leave user some time to see what messages is unviewed.
+          setTimeout(() => {
+            this.lastViewedItemId = unviewedItems[i].dataset.id;
+          }, 1500);
+
+        } else {
+          // Breaks the loop after meeting the first element out of the view.
+          break;
+        }
+      }
+    }
+  }
+
+  scrollToUnviewedItems() {
+    this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.querySelector(`.app-feed-item-is-not-viewed`).offsetTop;
+  }
+
   private addFeedItem(item: FeedItem) {
     // Concats new item to the feed.
-    this.feed$.next(this.feed$.getValue().concat(item));
+    this.feed$.next({...this.feed$.getValue(), items: this.feed$.getValue().items.concat(item)});
 
-    setTimeout(() => {
-      // Scrolls to the last message.
-      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
-    })
+    // Update scrollbar to detect new container height.
+    this.scrollbar.update();
   }
 
   private addFeedItemByCurrentUser(item: Partial<FeedItem>) {
@@ -128,11 +178,22 @@ export class FeedComponent implements OnInit, AfterViewInit, OnDestroy {
         author: this.currentUser,
         timestamp: (new Date()).getTime()
       }
-    } as FeedItem)
+    } as FeedItem);
+
+    setTimeout(() => {
+      // Scrolls to the last message.
+      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    })
+  }
+
+  private scrollToLastViewedItem() {
+    const lastViewedItem: HTMLElement = this.scrollContainer.nativeElement.querySelector(`.app-feed-item-is-last-viewed`);
+    this.scrollContainer.nativeElement.scrollTop = lastViewedItem.offsetTop + lastViewedItem.offsetHeight - this.scrollContainer.nativeElement.getBoundingClientRect().height;
   }
 
   private tempSendTestMessage() {
     this.addFeedItem({
+      id: this.feed$.getValue().items.length + 1 + ``,
       text: `Hey! I am the message!`,
       author: this.usersList.find(item => item.username === `Vitaly`),
       timestamp: (new Date()).getTime()

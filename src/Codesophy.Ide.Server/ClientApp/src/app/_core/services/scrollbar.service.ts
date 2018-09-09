@@ -1,5 +1,5 @@
 import PerfectScrollbar from "perfect-scrollbar";
-import { AfterViewInit, Inject, Injectable, OnDestroy } from "@angular/core";
+import { Inject, Injectable, OnDestroy } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { NavigationEnd, Router } from "@angular/router";
 import { Subscription } from "rxjs";
@@ -38,13 +38,15 @@ export class ScrollbarService implements OnDestroy {
     // Updates existing scrollbars on NavigationEnd.
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => this.update());
+      .subscribe(() => {
+        // Scrolls to top.
+        this.getScrollBarContainers().forEach(scrollbar => scrollbar.scrollTop = 0);
+
+        this.update();
+      });
   }
 
   update() {
-    // Scrolls to top.
-    this.getScrollBarContainers().forEach(scrollbar => scrollbar.scrollTop = 0);
-
     // Updates existing scrollbars.
     setTimeout(() => {
       this.scrollbars.forEach(scrollbar => scrollbar.update());

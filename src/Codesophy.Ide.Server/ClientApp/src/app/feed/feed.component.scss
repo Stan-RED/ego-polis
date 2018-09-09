@@ -31,7 +31,6 @@
 .app-feed-items {
   height: 30rem;
   display: flex;
-  margin-bottom: 2rem;
   flex-direction: column;
 }
 
@@ -72,6 +71,24 @@
   .app-feed-controls-buttons {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.app-feed-notifications {
+  position: relative;
+  min-height: 1rem;
+  margin-bottom: 1rem;
+
+  .app-feed-you-have-unviewed-items {
+    position: absolute;
+    top: -.5rem;
+    width: 100%;
+    padding: .5rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: .8rem;
+    text-align: center;
   }
 }
 

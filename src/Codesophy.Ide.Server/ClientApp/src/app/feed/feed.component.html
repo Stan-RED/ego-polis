@@ -1,5 +1,9 @@
-<div #scrollContainer class="app-feed-items app-scrollbar-container">
-  <ng-container *ngFor="let item of feed$ | async; let i = index">
+<div
+  #scrollContainer
+  (scroll)="scroll()"
+  class="app-feed-items app-scrollbar-container"
+>
+  <ng-container *ngFor="let item of (feed$ | async)?.items; let i = index">
     <div
       *ngIf="hasToShowDate$(item, i) | async"
       class="app-feed-date"
@@ -9,7 +13,10 @@
 
     <div
       class="app-feed-item"
+      [attr.data-id]="item.id"
       [class.app-feed-item-by-current-user]="isAuthoredByCurrentUser(item)"
+      [class.app-feed-item-is-not-viewed]="!(isViewed$(item, i) | async)"
+      [class.app-feed-item-is-last-viewed]="item.id === lastViewedItemId"
     >
       <div
         *ngIf="!isAuthoredByCurrentUser(item)"
@@ -28,6 +35,16 @@
       </div>
     </div>
   </ng-container>
+</div>
+
+<div class="app-feed-notifications">
+  <div
+    *ngIf="hasUnviewedItems$() | async"
+    (click)="scrollToUnviewedItems()"
+    class="app-feed-you-have-unviewed-items"
+  >
+    ↓ You have unseen messages ↓
+  </div>
 </div>
 
 <div class="app-feed-controls">
