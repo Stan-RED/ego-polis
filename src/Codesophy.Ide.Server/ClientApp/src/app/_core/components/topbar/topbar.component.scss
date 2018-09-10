@@ -1,43 +1,18 @@
 :host {
   display: flex;
-  width: 100%;
   align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
 
   & > *:last-child {
     margin-left: auto;
   }
 }
 
-.app-breadcrumbs {
-  .app-breadcrumbs-link {
-    font-size: 1rem;
-  }
-
-  .app-breadcrumbs-divider {
-    font-size: 1.1rem;
-    padding: 0 0.4rem;
-  }
-
-  h1 {
-    display: inline-block;
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
-}
-
 .app-search {
-  margin-left: auto;
-  margin-right: auto;
-
   mat-icon {
     font-size: 1rem;
   }
 }
 
-.app-account {
-  .mat-button {
-    padding-right: 0;
-  }
+.app-logo {
+  cursor: pointer;
 }

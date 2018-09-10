@@ -1,25 +1,15 @@
-<nav class="app-breadcrumbs">
-  <a class="app-breadcrumbs-link" routerLink="/">Home</a>
-  <span class="app-breadcrumbs-divider">&rarr;</span>
-  <a class="app-breadcrumbs-link" routerLink="/">Next level</a>
-  <span class="app-breadcrumbs-divider">&rarr;</span>
-  <h1>Summary</h1>
-</nav>
+<mat-icon
+  routerLink="/"
+  matTooltip="App logo"
+  aria-label="Logo"
+  fontSet="fas"
+  fontIcon="fa-terminal"
+  class="app-logo"
+></mat-icon>
 
 <div class="app-search">
   <mat-form-field>
     <input matInput type="text" placeholder="Search">
     <mat-icon matSuffix fontSet="fas" fontIcon="fa-search"></mat-icon>
   </mat-form-field>
-</div>
-
-<div class="app-account">
-  <button mat-button [matMenuTriggerFor]="subactions">
-    John Doe
-    <mat-icon aria-label="Profile subactions" fontSet="fas" fontIcon="fa-caret-down"></mat-icon>
-  </button>
-
-  <mat-menu #subactions="matMenu">
-    <button mat-menu-item>Sign out</button>
-  </mat-menu>
 </div>

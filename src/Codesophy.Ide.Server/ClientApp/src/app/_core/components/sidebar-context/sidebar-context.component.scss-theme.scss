@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@mixin app-topbar-component-theme-breadcrumbs($theme) {
+@mixin app-sidebar-context-component-theme-breadcrumbs($theme) {
   //$primary: map-get($theme, primary);
   //$accent: map-get($theme, accent);
   //$warn: map-get($theme, accent);
@@ -16,6 +16,6 @@
   }
 }
 
-@mixin app-topbar-component-theme($theme) {
-  @include app-topbar-component-theme-breadcrumbs($theme);
+@mixin app-sidebar-context-component-theme($theme) {
+  @include app-sidebar-context-component-theme-breadcrumbs($theme);
 }
