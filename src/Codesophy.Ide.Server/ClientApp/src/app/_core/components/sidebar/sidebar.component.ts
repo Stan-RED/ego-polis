@@ -59,6 +59,11 @@ export class SidebarComponent {
             label: "Feed",
             route: "/feed",
             description: "Click to navigate"
+          },
+          {
+            label: "Dictionary",
+            route: "/dictionary",
+            description: "Click to navigate"
           }
         ],
         description: "App links"

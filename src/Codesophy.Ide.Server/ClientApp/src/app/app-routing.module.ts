@@ -13,6 +13,13 @@ const routes: Route[] = [
     },
   },
   {
+    path: "dictionary",
+    loadChildren: "./dictionary/dictionary.module#DictionaryModule",
+    data: {
+      breadcrumb: "Dictionary"
+    },
+  },
+  {
     path: "feed",
     component: FeedComponent,
     data: {
