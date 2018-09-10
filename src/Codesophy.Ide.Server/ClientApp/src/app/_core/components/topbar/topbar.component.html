@@ -9,7 +9,7 @@
 
 <div class="app-search">
   <mat-form-field>
-    <input matInput type="text" placeholder="Search">
+    <input #searchInputEl (mouseenter)="mouseenter()" (mouseleave)="mouseleave()" matInput type="text" placeholder="Search">
     <mat-icon matSuffix fontSet="fas" fontIcon="fa-search"></mat-icon>
   </mat-form-field>
 </div>
