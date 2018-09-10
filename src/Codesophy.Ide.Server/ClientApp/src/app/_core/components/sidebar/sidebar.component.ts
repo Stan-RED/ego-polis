@@ -1,5 +1,4 @@
 import { Component, Type } from "@angular/core";
-import { animate, style, transition, trigger } from "@angular/animations";
 
 import { SearchComponent } from "../search/search.component";
 
@@ -28,20 +27,6 @@ export interface SidebarToolbarItem {
 
 @Component({
   selector: "app-sidebar",
-  animations: [
-    trigger(
-      "enterAnimation", [
-        transition(":enter", [
-          style({width: 0}),
-          animate("300ms", style({width: "*"}))
-        ]),
-        transition(":leave", [
-          style({width: "*"}),
-          animate("300ms", style({width: 0}))
-        ])
-      ]
-    )
-  ],
   templateUrl: "./sidebar.component.html",
   styleUrls: ["./sidebar.component.scss"]
 })

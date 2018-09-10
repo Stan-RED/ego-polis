@@ -1,6 +1,6 @@
 <app-sidebar-context></app-sidebar-context>
 
-<div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-toolbar-child-container">
+<div *ngIf="isSideNavOpened" class="app-sidebar-toolbar-child-container">
   <app-sidebar-toolbar-child
     [item]="rootItem?.children"
   ></app-sidebar-toolbar-child>
@@ -24,7 +24,6 @@
     [matBadgeDescription]="item?.badgeDescription"
     [matBadgeHidden]="!item?.badge"
     [class.app-active]="isActive(i)"
-    [class.app-has-child]="!!item?.children"
   >
     <mat-icon
       [matTooltip]="item?.tooltip"
