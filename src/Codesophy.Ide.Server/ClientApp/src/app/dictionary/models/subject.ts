@@ -1,3 +1,4 @@
+// TODO: subjectId -> predicateId -> valueId (e.g., for file attachment - term_id attachment_id file_id)
 // Represents a bit modified semantic triple (subject/predicate/object).
 // The whole `Subject` is [the combination of Subject-related triples] and [the subject from the triple] at the same time.
 export interface Subject {
@@ -8,7 +9,6 @@ export interface Subject {
 export interface Connection {
   predicate: PredicateType;
 
-  // TODO: Different PredicateType -> different objects type.
   // One predicate type can point to any number of objects.
   objects: Array<any>;
 }
