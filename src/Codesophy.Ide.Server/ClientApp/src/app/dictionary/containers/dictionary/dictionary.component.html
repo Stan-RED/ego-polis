@@ -5,7 +5,13 @@
   <dd *ngFor="let term of termsForLetter.terms"><a [routerLink]="term.id">{{term.label}}</a></dd>
 </dl>
 
-<!--WORK: -->
-<!--<ul>-->
-  <!--<li *ngFor="let letter of firstLetters$ | async">{{letter}}</li>-->
-<!--</ul>-->
+<div class="app-dictionary-letters">
+  <ul>
+    <li
+      *ngFor="let letter of firstLetters$ | async"
+      [class.app-dictionary-letter-active]="(anchor$ | async) === letter"
+    >
+      <a [routerLink]="" [fragment]="letter">{{letter}}</a>
+    </li>
+  </ul>
+</div>

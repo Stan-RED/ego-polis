@@ -49,7 +49,7 @@ export class DictionaryComponent implements OnInit, AfterViewInit, OnDestroy {
   );
 
   // Url fragment (selected letter).
-  private anchor$: ReplaySubject<string> = new ReplaySubject<string>();
+  anchor$: ReplaySubject<string> = new ReplaySubject<string>();
 
   // WORK: Lifecycle OnDestroy
   private subscriptions: Array<Subscription> = [];

@@ -27,3 +27,31 @@ dd + dd {
   border-top-width: 1px;
   border-top-style: solid;
 }
+
+:host {
+  position: relative;
+  display: block;
+}
+
+.app-dictionary-letters {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+
+  ul {
+    position: fixed;
+    list-style-type: none;
+
+    li {
+      padding: .4rem;
+      margin-bottom: 0.1rem;
+      border-radius: 0.3rem;
+
+      &.app-dictionary-letter-active {
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
