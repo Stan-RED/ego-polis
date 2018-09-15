@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+
+@import "../../../../styles/helpers";
+
+@mixin app-dictionary-component-core($theme) {
+  //$primary: map-get($theme, primary);
+  //$accent: map-get($theme, accent);
+  //$warn: map-get($theme, accent);
+  //$foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $custom: map-get($theme, app-theme-custom);
+
+  app-dictionary {
+    dt {
+      // WORK: Refactor `sidebar` variable to have more generic name.
+      background: map-deep-get($custom, sidebar, active, background-color);
+      border-bottom-color: similar-color(map-deep-get($custom, sidebar, active, background-color));
+      border-top-color: similar-color(map-deep-get($custom, sidebar, active, background-color));
+
+      a {
+        color: map-deep-get($custom, sidebar, active, color);
+      }
+    }
+
+    dd + dd {
+      border-top-color: similar-color(mat-color($background, background));
+    }
+  }
+}
+
+@mixin app-dictionary-component-theme($theme) {
+  @include app-dictionary-component-core($theme);
+}

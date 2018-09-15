@@ -16,5 +16,6 @@ export const selectRouter: fromRouter.RouterStateSelectors = {
   params: createSelector(selectRouterState, fromRouter.selectors.params),
   lastSegment: createSelector(selectRouterState, fromRouter.selectors.lastSegment),
   data: createSelector(selectRouterState, fromRouter.selectors.data),
-  firstChildUrl: createSelector(selectRouterState, fromRouter.selectors.firstChildUrl)
+  firstChildUrl: createSelector(selectRouterState, fromRouter.selectors.firstChildUrl),
+  fragment: createSelector(selectRouterState, fromRouter.selectors.fragment),
 };

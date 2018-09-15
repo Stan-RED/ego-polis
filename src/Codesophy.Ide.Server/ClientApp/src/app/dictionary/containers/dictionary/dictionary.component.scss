@@ -1,0 +1,29 @@
+dl {
+  margin: 0;
+  padding: 1.5rem 0 0 0;
+}
+
+dt {
+  margin: 0;
+  padding: 0.15rem 0 0 .8rem;
+  position: sticky;
+  top: -1px;
+
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+dd {
+  margin: 0;
+  padding: 0 0 0 .8rem;
+  font-weight: bold;
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+dd + dd {
+  border-top-width: 1px;
+  border-top-style: solid;
+}

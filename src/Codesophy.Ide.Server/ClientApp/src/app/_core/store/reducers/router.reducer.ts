@@ -18,6 +18,8 @@ export interface RouterStateUrl {
   data: Data;
 
   firstChildUrl: string;
+
+  fragment: string;
 }
 
 export class CustomRouterStateSerializer
@@ -29,6 +31,7 @@ export class CustomRouterStateSerializer
       .slice()
       .reverse()[0];
     const {queryParams} = routerState.root;
+    const {fragment} = routerState.root;
     let firstChildUrl;
 
     let state: ActivatedRouteSnapshot = routerState.root;
@@ -42,7 +45,7 @@ export class CustomRouterStateSerializer
       firstChildUrl = head(routerState.root.firstChild.url).path;
     }
 
-    return {url, queryParams, params, lastSegment, data, firstChildUrl};
+    return {url, fragment, queryParams, params, lastSegment, data, firstChildUrl};
   }
 }
 
@@ -53,6 +56,7 @@ export interface RouterStateSelectors {
   lastSegment: (state: RouterStateUrl) => RouterStateUrl["lastSegment"];
   data: (state: RouterStateUrl) => RouterStateUrl["data"];
   firstChildUrl: (state: RouterStateUrl) => RouterStateUrl["firstChildUrl"];
+  fragment: (state: RouterStateUrl) => RouterStateUrl["fragment"];
 }
 
 export const selectors: RouterStateSelectors = {
@@ -61,5 +65,6 @@ export const selectors: RouterStateSelectors = {
   params: state => state && state.params,
   lastSegment: state => state && state.lastSegment,
   data: state => state && state.data,
-  firstChildUrl: state => state && state.firstChildUrl
+  firstChildUrl: state => state && state.firstChildUrl,
+  fragment: state => state && state.fragment,
 };
