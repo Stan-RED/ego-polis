@@ -78,7 +78,7 @@ export class DictionaryComponent extends Lifecycle implements OnInit, AfterViewI
     this.scrollbar.contentScrollTop$
       .pipe(
         takeUntil(this.lifecycle.onDestroy),
-        withLatestFrom(this.firstLetters$, this.anchor$)
+        withLatestFrom(this.firstLetters$, this.store.pipe(select(routerSelector.selectRouter.fragment)))
       )
       .subscribe(([scrollTop, firstLetters, anchor]) => {
         for (let i = 0, len = firstLetters.length; i < len; i++) {
