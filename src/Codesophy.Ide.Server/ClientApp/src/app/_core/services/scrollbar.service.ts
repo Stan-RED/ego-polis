@@ -2,6 +2,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { NavigationEnd, Router } from "@angular/router";
+import { Subject } from "rxjs";
 import { takeUntil, filter } from "rxjs/operators";
 
 import { Lifecycle } from "../../_shared/bases";
@@ -17,6 +18,9 @@ export class ScrollbarService extends Lifecycle {
   };
 
   scrollbars: Array<PerfectScrollbar> = [];
+
+  // scrollTop value of main scrollbar.
+  contentScrollTop$: Subject<number> = new Subject();
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
     super();

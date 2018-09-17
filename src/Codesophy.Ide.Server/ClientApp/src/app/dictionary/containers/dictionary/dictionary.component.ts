@@ -10,8 +10,10 @@ import { takeUntil, filter, map, withLatestFrom } from "rxjs/operators";
 import { Term } from "../../models";
 import { DICTIONARY } from "./dictionary.data";
 import { Lifecycle } from "../../../_shared/bases";
+import { ScrollbarService } from "../../../_core/services";
 
-import * as routerSelector from "../../../_core/store/selectors/router.selectors"
+import * as routerAction from "../../../_core/store/actions/router.action";
+import * as routerSelector from "../../../_core/store/selectors/router.selectors";
 
 export interface TermsForLetter {
   letter: string;
@@ -54,6 +56,7 @@ export class DictionaryComponent extends Lifecycle implements OnInit, AfterViewI
 
   constructor(@Inject(DOCUMENT) private document: Document,
               private router: Router,
+              private scrollbar: ScrollbarService,
               private store: Store<any>) {
     super();
 
@@ -71,6 +74,27 @@ export class DictionaryComponent extends Lifecycle implements OnInit, AfterViewI
   }
 
   ngOnInit() {
+    // Changes route fragment on scroll to corresponding letter.
+    this.scrollbar.contentScrollTop$
+      .pipe(
+        takeUntil(this.lifecycle.onDestroy),
+        withLatestFrom(this.firstLetters$, this.anchor$)
+      )
+      .subscribe(([scrollTop, firstLetters, anchor]) => {
+        for (let i = 0, len = firstLetters.length; i < len; i++) {
+          const element: HTMLElement = this.document.querySelector(`#${firstLetters[i]}`);
+
+          // (scrollTop - 1) - in *.scss file the #anchor is sticky with [top equals to -1].
+          if (element && element.offsetTop === scrollTop - 1) {
+
+            // In case letter changed.
+            if (anchor !== firstLetters[i]) {
+              this.store.dispatch(new routerAction.Navigate({path: [], extras: {fragment: firstLetters[i]}}));
+            }
+            break;
+          }
+        }
+      });
   }
 
   ngAfterViewInit() {

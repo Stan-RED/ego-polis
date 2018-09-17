@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, HostBinding, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostBinding,
+  OnInit,
+  ViewChild
+} from "@angular/core";
 
 import { ScrollbarService, ThemeService } from "./_core/services";
 
@@ -8,6 +15,8 @@ import { ScrollbarService, ThemeService } from "./_core/services";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild("scrollbarContainer", {read: ElementRef}) scrollbarContainer: ElementRef;
+
   @HostBinding("class") get themeCssClass() {
     return this.theme.themeCssClass;
   }
@@ -25,5 +34,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   log(msg: string) {
     console.log(msg);
+  }
+
+  scroll() {
+    this.scrollbar.contentScrollTop$.next(this.scrollbarContainer.nativeElement.scrollTop);
   }
 }
