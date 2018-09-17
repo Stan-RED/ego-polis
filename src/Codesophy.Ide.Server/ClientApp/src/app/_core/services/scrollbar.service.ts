@@ -1,28 +1,25 @@
 import PerfectScrollbar from "perfect-scrollbar";
-import { Inject, Injectable, OnDestroy } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { NavigationEnd, Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import { filter } from "rxjs/operators";
+import { takeUntil, filter } from "rxjs/operators";
+
+import { Lifecycle } from "../../_shared/bases";
 
 /**
  * Service for 3d-party https://github.com/utatti/perfect-scrollbar
  */
 @Injectable()
-export class ScrollbarService implements OnDestroy {
+export class ScrollbarService extends Lifecycle {
   options: PerfectScrollbar.Options = {
     wheelSpeed: 2,
     wheelPropagation: false
   };
 
   scrollbars: Array<PerfectScrollbar> = [];
-  subscription: Subscription;
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    super();
   }
 
   // Should be called AfterViewInit in every component that has additional scrollbar container(s) (except the main one).
@@ -37,7 +34,10 @@ export class ScrollbarService implements OnDestroy {
 
     // Updates existing scrollbars on NavigationEnd.
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(
+        takeUntil(this.lifecycle.onDestroy),
+        filter(event => event instanceof NavigationEnd)
+      )
       .subscribe(() => {
         // Scrolls to top.
         this.getScrollBarContainers().forEach(scrollbar => scrollbar.scrollTop = 0);

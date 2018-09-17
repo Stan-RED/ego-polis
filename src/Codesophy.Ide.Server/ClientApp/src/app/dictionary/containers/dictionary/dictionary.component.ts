@@ -1,14 +1,15 @@
-import { AfterViewInit, Component, Inject, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, Inject, OnInit } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
 import { NavigationEnd, Router } from "@angular/router";
 import { select, Store } from "@ngrx/store";
 import { uniq } from "lodash-es";
 
-import { Observable, of, ReplaySubject, Subscription } from "rxjs";
-import { filter, map, withLatestFrom } from "rxjs/operators";
+import { Observable, of, ReplaySubject } from "rxjs";
+import { takeUntil, filter, map, withLatestFrom } from "rxjs/operators";
 
 import { Term } from "../../models";
 import { DICTIONARY } from "./dictionary.data";
+import { Lifecycle } from "../../../_shared/bases";
 
 import * as routerSelector from "../../../_core/store/selectors/router.selectors"
 
@@ -22,7 +23,7 @@ export interface TermsForLetter {
   templateUrl: "./dictionary.component.html",
   styleUrls: ["./dictionary.component.scss"]
 })
-export class DictionaryComponent implements OnInit, AfterViewInit, OnDestroy {
+export class DictionaryComponent extends Lifecycle implements OnInit, AfterViewInit {
   terms$: Observable<Array<Term>> = of(DICTIONARY);
 
   // Unique case-insensitive first letters of terms list.
@@ -51,42 +52,36 @@ export class DictionaryComponent implements OnInit, AfterViewInit, OnDestroy {
   // Url fragment (selected letter).
   anchor$: ReplaySubject<string> = new ReplaySubject<string>();
 
-  // WORK: Lifecycle OnDestroy
-  private subscriptions: Array<Subscription> = [];
-
   constructor(@Inject(DOCUMENT) private document: Document,
               private router: Router,
               private store: Store<any>) {
-    this.subscriptions.push(
-      // Send next anchor value on navigation end in case we have one.
-      this.router.events
-        .pipe(
-          filter(e => e instanceof NavigationEnd),
-          withLatestFrom(this.store.pipe(select(routerSelector.selectRouter.fragment))))
-        .subscribe(([_, fragment]) => {
-          if (fragment) {
-            this.anchor$.next(fragment);
-          }
-        })
-    );
+    super();
+
+    // Send next anchor value on navigation end in case we have one.
+    this.router.events
+      .pipe(
+        takeUntil(this.lifecycle.onDestroy),
+        filter(e => e instanceof NavigationEnd),
+        withLatestFrom(this.store.pipe(select(routerSelector.selectRouter.fragment))))
+      .subscribe(([_, fragment]) => {
+        if (fragment) {
+          this.anchor$.next(fragment);
+        }
+      });
   }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    this.subscriptions.push(
       // On active anchor - scroll anchor into view.
-      this.anchor$.subscribe(anchor => {
+    this.anchor$
+      .pipe(takeUntil(this.lifecycle.onDestroy))
+      .subscribe(anchor => {
         const element = this.document.querySelector(`#${anchor}`);
         if (element) {
           element.scrollIntoView(true);
         }
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+      });
   }
 }
