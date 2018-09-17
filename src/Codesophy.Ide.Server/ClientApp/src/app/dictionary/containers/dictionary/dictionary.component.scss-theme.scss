@@ -39,12 +39,23 @@
   app-dictionary {
     .app-dictionary-letters {
       ul {
-
         li {
-          background: map-deep-get($custom, sidebar, active, background-color);
-
           a {
+            background-color: map-deep-get($custom, sidebar, active, background-color);
             color: map-deep-get($custom, sidebar, active, color);
+
+            &::before,
+            &::after {
+              background-color: map-deep-get($custom, sidebar, active, background-color);
+            }
+
+            &:hover {
+              &,
+              &::after,
+              &::before {
+                background-color: similar-color(map-deep-get($custom, sidebar, active, background-color));
+              }
+            }
           }
         }
       }
