@@ -41,7 +41,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
  */
 
 // Components.
-// import * as fromComponents from './components';
+import * as fromComponents from './components';
 
 // Directives.
 import * as fromDirectives from "./directives";
@@ -94,12 +94,12 @@ export const reexportedModules: any[] = [
     ...reexportedModules,
   ],
   declarations: [
-    // ...fromComponents.components,
+    ...fromComponents.components,
     ...fromDirectives.directives,
     // ...fromPipes.pipes,
   ],
   exports: [
-    // ...fromComponents.components,
+    ...fromComponents.components,
     ...fromDirectives.directives,
     // ...fromPipes.pipes,
     ...reexportedModules,
