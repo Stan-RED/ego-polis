@@ -13,8 +13,6 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { StoreModule } from "@ngrx/store";
 import { RouterStateSerializer, StoreRouterConnectingModule } from "@ngrx/router-store";
 
-import { AngularDraggableModule } from "angular2-draggable";
-
 /**
  * App's.
  */
@@ -45,7 +43,6 @@ import { environment } from "../environments/environment";
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    // AngularDraggableModule,
     CoreModule,
     SharedModule,
     StoreModule.forRoot(reducers, {metaReducers}),
