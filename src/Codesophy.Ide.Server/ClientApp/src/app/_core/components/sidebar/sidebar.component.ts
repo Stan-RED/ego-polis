@@ -1,4 +1,5 @@
 import { Component, Type } from "@angular/core";
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from "@angular/material";
 
 import { SearchComponent } from "../search/search.component";
 
@@ -25,10 +26,19 @@ export interface SidebarToolbarItem {
   tooltip?: string;
 }
 
+export const customTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 500,
+  hideDelay: 0,
+  touchendHideDelay: 1500,
+};
+
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.scss"]
+  styleUrls: ["./sidebar.component.scss"],
+  providers: [
+    {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults}
+  ],
 })
 export class SidebarComponent {
   rootItems: Array<SidebarToolbarItem> = [
