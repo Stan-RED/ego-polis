@@ -1,3 +1,7 @@
+:host{
+  position: relative;
+}
+
 .app-breadcrumbs {
   .app-breadcrumbs-link {
     font-size: 1rem;
@@ -13,4 +17,11 @@
     font-size: 1.4rem;
     font-weight: 400;
   }
+}
+
+.app-bottom-right {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 100%;
+  transform: translate(-100%, 0);
 }

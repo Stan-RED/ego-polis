@@ -1,4 +1,5 @@
 @import "core-mixins";
+@import "helpers";
 
 @mixin theme-mat-core-state-disabled() {
   .mat-option-disabled,
@@ -111,6 +112,13 @@
   }
 }
 
+@mixin theme-mat-bottom-sheet-colors($background-color, $color) {
+  .mat-bottom-sheet-container {
+    color: $color;
+    background-color: $background-color;
+  }
+}
+
 // Styles over @angular/material theme.
 @mixin app-over-mat-theme($theme) {
   //$primary: map-get($theme, primary);
@@ -118,6 +126,7 @@
   //$warn: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
   //$background: map-get($theme, background);
+  $custom: map-get($theme, app-theme-custom);
 
   @include theme-mat-core-state-disabled();
 
@@ -129,4 +138,6 @@
 
   @include theme-mat-tooltip-typography();
   @include theme-mat-form-field-appearance();
+
+  @include theme-mat-bottom-sheet-colors(map-deep-get($custom, sidebar, active, background-color), map-deep-get($custom, sidebar, active, color));
 }
