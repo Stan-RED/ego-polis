@@ -1,4 +1,23 @@
+import * as moment from 'moment';
 import { Component } from "@angular/core";
+import { head } from "lodash-es";
+
+import { enumToValuesArray } from "../../utils";
+
+export enum RepeatEvent {
+  DoesNotRepeat,
+  EveryDay,
+  EveryWeek,
+  EveryMonth,
+  EveryYear,
+}
+
+export interface ScheduleEvent {
+  timestamp: number;
+  isDaylong: boolean;
+  message?: string;
+  repeatEvery: RepeatEvent;
+}
 
 @Component({
   selector: "app-schedule",
@@ -6,14 +25,14 @@ import { Component } from "@angular/core";
   styleUrls: ["./schedule.component.scss"]
 })
 export class ScheduleComponent {
-  repeatEvery: number = 0;
-  repeatEverys: string[] = [
-    "Does not repeat",
-    "Every day",
-    "Every week",
-    "Every month",
-    "Every year",
-  ];
+  repeatEverys: number[] = enumToValuesArray(RepeatEvent);
+  repeatEvery: number = head(this.repeatEverys);
 
-  date: Date = new Date();
+  isDaylong: boolean = true;
+
+  // WORK: What if physical date has been changed while user setting up an event.
+  moment: moment.Moment = moment();
+
+  eventDate: Date = this.moment.toDate();
+  eventTime: string = this.moment.add(25, 'm').format(`HH:mm`);
 }

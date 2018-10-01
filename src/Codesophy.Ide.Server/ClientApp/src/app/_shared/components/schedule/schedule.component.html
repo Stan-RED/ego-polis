@@ -2,22 +2,31 @@
   <input matInput placeholder="Remind me…">
 </mat-form-field>
 
-<mat-slide-toggle labelPosition="before" [checked]="true">
-  <mat-icon fontSet="fas" fontIcon="fa-clock"></mat-icon>Daylong
-</mat-slide-toggle>
+<div class="app-schedule-flex">
+  <mat-slide-toggle labelPosition="before" [(ngModel)]="isDaylong">
+    <mat-icon fontSet="fas" fontIcon="fa-clock"></mat-icon>Daylong
+  </mat-slide-toggle>
+
+  <mat-form-field *ngIf="!isDaylong">
+    <!--TODO: No support for type="time" on Safari desktop? -->
+    <input matInput title="Select exact time" type="time" [value]="eventTime" pattern="([01]?\d|2[0-3]):([0-5]?\d)"/>
+  </mat-form-field>
+</div>
 
 <mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="eventDate">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<!--WORK: Timepicker: https://github.com/SteveDunlap13/MaterialTimeControl, https://github.com/owsolutions/amazing-time-picker-->
 
 <mat-form-field>
   <mat-icon matPrefix fontSet="fas" fontIcon="fa-redo" class="app-schedule-repeat-icon"></mat-icon>
   <mat-select placeholder="Repeat every" [(ngModel)]="repeatEvery">
-    <mat-option *ngFor="let option of repeatEverys; let i = index" [value]="i">{{option}}</mat-option>
+    <mat-option *ngFor="let option of repeatEverys" [value]="option">{{option | scheduleLabel}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<!--WORK: Save/Cancel-->
+<div class="app-schedule-flex">
+  <button mat-raised-button>Cancel</button>
+  <button mat-raised-button color="primary">OK</button>
+</div>

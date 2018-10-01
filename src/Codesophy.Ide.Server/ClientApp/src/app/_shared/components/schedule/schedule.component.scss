@@ -11,3 +11,13 @@ mat-slide-toggle {
   font-size: .9rem;
   margin-right: .45rem;
 }
+
+.app-schedule-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > *:last-child:not(:first-child) {
+    margin-left: auto;
+  }
+}

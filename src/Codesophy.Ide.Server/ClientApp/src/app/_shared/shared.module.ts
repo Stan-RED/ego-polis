@@ -51,7 +51,7 @@ import * as fromDirectives from "./directives";
 // import * as fromGuards from './guards';
 
 // Pipes.
-// import * as fromPipes from './pipes';
+import * as fromPipes from './pipes';
 
 // Modules for import and for export.
 export const reexportedModules: any[] = [
@@ -98,17 +98,17 @@ export const reexportedModules: any[] = [
   declarations: [
     ...fromComponents.components,
     ...fromDirectives.directives,
-    // ...fromPipes.pipes,
+    ...fromPipes.pipes,
   ],
   exports: [
     ...fromComponents.components,
     ...fromDirectives.directives,
-    // ...fromPipes.pipes,
+    ...fromPipes.pipes,
     ...reexportedModules,
   ],
   entryComponents: [],
   providers: [
-    // ...fromPipes.pipes,
+    ...fromPipes.pipes,
     // ...fromGuards.guards
   ]
 })
