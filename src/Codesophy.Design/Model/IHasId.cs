@@ -4,14 +4,14 @@
     /// Defining model with unique object identifier.
     /// </summary>
     /// 
-    /// <typeparam name="T">
+    /// <typeparam name="TKey">
     /// Type of the identifier.
     /// </typeparam>
-    public interface IHasId<T>
+    public interface IHasId<TKey>
     {
         /// <summary>
         /// Object identifier.
         /// </summary>
-        T Id { get; }
+        TKey Id { get; }
     }
 }

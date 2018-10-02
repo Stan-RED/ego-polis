@@ -1,14 +1,14 @@
-﻿using Codesophy.Data;
-using Codesophy.Model;
+﻿using Codesophy.Model;
+using Codesophy.Model.Relation;
 
-namespace Codesophy.Workspace
+namespace Codesophy.Content
 {
     /// <summary>
-    /// Defining scopes of our activity to organize it.
+    /// Defining hierarchical scopes to organize content.
     /// </summary>
     /// <remarks>
     /// <para>
-    ///     A good way to define context of our ongoing work with its
+    ///     A good way to define context of our content for its
     ///     tasks, users, vocabularies, etc.
     /// </para>
     /// <para>
@@ -16,20 +16,23 @@ namespace Codesophy.Workspace
     ///     data.
     /// </para>
     /// <para>
-    ///     Workspaces are organize in a hierarchical manner.
+    ///     Workspaces are organized in a hierarchical manner.
     /// </para>
+    /// 
     /// </remarks>
     public class Workspace
-        : IHasId
+        : IArtifact
+        , IAdjacent<ArtifactId>
+        , IEntity<Workspace>
     {
         /// <summary>
         /// Uniquely identify workspace.
         /// </summary>
-        uint IHasId<uint>.Id { get; }
+        ArtifactId IHasId<ArtifactId>.Id { get; }
 
         /// <summary>
         /// Identify parent <see cref="Workspace"/> if exists.
         /// </summary>
-        uint? Parent { get; }
+        ArtifactId? IAdjacent<ArtifactId>.Parent { get; }
     }
 }

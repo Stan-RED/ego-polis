@@ -1,5 +1,4 @@
-﻿using Codesophy.Data;
-using Codesophy.Model;
+﻿using Codesophy.Model;
 
 namespace Codesophy.Content
 {
@@ -25,8 +24,8 @@ namespace Codesophy.Content
     /// navigation.
     /// </remarks>
     public class Term
-        : IHasId
+        : IArtifact
     {
-        uint IHasId<uint>.Id => throw new System.NotImplementedException();
+        ArtifactId IHasId<ArtifactId>.Id => throw new System.NotImplementedException();
     }
 }

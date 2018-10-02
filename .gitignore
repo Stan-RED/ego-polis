@@ -7,6 +7,7 @@ node_modules/
 
 # Visual Studio files
 .vs/
+*.user
 
 # JetBrains IDEs (e.g. Rider)
 .idea/
