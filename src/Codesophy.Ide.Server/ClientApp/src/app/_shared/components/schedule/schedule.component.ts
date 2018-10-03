@@ -3,21 +3,7 @@ import { Component } from "@angular/core";
 import { head } from "lodash-es";
 
 import { enumToValuesArray } from "../../utils";
-
-export enum RepeatEvent {
-  DoesNotRepeat,
-  EveryDay,
-  EveryWeek,
-  EveryMonth,
-  EveryYear,
-}
-
-export interface ScheduleEvent {
-  timestamp: number;
-  isDaylong: boolean;
-  message?: string;
-  repeatEvery: RepeatEvent;
-}
+import { RepeatEvent } from "../../models";
 
 @Component({
   selector: "app-schedule",

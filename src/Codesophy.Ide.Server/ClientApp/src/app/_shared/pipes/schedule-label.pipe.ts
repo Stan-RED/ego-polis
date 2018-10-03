@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-import { RepeatEvent } from "../components/schedule/schedule.component";
+import { RepeatEvent } from "../models";
 
 @Pipe({
   name: "scheduleLabel"

@@ -34,6 +34,7 @@
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
     "dexie": "^2.0.4",
+    "dexie-observable": "^1.0.0-beta.4",
     "hammerjs": "^2.0.8",
     "lodash-es": "^4.17.10",
     "moment": "^2.22.2",
