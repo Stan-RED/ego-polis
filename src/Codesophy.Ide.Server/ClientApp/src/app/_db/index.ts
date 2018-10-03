@@ -4,7 +4,7 @@ import Dexie from "dexie";
 import "dexie-observable";
 
 import { environment } from "../../environments/environment";
-import { ScheduleEvent } from "../_shared/models";
+import { ScheduleEvent } from "../schedule/models";
 
 class AppDatabase extends Dexie {
   scheduleEvents: Dexie.Table<ScheduleEvent, string>;

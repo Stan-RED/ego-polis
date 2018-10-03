@@ -2,7 +2,7 @@ import * as moment from 'moment';
 import { Component } from "@angular/core";
 import { head } from "lodash-es";
 
-import { enumToValuesArray } from "../../utils";
+import { enumToValuesArray } from "../../../_shared/utils";
 import { RepeatEvent } from "../../models";
 
 @Component({

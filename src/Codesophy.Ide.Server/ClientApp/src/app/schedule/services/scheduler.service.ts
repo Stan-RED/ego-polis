@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { from, Observable } from "rxjs";
 
-import { CRUD, ScheduleEvent } from "../models";
 import { APP_DATABASE } from "../../_db";
+import { CRUD } from "../../_shared/models";
+import { ScheduleEvent } from "../models";
 
 @Injectable()
 export class SchedulerService implements CRUD<ScheduleEvent> {

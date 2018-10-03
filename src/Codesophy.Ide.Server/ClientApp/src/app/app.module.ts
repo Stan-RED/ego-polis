@@ -19,6 +19,7 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from "@ngrx/router
 import { CoreModule } from "./_core/core.module";
 import { SharedModule } from "./_shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
+import { ScheduleModule } from "./schedule/schedule.module";
 
 import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -49,6 +50,7 @@ import { environment } from "../environments/environment";
     StoreRouterConnectingModule,
     environment.production ? [] : StoreDevtoolsModule.instrument({maxAge: 50}),
     EffectsModule.forRoot(effects),
+    ScheduleModule.forRoot(),
   ],
   providers: [
     {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
