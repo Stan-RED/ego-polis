@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xp:topic xml:lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xp="ego:stan:xpml">
+
+	<title>Codesophy</title>
+
+	<xp:section src="basic/intro" />
+	<xp:section src="basic/aspects" />
+
+	<p xp:lang="en">
+		Frowning brow or wide smile, narrowed eye or high raised eyebrows. All
+		this, above all, a mimic code for our emotional interface. So socially
+		important, that it migrated to the text code that we call smileys.
+	</p>
+	<p xp:lang="ru">
+		Нахмуренная бровь или широкая улыбка, прищуренный глаз или высоко поднятые
+		брови. Всё это, прежде всего, мимический код для обмена эмоциями. Настолько
+		социально важный, что он перекочевал и в текстовый код, который мы называем
+		смайликами.
+	</p>
+
+	<p xp:lang="en" />
+	<p xp:lang="ru">
+		Азбука Морзе и химические формулы, дорожные знаки и шрифт Брайля,
+		государственные флаги и нотный стан, денежные купюры и привычные
+		символы на пульте дистанционного управления. Обернитесь, коды окружают нас
+		повсюду.
+	</p>
+</xp:topic>
