@@ -3,11 +3,22 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xp="ego:stan:xpml">
+    xmlns:xp="todo:codesophy:xpml">
 
+    <xsl:param name="xp:target" />
     <xsl:param name="xp:lang" />
 
     <xsl:template match="/">
+        <xsl:processing-instruction name="xpml-transform">
+            <xsl:value-of select="xp:PiArg('stylesheet', '~/ui/html.xsl')" />
+            <xsl:value-of select="xp:PiArg('source', $xp:target)" />
+            <xsl:value-of select="xp:PiArg('target', concat(xp:GetHtmlRoute($xp:target), '/index.html'))" />
+        </xsl:processing-instruction>
+
+        <xsl:processing-instruction name="xpml-delete">
+            <xsl:value-of select="xp:PiArg('path', $xp:target)" />
+        </xsl:processing-instruction>
+
         <xsl:apply-templates />
     </xsl:template>
 
@@ -22,9 +33,9 @@
             <xsl:choose>
                 <xsl:when test="count(./node()) = 0">
                     <xsl:copy>
-                        <xsl:attribute name="xp:todo">yes</xsl:attribute>
+                        <xsl:attribute name="xp-todo">translation</xsl:attribute>
                         <xsl:apply-templates select="@*|node()" />
-                        <xsl:text>TODO:Translation not complete</xsl:text>
+                        <xsl:text>Translation expected</xsl:text>
                     </xsl:copy>
                 </xsl:when>
 
