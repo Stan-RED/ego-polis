@@ -6,26 +6,13 @@
 
 	<title>Codesophy</title>
 
-	<xp:section src="basic/intro" />
-	<xp:section src="basic/aspects" />
+	<h2 xp:lang="en">Introduction</h2>
+	<h2 xp:lang="ru">Введение</h2>
 
-	<p xp:lang="en">
-		Frowning brow or wide smile, narrowed eye or high raised eyebrows. All
-		this, above all, a mimic code for our emotional interface. So socially
-		important, that it migrated to the text code that we call smileys.
-	</p>
-	<p xp:lang="ru">
-		Нахмуренная бровь или широкая улыбка, прищуренный глаз или высоко поднятые
-		брови. Всё это, прежде всего, мимический код для обмена эмоциями. Настолько
-		социально важный, что он перекочевал и в текстовый код, который мы называем
-		смайликами.
-	</p>
+	<xp:section src="intro/everywhere" />
+	<xp:section src="intro/definition" />
 
-	<p xp:lang="en" />
-	<p xp:lang="ru">
-		Азбука Морзе и химические формулы, дорожные знаки и шрифт Брайля,
-		государственные флаги и нотный стан, денежные купюры и привычные
-		символы на пульте дистанционного управления. Обернитесь, коды окружают нас
-		повсюду.
-	</p>
+	<xp:todo>
+		Аббревиатура CS для Computer Science и CodeSophy в чём-то похожа...
+	</xp:todo>
 </xp:topic>

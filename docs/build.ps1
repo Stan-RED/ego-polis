@@ -278,6 +278,10 @@ class XpmlContext {
         } `
         | Select-Object -First 1
 
+        if (-not($result)) {
+            throw "Section $Child for $Master not found"
+        }
+
         return $result;
     }
 

@@ -20,7 +20,7 @@
                 <h1><xsl:value-of select="html:title/text()" /></h1>
 
                 <!--TODO:Extract to TOC template?-->
-                <xsl:if test="count(//xp:section) > 0">
+                <!-- <xsl:if test="count(//xp:section) > 0">
                     <ol>
                         <xsl:for-each select="//xp:section">
                             <li>
@@ -33,7 +33,7 @@
                             </li>
                         </xsl:for-each>
                     </ol>
-                </xsl:if>
+                </xsl:if> -->
 
                 <xsl:apply-templates />
             </body>
@@ -48,8 +48,21 @@
 
     <xsl:template match="html:title" />
 
-    <xsl:template match="xp:section" />
+    <xsl:template match="xp:section">
+        <a class="section">
+            <xsl:attribute name="href">
+                <xsl:value-of select="xp:GetHtmlRoute(xp:GetSection($xp:file, @src))" />
+            </xsl:attribute>
+            <xsl:value-of select="document(xp:GetSection($xp:file, @src))//html:title/text()" />
+        </a>
+    </xsl:template>
 
     <!-- TODO:Ideally should be removed -->
     <xsl:template match="processing-instruction()" />
+
+    <xsl:template match="xp:todo">
+        <p xp-todo="idea">
+            <xsl:apply-templates />
+        </p>
+    </xsl:template>
 </xsl:stylesheet>
