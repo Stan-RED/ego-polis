@@ -1,5 +1,6 @@
 ﻿using Codesophy.Content;
 using Codesophy.Model;
+using Codesophy.Model.Relation;
 
 namespace Codesophy.Security
 {
@@ -8,9 +9,7 @@ namespace Codesophy.Security
     /// </summary>
     public class Person : IArtifact
     {
-        /// <summary>
-        /// Uniuely identify person.
-        /// </summary>
         ArtifactId IHasId<ArtifactId>.Id { get; }
+        ArtifactId? IAdjacent<ArtifactId>.Parent => throw new System.NotImplementedException();
     }
 }

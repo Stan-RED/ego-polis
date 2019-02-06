@@ -1,4 +1,5 @@
 ﻿using Codesophy.Model;
+using Codesophy.Model.Relation;
 
 namespace Codesophy.Content
 {
@@ -27,5 +28,6 @@ namespace Codesophy.Content
         : IArtifact
     {
         ArtifactId IHasId<ArtifactId>.Id => throw new System.NotImplementedException();
+        ArtifactId? IAdjacent<ArtifactId>.Parent => throw new System.NotImplementedException();
     }
 }
