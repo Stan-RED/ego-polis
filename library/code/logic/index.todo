@@ -1,0 +1,6 @@
+* Predicate ~ frame slot
+* Predicate is like probability, just with discrete values. Event mostly defined
+  also as P(...). Maybe I can merge them? For the start I can try out basic
+  logic operations like conjunctions, etc. 
+* Quantifier ~ frame-scoped
+* Logic operations/rules/axioms
