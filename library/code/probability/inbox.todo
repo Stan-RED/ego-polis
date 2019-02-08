@@ -1,0 +1,145 @@
+* context/frame = experiment
+* employ set theory rules
+
+## Definitions
+* sample space (S) = set of all possible outcomes, this is our sandbox and all other sets are considering relatively to S. Sometimes referenced as
+U (universe).
+? If in higher code levels will be defined "Domain" like a real values for arithmetic, etc, probably sample space may also become a domain with "AKA sample space".
+* event A = subset of sample space
+* if the outcome is in event, the event is said to have occured.
+* A and B are mutually exclusive (disjoint) if they have not outcomes in common. 
+  * $A \cap B = \varnothing$.
+* A and B exchaustive (complementary) if their union is S. Complement event $A^c$ means that $A$ does not happen (not $A$, $\neg A$):
+  * $A \cup A^c = S$ [1]
+* We will assign every event A a number P(A), which is the probability the event will occur.
+* Sample space can be finite/infinite
+* Simple sample space - all events are equally likely.
+
+## Axioms
+Function is a probability if:  
+(a) Nonnegativity: $P(A) \ge 0$ [3]  
+(b) Normalization: $P(S) = 1$ [4]  
+(c) Additivity: If $A \cap B = \varnothing$ (two disjoint events), then $P(A \cup B) = P(A) + P(B)$ [5]
+
+## Probability law
+TODO: Introduce via axioms and required definitions. Then consequences (properties of the law) directly implicated from this law. Nice to use formal language. This can be a nice pattern for next blocks. Defintions, axioms, properties.
+
+TODO:
+~~~
+namespace probability
+    a function
+
+    let sample_space
+        probability = 1
+
+    is nonnegative
+    is normal
+    is additive
+~~~
+
+### Consequences
+* $P(S) = 1$ [4]  
+  $\implies P(S \cup S^c) = 1$ [1]  
+  $\implies P(S) + P(S^c) = 1$ [5]  
+  $\implies 1 + P(S^c) = 1$ [4]  
+  $\implies 1 + P(\varnothing) = 1$  
+  $\implies \color{green}P(\varnothing) = 0$
+
+* $P(S) = 1$  
+  $\implies P(A \cup A^c) = 1$  
+  $\implies P(A) + P(A^c) = 1$  
+  $\implies \color{green}P(A^c) = 1 - P(A)$
+
+* $\exist A \subset B$  
+  $\exist C = A \backslash B$  
+  $\implies B \cup C = A$  
+  $\implies P(B \cup C) = P(A)$  
+  $\implies P(B) + P(C) = P(A)$  
+  $\implies P(A) - P(B) = P(C)$  
+  $\implies P(A) - P(B) \ge 0$  
+  $\implies \color{green}P(A) \ge P(B)$
+
+* $P(S) = 1$  
+  $\implies P(A \cup A^c) = 1$  
+  $\implies P(A) + P(A^c) = 1$  
+  $\implies P(A) = 1 - P(A^c)$  
+  $P(A^c) \ge 0, \implies P(A) \le 1$  
+  $\implies \color{green}0 \le P(A) \le 1$  
+  
+* Finite samples space. n - function to get number of elements
+  and $P(A) = n(A)/n(S)$    
+  a) $n(A) / n(S) \ge 0$  
+  b) $n(S) / n(S) = 1$  
+  c) $n(A + B) / n(S) = n(A)/n(S) + n(B) / n(S)$  
+  $\implies$ such P is a probability function
+
+? $P(A \cup B) = P(A) + P(B) - P(AB)$ 
+? $P(AB^c) = P(A) - P(AB)$  
+
+## Sampling (series of experiments?)
+* Sampling with replacement - occured events may happen again
+* Sampling without replacement - occured events won't happen
+* If the first sample has $m$ outcomes and the seoncd - $n$, then experiment has $m * n$ outcomes. Associative, so order of samples does not matter?
+
+## Conditional
+* Independent events A and B (If A occured it doesn't tell nothing about P(B))
+  * $P(AB) = P(A)*P(B)$ [2]
+* The probability of A conditional on B $P(B) \gt 0$:
+  * $P(A|B) = P(AB)/P(B)$ [6]  
+  * "conditional probability of A given B"
+  * The B becomes like a sample space. If we replace B with S in formula $P(AS)/P(S) = P(A)/P(S) = P(A)$ 
+  * Interesting for the further coding "A when B" that even symbolically looks close to F# pattern matching.
+  * Check P(A|B) by probablity law.
+
+? If A and B are independent.  
+  $P(AB^c) = P(A) - P(AB)$ [2]  
+  $= P(A) - P(A)P(B)$  
+  $= P(A)(1 - P(B))$  
+  $= P(A)P(B^c)$  
+  $\implies A$ and $B^c$ are also independent
+
+? If A and B are independent  
+  $P(A|B) = P(AB)/P(B) = P(A)P(B)/P(B) = P(A)$  
+
+? if $B_1, ..., B_n$ - mutually exclusive and exhaustive  
+  $P(A) = P(AS)$  
+  $P(A) = P(A(B_1 \cup ... \cup B_n))$ [?]  
+  $P(A) = P(AB_1 \cup ... \cup AB_n)$ [define]  
+  $P(A) = P(AB_1) + ... P(AB_n)$ [6]  
+  $P(A) = P(A|B_1)P(B_1) + ... + P(AB_n)P(B_n)$ [8]  
+
+## Bayes' Theorem
+? $P(AB) = P(A|B)*P(B) = P(B|A)*P(A), P(A) > 0, P(B) > 0$  [6]
+  $\implies P(A|B) = P(A)*P(B|A) / P(B)$  
+  $P(B) = P(B|A)P(A) + P(B|A^c)P(A^c)$  [8]  
+  $\implies P(A|B) = P(B|A)P(A) / {P(B|A)P(A) + P(B|A^c)P(A^c)}$  
+  $\implies P(A|B) = P(B|A)P(A) / {P(B|A)P(A) + P(B|\neg A)P(\neg A)}$  
+? Sample: Someone has made a disease test with positive result (R). How probably he is diseased (D)? Probability of disease in the area is $P(D) = 0.001$. So being healthy $P(\neg D) = 0.999$. Probability of positive reading $P(R|D) = 0.99$. Negative reading $P(R|\neg D) = 0.05$. So $P(D|R) = P(R|D)P(D) / {P(R|D)P(D) + P(R|\neg D)P(\neg D)} = 0.99*0.0001/(0.99*0.0001 + 0.05*0.999)$
+
+## Random variables
+* Random variable is a real-valued function of the experimental outcome, whose domain is the sample space.
+* probability: $2^S \xrightarrow{P} [0,1]$  
+* random variable: $S \xrightarrow{x} \Reals$  
+? $P(x \in A) =P\{ S: X(S) \in A \}$  
+* Can be discrete (countable number of values) or continuous (e.g some intervals).
+* We can often start from probability function.
+* Probability law for discrete probability function:
+  * $0 \le f_x(x_i) \le 1$
+  * $\sum_i f(x_i) = 1$
+  * $P(x \sub A) = \sum_A f(x_i)$  
+* Continuous random variables are usually started from "density" function (PDF - probability density function)
+* A random variable is continuous if exists non-negative function $f_x$ such that for any interval $A \sub R, \int_A f_x(x) dx$
+* Probability law for PDF:
+  * $0 \le f_x(x)$  
+  * $\int f_x(x) = 1$  
+  * $P(a \le x \le b) = \int_Af_x(x)dx$  
+* A continuous random variable is equal to to a particular value with probability 0 ($dx, \to 0$?). Instead we talk about region.
+
+## Hypergeometric distribution
+* X has a "hypergeometric distribution with parameters N, K, x, n" denoted $X \backsim H(N, K, n)$, if probability function $f_X(x)=\cfrac{{K \choose x}{N-K \choose n-x}}{N \choose n}, x=max(0,n+K-N),...,min(n,K)$
+* Describes number of "successes" in $n$ trials where you sampling without replacement from a sample of size N whose initial probability of success was K/N.
+* Sample: N - number of white/black balls, K - number of white balls, n - number we are going to choose.
+
+## Binomial distribution
+*  X has a "binomial distribution with parameters n, p" denoted $X \backsim B(n,p)$, if its probability function $f_X(x)={n \choose x}{p^x}(1-p)^{n-x}, x=0,1,...,n$
+* Describes the number of successes in $n$ trials where the trials are independent and the probability of success in each is $p$. 
