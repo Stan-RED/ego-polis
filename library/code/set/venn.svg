@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <rect id="S" class="space" width="200" height="100" />
+        <circle id="A" cx="75" cy="50" r="40"/>
+        <circle id="B" cx="125" cy="50" r="40"/>
+
+        <mask id="m_B">
+            <use xlink:href="#B" fill="white" />
+        </mask>
+    </defs>
+
+    <style>
+        .space {
+            stroke: #000;
+            stroke-width: 3;
+            fill: #fff;
+        }
+
+        .strokes {
+            stroke: #000;
+            stroke-width: 3;
+            fill: transparent;
+        }
+    </style>
+
+    <g id="intersection">
+        <use xlink:href="#S" />
+        <use xlink:href="#A" fill="red" mask="url(#m_B)" />
+
+        <g class="strokes">
+            <use xlink:href="#A" />
+            <use xlink:href="#B" />
+        </g>
+    </g>
+</svg>

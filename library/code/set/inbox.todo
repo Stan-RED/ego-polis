@@ -1,0 +1,16 @@
+* $\varnothing$ = null/empty set
+* $A \subset B$ = A "contained in" B, A is subset, B is superset of A
+* $A \cup B$ = "union", associative?
+* $A \cup B$ = $AB$ = "intersection"
+* $A \cup A^c = B$ = $A^c$ is "complement" of A to B or $B \backslash A$ (Why not to use B - A?)
+* if $A \subset B$ then $A \cup B = B$  
+* if $A \subset B$ and $B \subset A$ then $A = B$  
+* if $A \subset B$ then $A \cap B = A (AB = A)$  
+* "disjoint" (no intersection) and complementary?
+
+## Interfaces
+* ISetOf<T>.Contains(T)
+* ISetOf<T>.Contains(ISetOf<T>)? IEnumerable<T>?
+
+## Conslusions
+? $A(B_1 \cup B_2 \cup ... \cup B_n) = AB_1 \cup AB_2 \cup ... AB_n$  
