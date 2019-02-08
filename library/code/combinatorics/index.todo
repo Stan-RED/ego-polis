@@ -1,0 +1,14 @@
+## Permutations
+* Permutations - ordered arrangement of objects.
+* The number of different permutations of n objects is $n!$  
+* $P_n$  
+* The number of different permutations of m objects taken from n is $n!/(n-m)!$  
+* $A_n^m$  
+? Recursive defintion will make sense for TheCode.
+
+## Combination
+* Combination - unordered arrangement of objects.
+* The number of different combinations of m objects taken from n objects: $m!/n!(n-m)!$. Typically it is denoted as $n \choose k$  ("n choose m")
+* Handshakes between N people is "N choose 2"
+* $C_n^m$ 
+* $A_n^m = P_mC_n^m$  
