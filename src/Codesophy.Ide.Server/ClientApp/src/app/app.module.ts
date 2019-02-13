@@ -1,34 +1,61 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+/**
+ * @angular.
+ */
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+/**
+ * @ngrx.
+ */
+import { EffectsModule } from "@ngrx/effects";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { StoreModule } from "@ngrx/store";
+import { RouterStateSerializer, StoreRouterConnectingModule } from "@ngrx/router-store";
+
+/**
+ * App's.
+ */
+import { CoreModule } from "./_core/core.module";
+import { SharedModule } from "./_shared/shared.module";
+import { AppRoutingModule } from "./app-routing.module";
+import { ScheduleModule } from "./schedule/schedule.module";
+
+import { AppComponent } from "./app.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { FeedComponent } from "./feed/feed.component";
+
+import {
+  CustomRouterStateSerializer,
+  effects,
+  metaReducers,
+  reducers,
+} from "./_core/store";
+
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    DashboardComponent,
+    FeedComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CoreModule,
+    SharedModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreRouterConnectingModule,
+    environment.production ? [] : StoreDevtoolsModule.instrument({maxAge: 50}),
+    EffectsModule.forRoot(effects),
+    ScheduleModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

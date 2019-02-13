@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-form-field>
+    <mat-select [placeholder]="'Choose the theme'"
+                [ngModel]="theme?.themeCssClass"
+                (selectionChange)="onThemeChange($event)"
+                name="themes">
+      <mat-option *ngFor="let t of theme.availableThemes" [value]="t.cssClass">
+        {{ t.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>

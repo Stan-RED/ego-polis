@@ -1,16 +1,15 @@
-﻿using Codesophy.Data;
+﻿using Codesophy.Content;
 using Codesophy.Model;
+using Codesophy.Model.Relation;
 
 namespace Codesophy.Security
 {
     /// <summary>
-    /// Defining a person.
+    /// Person information.
     /// </summary>
-    public class Person : IHasId
+    public class Person : IArtifact
     {
-        /// <summary>
-        /// Uniuely identify person.
-        /// </summary>
-        uint IHasId<uint>.Id { get; }
+        ArtifactId IHasId<ArtifactId>.Id { get; }
+        ArtifactId? IAdjacent<ArtifactId>.Parent => throw new System.NotImplementedException();
     }
 }

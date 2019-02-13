@@ -1,0 +1,69 @@
+@import "./styles/variables";
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+//@import '~@fortawesome/fontawesome-free/scss/brands';
+
+@import '~@angular/material/theming';
+
+// Once per project.
+@include mat-core();
+
+// Imports custom themes.
+@import './styles/themes/default';
+@import './styles/themes/adx';
+@import './styles/themes/adx-alt';
+@import './styles/themes/aqua';
+@import './styles/themes/dark';
+
+// Imports custom component themes.
+@import 'app/feed/feed.component.scss-theme';
+@import 'app/_core/components/sidebar/sidebar.component.scss-theme';
+@import 'app/_core/components/sidebar-context/sidebar-context.component.scss-theme';
+@import 'app/dictionary/containers/dictionary/dictionary.component.scss-theme';
+
+@mixin app-custom-components-theme($theme) {
+  @include app-feed-component-theme($theme);
+  @include app-sidebar-component-theme($theme);
+  @include app-sidebar-context-component-theme($theme);
+  @include app-dictionary-component-theme($theme);
+  // ...another components.
+}
+// Imports style rewrites.
+@import "./styles/theme-over-bootstrap";
+@import './styles/theme-over-mat';
+
+// Composes the theme.
+@mixin app-compose-theme($theme) {
+  @include app-over-bootstrap-theme($theme);
+  @include angular-material-theme($theme);
+  @include app-over-mat-theme($theme);
+  @include app-custom-components-theme($theme);
+}
+
+// Specify theme class on app holder.
+// Naming pattern: contains '-theme' string.
+.default-theme {
+  @include app-compose-theme($default-theme);
+}
+
+.adx-theme {
+  @include app-compose-theme($adx-theme);
+}
+
+.adx-alt-theme {
+  @include app-compose-theme($adx-alt-theme);
+}
+
+.aqua-theme {
+  @include app-compose-theme($aqua-theme);
+}
+
+.dark-theme {
+  @include app-compose-theme($dark-theme);
+}
+
+@import './styles/3d-party/index';

@@ -1,0 +1,26 @@
+@import "../helpers";
+
+$dark-theme-primary: mat-palette($mat-grey, 700, 300, 900);
+$dark-theme-accent: mat-palette($mat-blue-grey, 400);
+$dark-theme-warn: mat-palette($mat-red, 500);
+
+$dark-theme: mat-dark-theme(
+    $dark-theme-primary,
+    $dark-theme-accent,
+    $dark-theme-warn
+);
+
+$dark-theme-custom: (
+  sidebar: (
+    background-color: mat-color(map-get($dark-theme, background), background),
+    button: (
+      color: mat-color(map-get($dark-theme, foreground), disabled-button),
+    ),
+    active: (
+      color: mat-color(map-get($dark-theme, foreground), text),
+      background-color: rgba-to-rgb(mat-color(map-get($dark-theme, background), status-bar))
+    )
+  )
+);
+
+$dark-theme: map_merge($dark-theme, (app-theme-custom: $dark-theme-custom));

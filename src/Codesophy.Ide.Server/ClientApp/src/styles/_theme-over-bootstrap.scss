@@ -1,0 +1,26 @@
+// Resets some styles after bootstrap to prepare for angular material.
+@mixin theme-bootstrap-resets() {
+  * {
+    &:active,
+    :focus {
+      outline: none !important;
+    }
+  }
+
+  label {
+    margin-bottom: 0;
+  }
+}
+
+@mixin theme-bootstrap-link-color($theme) {
+  $primary: map-get($theme, primary);
+
+  a {
+    color: mat-color($primary);
+  }
+}
+
+@mixin app-over-bootstrap-theme($theme) {
+  @include theme-bootstrap-resets();
+  @include theme-bootstrap-link-color($theme);
+}

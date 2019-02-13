@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xp:topic xml:lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xp="todo:codesophy:xpml">
+
+	<title>Codesophy</title>
+
+	<h2 xp:lang="en">Introduction</h2>
+	<h2 xp:lang="ru">Введение</h2>
+
+	<xp:section src="intro/everywhere" />
+	<xp:section src="intro/definition" />
+
+	<xp:todo>
+		Аббревиатура CS для Computer Science и CodeSophy в чём-то похожа...
+	</xp:todo>
+</xp:topic>
