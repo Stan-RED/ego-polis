@@ -1,5 +1,5 @@
 import { Component, Type } from "@angular/core";
-import { animate, style, transition, trigger } from "@angular/animations";
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from "@angular/material";
 
 import { SearchComponent } from "../search/search.component";
 
@@ -26,24 +26,19 @@ export interface SidebarToolbarItem {
   tooltip?: string;
 }
 
+export const customTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 500,
+  hideDelay: 0,
+  touchendHideDelay: 1500,
+};
+
 @Component({
   selector: "app-sidebar",
-  animations: [
-    trigger(
-      "enterAnimation", [
-        transition(":enter", [
-          style({width: 0}),
-          animate("300ms", style({width: "*"}))
-        ]),
-        transition(":leave", [
-          style({width: "*"}),
-          animate("300ms", style({width: 0}))
-        ])
-      ]
-    )
-  ],
   templateUrl: "./sidebar.component.html",
-  styleUrls: ["./sidebar.component.scss"]
+  styleUrls: ["./sidebar.component.scss"],
+  providers: [
+    {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: customTooltipDefaults}
+  ],
 })
 export class SidebarComponent {
   rootItems: Array<SidebarToolbarItem> = [
@@ -68,6 +63,16 @@ export class SidebarComponent {
           {
             label: "Examples",
             route: "/examples",
+            description: "Click to navigate"
+          },
+          {
+            label: "Feed",
+            route: "/feed",
+            description: "Click to navigate"
+          },
+          {
+            label: "Dictionary",
+            route: "/dictionary",
             description: "Click to navigate"
           }
         ],

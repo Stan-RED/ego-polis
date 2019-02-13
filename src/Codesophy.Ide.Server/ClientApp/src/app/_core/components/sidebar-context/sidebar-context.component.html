@@ -1,8 +1,12 @@
-<h2>
-  Context menu
-</h2>
+<nav class="app-breadcrumbs">
+  <a class="app-breadcrumbs-link" routerLink="/">Home</a>
+  <span class="app-breadcrumbs-divider">&rarr;</span>
+  <a class="app-breadcrumbs-link" routerLink="/">Next level</a>
+  <span class="app-breadcrumbs-divider">&rarr;</span>
+  <h1>Summary</h1>
+</nav>
 
-<mat-card class="sidebar-child-item">
+<mat-card class="app-sidebar-child-item">
   <mat-card-title>
     Item
   </mat-card-title>
@@ -10,3 +14,7 @@
     Description
   </mat-card-subtitle>
 </mat-card>
+
+<div class="app-bottom-right">
+  <app-branch-selection></app-branch-selection>
+</div>

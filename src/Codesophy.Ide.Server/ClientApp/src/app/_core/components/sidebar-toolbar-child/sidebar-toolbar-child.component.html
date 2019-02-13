@@ -3,7 +3,7 @@
 </h2>
 
 <ng-container *ngIf="!!item?.items">
-  <mat-card  *ngFor="let x of item?.items" (click)="trigger(x)" class="sidebar-child-item">
+  <mat-card  *ngFor="let x of item?.items" (click)="trigger(x)" class="app-sidebar-child-item">
     <mat-card-title>
       {{x?.label}}
     </mat-card-title>

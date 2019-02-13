@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from "@angular/material";
 
 import { MatBadgeModule } from "@angular/material/badge";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
@@ -41,7 +42,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
  */
 
 // Components.
-// import * as fromComponents from './components';
+import * as fromComponents from './components';
 
 // Directives.
 import * as fromDirectives from "./directives";
@@ -50,7 +51,7 @@ import * as fromDirectives from "./directives";
 // import * as fromGuards from './guards';
 
 // Pipes.
-// import * as fromPipes from './pipes';
+import * as fromPipes from './pipes';
 
 // Modules for import and for export.
 export const reexportedModules: any[] = [
@@ -62,6 +63,7 @@ export const reexportedModules: any[] = [
   MatNativeDateModule,
 
   MatBadgeModule,
+  MatBottomSheetModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -94,19 +96,19 @@ export const reexportedModules: any[] = [
     ...reexportedModules,
   ],
   declarations: [
-    // ...fromComponents.components,
+    ...fromComponents.components,
     ...fromDirectives.directives,
-    // ...fromPipes.pipes,
+    ...fromPipes.pipes,
   ],
   exports: [
-    // ...fromComponents.components,
+    ...fromComponents.components,
     ...fromDirectives.directives,
-    // ...fromPipes.pipes,
+    ...fromPipes.pipes,
     ...reexportedModules,
   ],
   entryComponents: [],
   providers: [
-    // ...fromPipes.pipes,
+    ...fromPipes.pipes,
     // ...fromGuards.guards
   ]
 })

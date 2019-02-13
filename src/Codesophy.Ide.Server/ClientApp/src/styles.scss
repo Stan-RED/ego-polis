@@ -20,12 +20,16 @@
 @import './styles/themes/dark';
 
 // Imports custom component themes.
+@import 'app/feed/feed.component.scss-theme';
 @import 'app/_core/components/sidebar/sidebar.component.scss-theme';
-@import 'app/_core/components/topbar/topbar.component.scss-theme';
+@import 'app/_core/components/sidebar-context/sidebar-context.component.scss-theme';
+@import 'app/dictionary/containers/dictionary/dictionary.component.scss-theme';
 
 @mixin app-custom-components-theme($theme) {
+  @include app-feed-component-theme($theme);
   @include app-sidebar-component-theme($theme);
-  @include app-topbar-component-theme($theme);
+  @include app-sidebar-context-component-theme($theme);
+  @include app-dictionary-component-theme($theme);
   // ...another components.
 }
 // Imports style rewrites.
@@ -61,3 +65,5 @@
 .dark-theme {
   @include app-compose-theme($dark-theme);
 }
+
+@import './styles/3d-party/index';

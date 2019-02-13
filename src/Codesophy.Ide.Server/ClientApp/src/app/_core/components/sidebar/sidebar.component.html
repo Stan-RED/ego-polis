@@ -1,19 +1,24 @@
 <app-sidebar-context></app-sidebar-context>
 
-<div *ngIf="isSideNavOpened" [@enterAnimation] class="app-sidebar-toolbar-child-container">
+<div *ngIf="isSideNavOpened" class="app-sidebar-toolbar-child-container">
   <app-sidebar-toolbar-child
     [item]="rootItem?.children"
   ></app-sidebar-toolbar-child>
 </div>
 
 <div class="app-sidebar-toolbar">
-  <mat-icon
-    matTooltip="App logo"
-    aria-label="Logo"
-    fontSet="fas"
-    fontIcon="fa-terminal"
-    class="app-logo"
-  ></mat-icon>
+  <button mat-icon-button [matMenuTriggerFor]="profileActions">
+    <mat-icon
+      matTooltip="Account"
+      matTooltipPosition="left"
+      aria-label="Account"
+      fontSet="fas"
+      fontIcon="fa-user-circle"
+    ></mat-icon>
+  </button>
+  <mat-menu #profileActions="matMenu">
+    <button mat-menu-item>Sign out</button>
+  </mat-menu>
 
   <button
     *ngFor="let item of rootItems; let i = index"
@@ -24,12 +29,10 @@
     [matBadgeDescription]="item?.badgeDescription"
     [matBadgeHidden]="!item?.badge"
     [class.app-active]="isActive(i)"
-    [class.app-has-child]="!!item?.children"
   >
     <mat-icon
       [matTooltip]="item?.tooltip"
       matTooltipPosition="left"
-      matTooltipShowDelay="500"
       [attr.aria-label]="item?.tooltip"
       fontSet="fas"
       [fontIcon]="item?.icon"></mat-icon>
@@ -46,15 +49,6 @@
   </button>
 
   <div class="app-bottom-center">
-    <button mat-icon-button>
-      <mat-icon
-        matTooltip="Account"
-        matTooltipPosition="left"
-        aria-label="Account"
-        fontSet="fas"
-        fontIcon="fa-user-circle"
-      ></mat-icon>
-    </button>
 
     <button mat-icon-button>
       <mat-icon

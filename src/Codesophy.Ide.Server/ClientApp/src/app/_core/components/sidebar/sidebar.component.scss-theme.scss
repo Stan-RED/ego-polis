@@ -43,7 +43,6 @@
     .app-sidebar-toolbar button.app-active {
       color: map-deep-get($custom, sidebar, active, color);
       background-color: map-deep-get($custom, sidebar, active, background-color);
-      border-color: similar-color(map-deep-get($custom, sidebar, active, background-color));
     }
   }
 }

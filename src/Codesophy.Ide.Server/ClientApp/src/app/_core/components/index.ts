@@ -1,7 +1,5 @@
-import { MenuComponent } from './menu/menu.component';
-import { MenuMainComponent } from './menu-main/menu-main.component';
-import { MenuMainContainerComponent } from './menu-main-container/menu-main-container.component';
-
+import { BranchSelectionComponent } from './branch-selection/branch-selection.component';
+import { BranchSelectionBottomSheetComponent } from './branch-selection-bottom-sheet/branch-selection-bottom-sheet.component';
 import { SearchComponent } from './search/search.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarContextComponent } from './sidebar-context/sidebar-context.component';
@@ -10,10 +8,8 @@ import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.componen
 import { TopbarComponent } from './topbar/topbar.component';
 
 export const components: any[] = [
-  MenuComponent,
-  MenuMainComponent,
-  MenuMainContainerComponent,
-
+  BranchSelectionComponent,
+  BranchSelectionBottomSheetComponent,
   SearchComponent,
   SidebarComponent,
   SidebarContextComponent,
@@ -23,13 +19,12 @@ export const components: any[] = [
 ];
 
 export const entryComponents: any[] = [
+  BranchSelectionBottomSheetComponent,
   SearchComponent,
 ];
 
-export * from './menu/menu.component';
-export * from './menu-main/menu-main.component';
-export * from './menu-main-container/menu-main-container.component';
-
+export * from './branch-selection/branch-selection.component';
+export * from './branch-selection-bottom-sheet/branch-selection-bottom-sheet.component';
 export * from './search/search.component';
 export * from './sidebar/sidebar.component';
 export * from './sidebar-context/sidebar-context.component';

@@ -23,27 +23,6 @@ $sidebar: (
   }
 }
 
-@mixin app-sidebar-borders() {
-  .app-sidebar-toolbar button {
-    &:active,
-    &.app-active {
-      z-index: 99;
-      border-style: solid;
-      border-width: 1px;
-
-      &.app-has-child {
-        border-left-width: 0;
-      }
-    }
-  }
-
-  .app-sidebar-toolbar-child-container {
-    right: map-deep-get($sidebar, "button", "size") - 1px;
-    border-style: solid;
-    border-width: 1px;
-  }
-}
-
 :host {
   display: flex;
   flex-direction: row;
@@ -104,5 +83,3 @@ $sidebar: (
   height: 100%;
   overflow: hidden;
 }
-
-@include app-sidebar-borders();

@@ -1,0 +1,12 @@
+<h2>{{term.label}}</h2>
+
+<mat-tab-group>
+  <mat-tab
+    *ngFor="let connection of term.connections"
+    [label]="connection.predicate | predicateLabel"
+  >
+    <ul>
+      <li *ngFor="let obj of connection.objects">{{obj}}</li>
+    </ul>
+  </mat-tab>
+</mat-tab-group>

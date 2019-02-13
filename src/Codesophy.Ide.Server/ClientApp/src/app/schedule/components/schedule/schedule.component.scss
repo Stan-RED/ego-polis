@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-slide-toggle {
+  margin-bottom: 1rem;
+}
+
+.app-schedule-repeat-icon {
+  font-size: .9rem;
+  margin-right: .45rem;
+}
+
+.app-schedule-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > *:last-child:not(:first-child) {
+    margin-left: auto;
+  }
+}

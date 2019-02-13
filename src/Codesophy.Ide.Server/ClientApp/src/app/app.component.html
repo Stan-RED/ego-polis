@@ -12,7 +12,11 @@
 <!--</header>-->
 
 <mat-sidenav-container>
-  <mat-sidenav-content>
+  <mat-sidenav-content
+    #scrollbarContainer
+    (scroll)="scroll()"
+    class="app-scrollbar-container"
+  >
     <div class="container app-container">
       <app-theme-switcher></app-theme-switcher>
       <app-topbar></app-topbar>
