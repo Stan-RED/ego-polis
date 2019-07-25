@@ -1,7 +1,0 @@
-@mixin mat-reset-mat-button-child-vertical-align() {
-  :host ::ng-deep .mat-button .mat-button-wrapper > * {
-    vertical-align: unset;
-  }
-}
-
-@include mat-reset-mat-button-child-vertical-align();

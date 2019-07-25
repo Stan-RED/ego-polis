@@ -1,8 +1,0 @@
-<mat-form-field>
-  <input matInput type="text" placeholder="Select branch to checkout" (input)="changeFilterString($event.target.value)">
-</mat-form-field>
-<mat-list class="mat-nav-list">
-  <mat-list-item *ngFor="let branch of filteredBranches$ | async" (click)="selectBranch()">
-    {{branch.name}}
-  </mat-list-item>
-</mat-list>

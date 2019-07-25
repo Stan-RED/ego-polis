@@ -1,7 +1,0 @@
-// Mixins without 3d party context.
-
-@mixin app-state-disabled() {
-  cursor: not-allowed !important;
-  outline: none;
-  //pointer-events: none;
-}
