@@ -3,4 +3,4 @@
 TODO:Temporary content map
 
 ## Vision
-* [Index](vision) [[ru]](/ru/vision)
+* [Index](/ru/vision) [[en]](/vision)
