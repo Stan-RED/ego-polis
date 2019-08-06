@@ -1,8 +1,28 @@
+## Docs
+
+Based on [VuePress ](https://v1.vuepress.vuejs.org/) (/docs folder).
+
+```
+	# Install VuePress globally
+	yarn global add vuepress
+	
+	# Run docs in dev (watch) mode
+	yarn docs:dev
+	
+	# Build docs
+	yarn docs:build
+```
+
+Recommended plugin for Vue development - [Vetur](https://vuejs.github.io/vetur/)
+(octref.vetur).
+
+## Philosophy
+TODO:Old notes below are far from being actual. Probably some of the should be
+moved to SDE.
+
 This project is an experimental laboratory where we're trying to look at the
 software design process and application code from more phylosophical,
 fundamental point of view.
-
-## Philosophy
 
 ### Curiosity
 
@@ -105,8 +125,9 @@ There are a lot of region haters, but I'm not the member of this sect. The
 reason is the same as for [Class Layout](#class-layout). For code navigation
 I use shortcuts and do not notice two additional lines of code for the region.
 But for code organization and reading purposes regions are very good. They
-are a kind of "shelves" where you can organize your books instead of a big
-pile where some interface method may be through constructors and so on.
+are a kind of "shelves", "table of content" where you can organize your books
+instead of a big pile where some interface method may be through constructors
+and so on.
 
 So if you have some groups of members (constructors, interface members, tests
 related to some specific method, extensions methods with common behaviour,
