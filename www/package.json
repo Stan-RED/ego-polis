@@ -8,9 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.4.0",
+    "@next/mdx": "^9.0.5",
     "next": "9.0.5",
     "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "react-dom": "16.9.0",
+    "rehype-katex": "^1.2.0",
+    "remark-emoji": "^2.0.2",
+    "remark-images": "^1.0.0",
+    "remark-math": "^1.0.6"
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
