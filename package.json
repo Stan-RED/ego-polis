@@ -2,6 +2,7 @@
 	"name": "@egopolis/workspace",
 	"private": true,
 	"workspaces": [
-		"docs"
+		"docs",
+		"www"
 	]
 }

@@ -1,13 +1,8 @@
+.*
+
 # .NET generated files
 bin/
 obj/
 
 # Node.JS packages
 node_modules/
-
-# Visual Studio files
-.vs/
-*.user
-
-# JetBrains IDEs (e.g. Rider)
-.idea/
