@@ -1,5 +1,4 @@
-import "katex/dist/katex.css"
-import Nav from "../components/nav"
+import Link from "next/link"
 
 # About
 
