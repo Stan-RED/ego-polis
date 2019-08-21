@@ -10,7 +10,9 @@
   "dependencies": {
     "@mdx-js/loader": "^1.4.0",
     "@next/mdx": "^9.0.5",
+    "@zeit/next-css": "1.0.2-canary.2",
     "next": "9.0.5",
+    "next-compose-plugins": "^2.2.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "rehype-katex": "^1.2.0",
