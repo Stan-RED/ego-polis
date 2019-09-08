@@ -14,6 +14,7 @@ const withMDX = require("@next/mdx")({
 })
 
 const withCSS = require("@zeit/next-css")
+const withSass = require("@zeit/next-sass")
 
 module.exports = withPlugins([
 	[ withCSS, {
@@ -23,6 +24,8 @@ module.exports = withPlugins([
 			url: false
 		}
 	}],
+
+	withSass,
 
 	[ withMDX, {
 		pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"]
