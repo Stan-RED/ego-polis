@@ -20,3 +20,5 @@ import { ToDo } from "../../components/ToDo";
     анатомии грудных мышц и серфингом (основное "pop up" движение осуществляется
     из упора лёжа).
 </ToDo>
+
+[Egonomics](/sandbox/egonomics)
