@@ -6,3 +6,7 @@ obj/
 
 # Node.JS packages
 node_modules/
+
+# Gatsby.js files
+.cache/
+public/
