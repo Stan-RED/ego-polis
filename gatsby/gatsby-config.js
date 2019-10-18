@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `TODO:Egopolis.org`,
+    title: `Egopolis`,
     description: `TODO:`,
     author: `TODO:@StanEgo`,
   },
@@ -27,6 +27,13 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
