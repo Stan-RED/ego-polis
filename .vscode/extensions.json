@@ -1,3 +1,7 @@
 {
-    "recommendations": ["esbenp.prettier-vscode", "silvenon.mdx"]
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "silvenon.mdx",
+        "xyc.vscode-mdx-preview"
+    ]
 }

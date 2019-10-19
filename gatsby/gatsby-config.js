@@ -3,6 +3,7 @@ module.exports = {
     title: "Egopolis",
     description: "TODO:",
     author: "TODO:@StanEgo",
+    repository: "https://github.com/StanEgo/ego-polis"
   },
   plugins: [
     "gatsby-plugin-react-helmet",
