@@ -8,6 +8,22 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/components/Layout.tsx")
+        }
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "pages",
+        path: `${__dirname}/src/pages/`
+      }
+    },
+    "gatsby-transformer-remark",
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
@@ -35,14 +51,6 @@ module.exports = {
         allExtensions: true
       }
     },
-    "gatsby-plugin-postcss",
-    {
-      resolve: "gatsby-plugin-mdx",
-      options: {
-        defaultLayouts: {
-          default: require.resolve("./src/components/Layout.tsx")
-        }
-      }
-    }
+    "gatsby-plugin-postcss"
   ]
 }
