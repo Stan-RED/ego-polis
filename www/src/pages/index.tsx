@@ -15,7 +15,7 @@ const IndexPage = () => (
                 <Link to="/academy">Academy</Link>
             </li>
             <li>
-                <Link to="/academy">Academy</Link>
+                <Link to="/sandbox/egonomics">Egonomics</Link>
             </li>
         </ul>
     </Layout>
