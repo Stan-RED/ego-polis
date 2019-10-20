@@ -6,5 +6,8 @@
 		"docs",
 		"www",
 		"../sde-typescript/packages/*"
-	]
+	],
+	"scripts": {
+		"dev:www": "yarn --cwd www start"
+	}
 }
