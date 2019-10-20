@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~katex/dist/katex.min.css";
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap&subset=cyrillic");
 
 body {

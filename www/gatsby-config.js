@@ -13,7 +13,11 @@ module.exports = {
         extensions: [".mdx", ".md"],
         defaultLayouts: {
           default: require.resolve("./src/components/Layout.tsx")
-        }
+        },
+        remarkPlugins: [
+          require("remark-math"),
+          require("remark-html-katex")
+        ]
       }
     },
     {
@@ -23,7 +27,6 @@ module.exports = {
         path: `${__dirname}/src/pages/`
       }
     },
-    "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
