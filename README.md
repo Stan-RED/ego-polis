@@ -1,22 +1,15 @@
-## Docs
-
-Based on [VuePress ](https://v1.vuepress.vuejs.org/) (/docs folder).
+TODO:Content below is outdated, better execute
 
 ```
-	# Install VuePress globally
-	yarn global add vuepress
-	
-	# Run docs in dev (watch) mode
-	yarn docs:dev
-	
-	# Build docs
-	yarn docs:build
+	yarn
+	yarn dev:www
 ```
 
 Recommended plugin for Vue development - [Vetur](https://vuejs.github.io/vetur/)
 (octref.vetur).
 
 ## Philosophy
+
 TODO:Old notes below are far from being actual. Probably some of the should be
 moved to SDE.
 
@@ -73,11 +66,11 @@ This assembly contains minimum amount of implementations and is mostly
 responsible for defining ubiquitous language for software design models and
 processes.
 
-
 ## Coding rules
 
 TODO:
-* [Implicitly typed variables](media/2017/10/implicit-vs-explicit-vars/index.md)
+
+-   [Implicitly typed variables](media/2017/10/implicit-vs-explicit-vars/index.md)
 
 ### Class layout
 
@@ -98,26 +91,26 @@ section and likely to be put into [Code region](#code-regions).
 
 Q: Constructors first?
 A: In a properly designed class, constructor is just a boring place where
-   dependencies are injected and assigned to class members. Absolutely no
-   reason to see it first. 
+dependencies are injected and assigned to class members. Absolutely no
+reason to see it first.
 
 ### Explicit interfaces
 
 Explicit interfaces are the preferrable way to implement in classes. Reasons
 are:
 
-* Forces DI principle. You can't access methods define by explicit interfaces
-  using particular class. Instead you should use this interface, so code
-  depends on abstractions and that's a main requirement of DI principle.
-* Good for refactoring. If you update an interface (e.g. remove some method),
-  application can't be compiled until implementations will be updated. Implicit
-  interface implementation just let you leave this redundant method.
-* Better state protection. If you have property with only getter declared, you
-  can easily make a mistake and get both getter and setter existing in implicit
-  implementation.
-* No name conflicts if we implement to interfaces having same member names. May
-  be a good option for generic interfaces.
-* Members declarations are self-explaining so easier to read the code.
+-   Forces DI principle. You can't access methods define by explicit interfaces
+    using particular class. Instead you should use this interface, so code
+    depends on abstractions and that's a main requirement of DI principle.
+-   Good for refactoring. If you update an interface (e.g. remove some method),
+    application can't be compiled until implementations will be updated. Implicit
+    interface implementation just let you leave this redundant method.
+-   Better state protection. If you have property with only getter declared, you
+    can easily make a mistake and get both getter and setter existing in implicit
+    implementation.
+-   No name conflicts if we implement to interfaces having same member names. May
+    be a good option for generic interfaces.
+-   Members declarations are self-explaining so easier to read the code.
 
 ### Code regions
 
