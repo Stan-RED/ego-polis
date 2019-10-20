@@ -2,7 +2,9 @@
 	"name": "@egopolis/workspace",
 	"private": true,
 	"workspaces": [
+		"packages/*",
 		"docs",
-		"www"
+		"www",
+		"../sde-typescript/packages/*"
 	]
 }
