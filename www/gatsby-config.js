@@ -1,9 +1,15 @@
+const languages = {
+  langs: ['en', 'pt'],
+  defaultLangKey: 'en'
+};
+
 module.exports = {
   siteMetadata: {
     title: "Egopolis",
     description: "TODO:",
     author: "TODO:@StanEgo",
-    repository: "https://github.com/StanEgo/ego-polis"
+    repository: "https://github.com/StanEgo/ego-polis",
+    languages
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -53,6 +59,15 @@ module.exports = {
       options: {
         isTSX: true,
         allExtensions: true
+      }
+    },
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyForNull: 'any',
+        langKeyDefault: languages.defaultLangKey,
+        useLangKeyLayout: true,
+        prefixDefault: false,
       }
     },
     "gatsby-plugin-postcss"
