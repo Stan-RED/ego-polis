@@ -1,16 +1,15 @@
-const languages = {
-  langs: ['en', 'pt'],
-  defaultLangKey: 'en'
-};
+require("source-map-support").install()
+require("ts-node").register({
+  compilerOptions: {
+    module: "commonjs",
+    target: "es2017",
+  },
+})
+
+const siteMetadata = require("./src/config/Metadata").default;
 
 module.exports = {
-  siteMetadata: {
-    title: "Egopolis",
-    description: "TODO:",
-    author: "TODO:@StanEgo",
-    repository: "https://github.com/StanEgo/ego-polis",
-    languages
-  },
+  siteMetadata,
   plugins: [
     "gatsby-plugin-react-helmet",
     {
@@ -42,6 +41,7 @@ module.exports = {
     },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    //TODO:
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -64,8 +64,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-i18n",
       options: {
-        langKeyForNull: 'any',
-        langKeyDefault: languages.defaultLangKey,
+        langKeyForNull: "any",
+        langKeyDefault: siteMetadata.languages.defaultLangKey,
         useLangKeyLayout: true,
         prefixDefault: false,
       }
