@@ -5,6 +5,7 @@ const Metadata: SiteMetadata = {
     description: "TODO:",
     author: "TODO:@StanEgo",
     repository: "https://github.com/StanEgo/ego-polis",
+
     languages: {
         langs: ["en", "ru", "bg"],
         defaultLangKey: "en"

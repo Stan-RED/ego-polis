@@ -2,15 +2,9 @@ import React, { ReactNode } from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { DraftAlert } from "../components/DraftAlert";
 import { GitHub } from "../components/icons";
-import { SiteMetadata } from "../lib/SiteMetadata";
+import { SiteMetadata, Frontmatter } from "../lib";
 
 import "../styles/index.css";
-
-type Frontmatter = {
-    title: string;
-    created?: Date;
-    status?: "draft" | "public";
-};
 
 type LayoutProps = {
     children: ReactNode;
