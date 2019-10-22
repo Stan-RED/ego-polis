@@ -5,7 +5,20 @@ import { GitHub } from "../components/icons";
 
 import "../styles/index.css";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+type Frontmatter = {
+    title: string;
+    created?: Date;
+    status?: "draft" | "public";
+};
+
+type LayoutProps = {
+    children: ReactNode;
+    pageContext: {
+        frontmatter: Frontmatter;
+    };
+};
+
+const Layout = ({ children, pageContext }: LayoutProps) => {
     const data = useStaticQuery(graphql`
         query PageInfoQuery {
             site {
@@ -24,7 +37,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         }
     `);
 
-    const { title, status } = data.mdx.frontmatter;
+    const { title, status } = pageContext.frontmatter;
 
     return (
         <div className="flex flex-col min-h-screen">
