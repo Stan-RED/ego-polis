@@ -3,10 +3,5 @@ export type SiteMetadata = {
     description?: string,
     author?: string,
     siteUrl?: string,
-    repository?: string,
-
-    i18n?: {
-        languages: string[],
-        default: string
-    }
+    repository?: string
 }
