@@ -1,13 +1,19 @@
 import { createContext } from "react";
 import { Frontmatter } from "./Frontmatter";
 
-export const LayoutContext = createContext({});
+export const LayoutContext = createContext<LayoutContextProps>({
+    path: "",
+    location: "",
+
+    pageContext: {}
+});
+
 export type LayoutContextProps = {
     path: string;
     location: any; //TODO:There should be a type
 
     pageContext: {
-        frontmatter: Frontmatter;
+        frontmatter?: Frontmatter;
         langKey?: string;
     };
 }
