@@ -66,8 +66,8 @@ module.exports = {
       options: {
         langKeyForNull: "any",
         langKeyDefault: siteMetadata.languages.defaultLangKey,
-        useLangKeyLayout: true,
-        prefixDefault: false,
+        useLangKeyLayout: false,
+        prefixDefault: true
       }
     },
     "gatsby-plugin-postcss"
