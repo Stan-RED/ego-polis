@@ -1,0 +1,8 @@
+import { LocalizationNavigator } from "../components/LocalizationNavigator";
+import { getUserLanguage } from "../lib";
+
+# Choose your language
+
+<div>{getUserLanguage().language}</div>
+<div>{getUserLanguage().locale}</div>
+<LocalizationNavigator />
