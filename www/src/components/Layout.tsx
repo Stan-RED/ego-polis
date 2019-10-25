@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { DraftAlert } from "../components/DraftAlert";
 import { GitHub } from "../components/icons";
-import { Link as MyLink } from "../components";
+import { Link } from "../components";
 import { SiteMetadata, LayoutContext, LayoutContextProps } from "../lib";
 
 import "../styles/index.css";
@@ -13,7 +13,7 @@ type LayoutProps = LayoutContextProps & {
 };
 
 const mdxComponents = {
-    a: MyLink
+    a: Link
 };
 
 const Layout = (props: LayoutProps) => {
