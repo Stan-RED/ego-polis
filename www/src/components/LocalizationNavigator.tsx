@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { navigate, withPrefix, useStaticQuery, graphql } from "gatsby";
+import { FormattedMessage } from "react-intl";
 import { getUserLocale } from "../lib";
+import messages from "../locale";
 
 export type LocalizationNavigatorProps = {
     redirect: boolean;
@@ -31,5 +33,14 @@ export const LocalizationNavigator = ({ redirect }: LocalizationNavigatorProps) 
         }
     `);
 
-    return <div>{JSON.stringify(site.siteMetadata.languages)}</div>;
+    return (
+        <div>
+            <div>
+                <strong>Self:</strong>
+                <FormattedMessage id="Self" />
+            </div>
+            <div>{JSON.stringify(messages)}</div>
+            <div>{JSON.stringify(site.siteMetadata.languages)}</div>
+        </div>
+    );
 };

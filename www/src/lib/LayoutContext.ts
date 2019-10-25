@@ -5,7 +5,9 @@ export const LayoutContext = createContext<LayoutContextProps>({
     path: "",
     location: "",
 
-    pageContext: {}
+    pageContext: {
+        langKey: "en"
+    }
 });
 
 export type LayoutContextProps = {
@@ -14,6 +16,6 @@ export type LayoutContextProps = {
 
     pageContext: {
         frontmatter?: Frontmatter;
-        langKey?: string;
+        langKey: string;
     };
 }
