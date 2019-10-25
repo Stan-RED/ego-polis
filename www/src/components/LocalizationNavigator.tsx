@@ -1,20 +1,35 @@
-import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { Redirect } from "@reach/router";
-import { getUserLanguage } from "../lib";
+import React, { useEffect } from "react";
+import { navigate, withPrefix, useStaticQuery, graphql } from "gatsby";
+import { getUserLocale } from "../lib";
 
-export const LocalizationNavigator = () => {
+export type LocalizationNavigatorProps = {
+    redirect: boolean;
+    children: never;
+};
+
+export const LocalizationNavigator = ({ redirect }: LocalizationNavigatorProps) => {
+    if (redirect) {
+        const locale = getUserLocale();
+
+        if (locale) {
+            const target = withPrefix(`/${locale.language}/`);
+            useEffect(() => {
+                navigate(target);
+            }, []);
+        }
+    }
+
     const { site } = useStaticQuery(graphql`
         query SITE_LANGUAGES_QUERY {
             site {
                 siteMetadata {
-                    title
-                    description
-                    repository
+                    languages {
+                        langs
+                    }
                 }
             }
         }
     `);
 
-    return <Redirect to={`/${getUserLanguage().language}/`} />;
+    return <div>{JSON.stringify(site.siteMetadata.languages)}</div>;
 };

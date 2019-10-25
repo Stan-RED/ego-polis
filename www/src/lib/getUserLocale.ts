@@ -1,11 +1,11 @@
 import { withPrefix } from "gatsby";
 
-export type UserLanguageDetails = {
-    locale: string;
+export type UserLocaleDetails = {
+    name: string;
     language: string;
 };
 
-export const getUserLanguage = (): UserLanguageDetails | undefined => {
+export const getUserLocale = (): UserLocaleDetails | undefined => {
     if (typeof window === "undefined") {
         return undefined;
     }
@@ -24,7 +24,7 @@ export const getUserLanguage = (): UserLanguageDetails | undefined => {
 
         return {
             language: parts[0],
-            locale
+            name: locale
         };
     }
 };
