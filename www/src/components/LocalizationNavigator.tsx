@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { navigate, withPrefix, useStaticQuery, graphql } from "gatsby";
-import { FormattedMessage } from "react-intl";
+import { navigate, withPrefix, useStaticQuery, graphql, Link } from "gatsby";
 import { getUserLocale } from "../lib";
 import messages from "../locale";
 
@@ -11,6 +10,7 @@ export type LocalizationNavigatorProps = {
 
 export const LocalizationNavigator = ({ redirect }: LocalizationNavigatorProps) => {
     if (redirect) {
+        // TODO:Try to get from local storage/cookie.
         const locale = getUserLocale();
 
         if (locale) {
@@ -21,26 +21,13 @@ export const LocalizationNavigator = ({ redirect }: LocalizationNavigatorProps) 
         }
     }
 
-    const { site } = useStaticQuery(graphql`
-        query SITE_LANGUAGES_QUERY {
-            site {
-                siteMetadata {
-                    languages {
-                        langs
-                    }
-                }
-            }
-        }
-    `);
-
     return (
-        <div>
-            <div>
-                <strong>Self:</strong>
-                <FormattedMessage id="Self" />
-            </div>
-            <div>{JSON.stringify(messages)}</div>
-            <div>{JSON.stringify(site.siteMetadata.languages)}</div>
-        </div>
+        <ul>
+            {Object.keys(messages).map(key => (
+                <li key={key}>
+                    <Link to={withPrefix(`/${key}/`)}>{messages[key].Self}</Link>
+                </li>
+            ))}
+        </ul>
     );
 };
