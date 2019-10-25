@@ -1,10 +1,9 @@
 import React, { ReactNode } from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { DraftAlert } from "../components/DraftAlert";
 import { GitHub } from "../components/icons";
 import { Link } from "../components";
-import { SiteMetadata, LayoutContext, LayoutContextProps } from "../lib";
+import { useSiteMetadata, LayoutContext, LayoutContextProps } from "../lib";
 
 import "../styles/index.css";
 
@@ -17,19 +16,8 @@ const mdxComponents = {
 };
 
 const Layout = (props: LayoutProps) => {
-    const data = useStaticQuery(graphql`
-        query PageInfoQuery {
-            site {
-                siteMetadata {
-                    title
-                    repository
-                }
-            }
-        }
-    `);
-
+    const site = useSiteMetadata();
     const meta = props.pageContext.frontmatter;
-    const site: SiteMetadata = data.site.siteMetadata;
 
     return (
         <LayoutContext.Provider value={props}>
