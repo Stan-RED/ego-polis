@@ -5,20 +5,27 @@
 @import "~katex/dist/katex.min.css";
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap&subset=cyrillic");
 
+:root {
+    --bg-color: #f8f9fa;
+    --header-color: #292e31;
+}
+
 body {
     @apply font-sans text-lg leading-relaxed;
 
     font-family: "Roboto";
+    background-color: var(--bg-color);
 }
 
 h1,
 h2,
 h3 {
     @apply font-black subpixel-antialiased;
+    color: var(--header-color);
 }
 
 h1 {
-    @apply text-5xl mt-10 mb-2;
+    @apply my-12 text-center;
 }
 
 h2 {
