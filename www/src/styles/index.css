@@ -25,7 +25,7 @@ h3 {
 }
 
 h1 {
-    @apply my-12 text-center;
+    @apply my-12 text-6xl text-center;
 }
 
 h2 {
@@ -37,24 +37,24 @@ h3 {
 }
 
 main {
-    a {
+    & a {
         @apply text-green-600;
     }
 
-    p {
+    & p {
         @apply mb-3;
     }
 
-    ol,
-    ul {
+    & ol,
+    & ul {
         @apply m-6;
     }
 
-    ol {
+    & ol {
         @apply list-decimal;
     }
 
-    ul {
+    & ul {
         @apply list-disc;
 
         list-style-type: square;
@@ -62,7 +62,7 @@ main {
 }
 
 footer {
-    a {
+    & a {
         @apply text-white;
     }
 }
@@ -70,11 +70,11 @@ footer {
 nav.tabs {
     @apply my-10;
 
-    .header {
+    & .header {
         @apply flex border-b;
     }
 
-    .tab {
+    & .tab {
         @apply mr-1;
 
         button {
@@ -82,7 +82,7 @@ nav.tabs {
         }
     }
 
-    .tab.active {
+    & .tab.active {
         button {
             @apply bg-gray-800 text-white rounded-t border-t;
         }
