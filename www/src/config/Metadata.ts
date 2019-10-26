@@ -1,4 +1,5 @@
 import { SiteMetadata } from "../lib/SiteMetadata";
+import messages from "../locale";
 
 const Metadata: SiteMetadata = {
     title: "Egopolis",
@@ -7,7 +8,7 @@ const Metadata: SiteMetadata = {
     repository: "https://github.com/StanEgo/ego-polis",
 
     languages: {
-        langs: ["en", "ru", "bg"],
+        langs: Object.keys(messages),
         defaultLangKey: "en"
     }
 }
