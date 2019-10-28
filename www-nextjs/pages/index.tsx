@@ -1,16 +1,24 @@
-import React from 'react'
-import Head from 'next/head'
+import React from "react";
+import { NextPage, NextPageContext } from "next";
+import Head from "next/head";
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-    </Head>
+type Props = {
+    test: string | string[];
+};
 
+const Home: NextPage<Props> = ({ test }) => (
     <div>
-      Hello world!
-    </div>
-  </div>
-)
+        <Head>
+            <title>Home</title>
+        </Head>
 
-export default Home
+        <div>Hello, {test}!</div>
+    </div>
+);
+
+Home.getInitialProps = async (context: NextPageContext) => {
+    const { test } = context.query;
+    return { test };
+};
+
+export default Home;
