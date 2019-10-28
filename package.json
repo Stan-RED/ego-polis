@@ -5,6 +5,7 @@
 		"packages/*",
 		"docs",
 		"www",
+		"www-nextjs",
 		"../sde-typescript/packages/*"
 	],
 	"scripts": {
