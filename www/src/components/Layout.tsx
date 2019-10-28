@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { IntlProvider } from "react-intl";
+import Helmet from "react-helmet";
 import { DraftAlert } from "../components/DraftAlert";
 import { GitHub } from "../components/icons";
 import { Link } from "../components";
@@ -19,13 +20,57 @@ const mdxComponents = {
 
 const Layout = (props: LayoutProps) => {
     const site = useSiteMetadata();
-    const meta = props.pageContext.frontmatter;
-    const language = props.pageContext.langKey;
+    const meta = props.pageContext && props.pageContext.frontmatter;
+    const lang = props.pageContext && props.pageContext.langKey;
 
     return (
         <LayoutContext.Provider value={props}>
-            <IntlProvider locale={language} messages={i18messages[language]}>
+            <IntlProvider locale={lang} messages={i18messages[lang]}>
                 <MDXProvider components={mdxComponents}>
+                    <Helmet
+                        htmlAttributes={{
+                            lang
+                        }}
+                        title={meta && meta.title}
+                        titleTemplate={`%s | ${site.title}`}
+                        meta={
+                            [
+                                // {
+                                //     name: `description`,
+                                //     content: meta && meta.description
+                                // },
+                                // {
+                                //     property: `og:title`,
+                                //     content: title
+                                // },
+                                // {
+                                //     property: `og:description`,
+                                //     content: metaDescription
+                                // },
+                                // {
+                                //     property: `og:type`,
+                                //     content: `website`
+                                // },
+                                // {
+                                //     name: `twitter:card`,
+                                //     content: `summary`
+                                // },
+                                // {
+                                //     name: `twitter:creator`,
+                                //     content: site.siteMetadata.author
+                                // },
+                                // {
+                                //     name: `twitter:title`,
+                                //     content: title
+                                // },
+                                // {
+                                //     name: `twitter:description`,
+                                //     content: metaDescription
+                                // }
+                            ]
+                        }
+                    />
+
                     <div className="flex flex-col min-h-screen">
                         <header className="border-black border-solid border-b-2 bg-gray-200">
                             <div className="flex flex-wrap md:flex-no-wrap items-center justify-between max-w-4xl mx-auto p-4 md:p-6">
