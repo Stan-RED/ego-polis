@@ -10,10 +10,25 @@ const mdx = require("@mdx-js/mdx");
 const config = {
     pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
 
+    webpack(config, options) {
+        //TODO:
+        config.optimization.minimize = false;
+        config.output.globalObject = "this";
+
+        return config
+    },
+
     exportPathMap: async function (
         defaultPathMap,
         { dev, dir, outDir, distDir, buildId }
     ) {
+        const manifest = require(`${distDir}/build-manifest.json`);
+        const sample = require(`${distDir}/static/${buildId}/pages/ego/vision.ru.js`);
+        const modules = {};
+        console.log(sample.webpackJsonp[0][1]["O/Bd"](modules));
+        console.log(modules);
+
+        /*
         const path = `${dir}/pages/index.mdx`;
         const content = await fs.readFile(path);
         const transpile = async () => {
@@ -33,6 +48,7 @@ const config = {
                 console.log(exports.meta);
             })({});
         });
+        */
 
         return {
             "/": { page: "/index", query: { test: "Stan" } },
