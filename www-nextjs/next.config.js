@@ -1,4 +1,10 @@
-module.exports = {
+const withMDX = require("@next/mdx")({
+    extension: /\.mdx?$/
+});
+
+const config = {
+    pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
+
     exportPathMap: async function (
         defaultPathMap,
         { dev, dir, outDir, distDir, buildId }
@@ -9,3 +15,5 @@ module.exports = {
         }
     },
 }
+
+module.exports = withMDX(config);
