@@ -1,10 +1,12 @@
 const fs = require("fs");
 const crypto = require("crypto");
 
+const MeshType = "Mesh"
+
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
-      type Mesh implements Node {
+      type ${MeshType} implements Node {
         slug: String
         language: String
       }
@@ -22,8 +24,9 @@ const onCreateFile = ({ node, actions, createNodeId }) => {
     children: [],
     parent: node.id,
     internal: {
-      type: "Mesh",
+      type: MeshType,
     },
+    language: "en" //WORK:Default settings
   }
 
   meshNode.internal.contentDigest = crypto
@@ -35,8 +38,18 @@ const onCreateFile = ({ node, actions, createNodeId }) => {
   createParentChildLink({ parent: node, child: meshNode });
 }
 
+const onCreateMdx = ({ node, getNodesByType }) => {
+  const [meshNode] = getNodesByType(MeshType)
+    .filter(mesh => mesh.parent === node.parent)
+    ;
+
+  meshNode.language = "ru"; //WORK:
+  console.log("meshNode", meshNode);
+}
+
 const handlers = {
-  "File": onCreateFile
+  "File": onCreateFile,
+  "Mdx": onCreateMdx
 }
 
 exports.onCreateNode = (context) => {
