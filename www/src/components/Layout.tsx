@@ -7,13 +7,16 @@ import { GitHub } from "../components/icons";
 //WORK:
 //import { Link } from "../components";
 import { Link } from "gatsby";
-import { useSiteMetadata, LayoutContext, LayoutContextProps } from "../lib";
+import { useSiteMetadata, MeshContext, MeshNode } from "../lib";
 import i18messages from "../locale";
 
 import "../styles/index.css";
 
-type LayoutProps = LayoutContextProps & {
+type LayoutProps = {
     children: ReactNode;
+    pageContext: {
+        mesh: MeshNode;
+    };
 };
 
 const mdxComponents = {
@@ -23,19 +26,17 @@ const mdxComponents = {
 const Layout = (props: LayoutProps) => {
     const site = useSiteMetadata();
     const mesh = props.pageContext.mesh;
-    //WORK:
-    const meta = props.pageContext && props.pageContext.frontmatter;
-    const lang = props.pageContext && props.pageContext.langKey;
+    const lang = mesh.language;
 
     return (
-        <LayoutContext.Provider value={props}>
+        <MeshContext.Provider value={mesh}>
             <IntlProvider locale={lang} messages={i18messages[lang]}>
                 <MDXProvider components={mdxComponents}>
                     <Helmet
                         htmlAttributes={{
                             lang
                         }}
-                        title={meta && meta.title}
+                        title={mesh && mesh.title}
                         titleTemplate={`%s | ${site.title}`}
                         meta={
                             [
@@ -103,7 +104,7 @@ const Layout = (props: LayoutProps) => {
                     </div>
                 </MDXProvider>
             </IntlProvider>
-        </LayoutContext.Provider>
+        </MeshContext.Provider>
     );
 };
 
