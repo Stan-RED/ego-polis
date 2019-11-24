@@ -91,7 +91,7 @@ const onCreateFile = ({ node, actions, createNodeId }) => {
     },
     title,
     language: language || DefaultNodeSettings.language,
-    slug,
+    slug: `${node.relativeDirectory}/${slug}`, //WORK:
     created: node.birthTime,
     updated: node.changeTime
   }
@@ -129,7 +129,38 @@ exports.onCreateNode = (context) => {
   handler && handler(context);
 }
 
-exports.onCreatePage = (context) => {
-  //WORK:
-  console.log(context);
-}
+//WORK:
+// exports.onCreatePage = (context) => {
+//   console.log(context);
+// }
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+
+  const { data: { allMesh: { edges } } } = await graphql(`
+    query {
+      allMesh(filter: {status: {ne: null}}) {
+        edges {
+          node {
+            id
+            language
+            slug
+            component
+          }
+        }
+      }
+    }
+  `)
+
+  edges.forEach(({ node }, index) => {
+    const page = {
+      path: `${node.language}/${node.slug}`, //WORK:
+      component: node.component,
+      context: { mesh: node },
+    };
+
+    console.log(page); //WORK:
+
+    createPage(page);
+  })
+};

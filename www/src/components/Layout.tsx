@@ -24,6 +24,17 @@ const Layout = (props: LayoutProps) => {
     const lang = props.pageContext && props.pageContext.langKey;
 
     return (
+        <div>
+            <h1>WORK:Layout</h1>
+            {Object.keys(props.pageContext.mesh).map(key => (
+                <div key={key}>
+                    {key} = {props.pageContext.mesh[key]}
+                </div>
+            ))}
+        </div>
+    );
+
+    return (
         <LayoutContext.Provider value={props}>
             <IntlProvider locale={lang} messages={i18messages[lang]}>
                 <MDXProvider components={mdxComponents}>
