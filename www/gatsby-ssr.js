@@ -26,5 +26,7 @@ exports.onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }) => {
             delete component.props["data-href"];
             delete component.props["dangerouslySetInnerHTML"];
         }
+
+        delete component.props["data-react-helmet"];
     });
 };
