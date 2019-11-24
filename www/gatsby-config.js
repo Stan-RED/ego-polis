@@ -61,15 +61,6 @@ module.exports = {
         allExtensions: true
       }
     },
-    {
-      resolve: "gatsby-plugin-i18n",
-      options: {
-        langKeyForNull: "any",
-        langKeyDefault: siteMetadata.languages.defaultLangKey,
-        useLangKeyLayout: false,
-        prefixDefault: true
-      }
-    },
     "gatsby-plugin-postcss"
   ]
 }
