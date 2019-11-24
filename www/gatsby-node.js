@@ -11,6 +11,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
       type ${MeshType} implements Node {
+        path: String!
         title: String!
         language: String!
         slug: String
@@ -27,8 +28,15 @@ exports.createSchemaCustomization = ({ actions }) => {
 const onCreateFile = async ({ node, actions, createNodeId }) => {
   const { createNode, createParentChildLink } = actions;
   const id = createNodeId(`MESH:${node.id}`)
-  const [title, language] = node.name.split(".");
-  const slug = title === DefaultNodeSettings.indexfile ? "" : title;
+  const [name, language] = node.name.split(".");
+
+  let path = node.relativeDirectory.replace(/^\/+|\/+$/g, '');
+  let slug = name;
+  if (name === DefaultNodeSettings.indexfile) {
+    slug = path.split("/").pop();
+  } else {
+    path = `${path}/${name}`
+  }
 
   const meshNode = {
     id,
@@ -37,9 +45,11 @@ const onCreateFile = async ({ node, actions, createNodeId }) => {
     internal: {
       type: MeshType,
     },
-    title,
+
+    path,
+    slug,
+    title: slug,
     language: language || DefaultNodeSettings.language,
-    slug: `${node.relativeDirectory}/${slug}`, //WORK:
     created: node.birthTime,
     updated: node.changeTime
   }
@@ -77,32 +87,20 @@ exports.onCreateNode = async (context) => {
   handler && handler(context);
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ getNodesByType, actions }) => {
   const { createPage } = actions;
+  const mesh = getNodesByType(MeshType)
+    .filter(node => node.component && node.status)
+    ;
 
-  const { data: { allMesh: { edges } } } = await graphql(`
-    query {
-      allMesh(filter: {status: {ne: null}}) {
-        edges {
-          node {
-            id
-            title
-            language
-            slug
-            component
-            status
-          }
-        }
-      }
-    }
-  `)
-
-  edges.forEach(async ({ node }, index) => {
+  mesh.forEach(async (node, index) => {
     const page = {
-      path: `${node.language}/${node.slug}`, //WORK:
+      path: `/${node.language}/${node.slug}`,
       component: node.component,
       context: { mesh: node },
     };
+
+    console.log(page); //WORK:
 
     await createPage(page);
   })
