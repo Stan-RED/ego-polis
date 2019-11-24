@@ -2,7 +2,6 @@ const crypto = require("crypto");
 
 const MeshType = "Mesh"
 const DefaultNodeSettings = {
-  language: "en",
   status: "draft",
   indexfile: "index"
 }
@@ -13,7 +12,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       type ${MeshType} implements Node {
         path: String!
         title: String!
-        language: String!
+        language: String
         slug: String
         created: Date! @dateformat
         updated: Date! @dateformat
@@ -49,7 +48,7 @@ const onCreateFile = async ({ node, actions, createNodeId }) => {
     path,
     slug,
     title: slug,
-    language: language || DefaultNodeSettings.language,
+    language,
     created: node.birthTime,
     updated: node.changeTime
   }
@@ -91,16 +90,21 @@ exports.createPages = async ({ getNodesByType, actions }) => {
   const { createPage } = actions;
   const mesh = getNodesByType(MeshType)
     .filter(node => node.component && node.status)
-    ;
+    .sort((prev, next) =>
+      prev.path.localeCompare(next.path) * 10
+      + (prev.language || "").localeCompare(next.language || "")
+    );
 
   mesh.forEach(async (node, index) => {
+    const path = node.language ? `/${node.language}/${node.slug}` : `/${node.slug}`;
+
     const page = {
-      path: `/${node.language}/${node.slug}`,
+      path,
       component: node.component,
       context: { mesh: node },
     };
 
-    console.log(page); //WORK:
+    console.log(`${page.path} (${node.language}:${node.path}) ${node.title} ${node.component}`); //WORK:
 
     await createPage(page);
   })
