@@ -4,6 +4,7 @@ const crypto = require("crypto");
 const MeshType = "Mesh"
 const DefaultNodeSettings = {
   language: "en",
+  status: "draft",
   indexfile: "index"
 }
 
@@ -14,8 +15,9 @@ exports.createSchemaCustomization = ({ actions }) => {
         title: String!
         language: String!
         slug: String
-        created: Date!
-        updated: Date!
+        created: Date! @dateformat
+        updated: Date! @dateformat
+        status: String
       }
     `
 
@@ -77,6 +79,7 @@ const onCreateFile = ({ node, actions, createNodeId }) => {
   }
   */
   const [title, language] = node.name.split(".");
+  const slug = title === DefaultNodeSettings.indexfile ? "" : title;
 
   const meshNode = {
     id,
@@ -85,9 +88,9 @@ const onCreateFile = ({ node, actions, createNodeId }) => {
     internal: {
       type: MeshType,
     },
-    title: title,
+    title,
     language: language || DefaultNodeSettings.language,
-    slug: `${node.relativeDirectory}`,
+    slug,
     created: node.birthTime,
     updated: node.changeTime
   }
@@ -107,6 +110,8 @@ const onCreateMdx = ({ node, getNodesByType }) => {
     ;
 
   meshNode.title = node.frontmatter.title || meshNode.title;
+  meshNode.slug = node.frontmatter.slug || meshNode.slug;
+  meshNode.status = node.frontmatter.status || DefaultNodeSettings.status;
 }
 
 const handlers = {
