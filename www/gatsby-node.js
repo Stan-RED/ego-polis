@@ -143,9 +143,11 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
+            title
             language
             slug
             component
+            status
           }
         }
       }
