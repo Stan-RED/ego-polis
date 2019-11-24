@@ -18,6 +18,7 @@ exports.createSchemaCustomization = ({ actions }) => {
         created: Date! @dateformat
         updated: Date! @dateformat
         status: String
+        component: String
       }
     `
 
@@ -104,14 +105,18 @@ const onCreateFile = ({ node, actions, createNodeId }) => {
   createParentChildLink({ parent: node, child: meshNode });
 }
 
-const onCreateMdx = ({ node, getNodesByType }) => {
+const onCreateMdx = ({ node, getNode, getNodesByType }) => {
+  const fileNode = getNode(node.parent);
   const [meshNode] = getNodesByType(MeshType)
     .filter(mesh => mesh.parent === node.parent)
     ;
 
-  meshNode.title = node.frontmatter.title || meshNode.title;
-  meshNode.slug = node.frontmatter.slug || meshNode.slug;
-  meshNode.status = node.frontmatter.status || DefaultNodeSettings.status;
+  Object.assign(meshNode, {
+    title: node.frontmatter.title || meshNode.title,
+    slug: node.frontmatter.slug || meshNode.slug,
+    status: node.frontmatter.status || DefaultNodeSettings.status,
+    component: fileNode.absolutePath,
+  });
 }
 
 const handlers = {
@@ -122,4 +127,9 @@ const handlers = {
 exports.onCreateNode = (context) => {
   const handler = handlers[context.node.internal.type];
   handler && handler(context);
+}
+
+exports.onCreatePage = (context) => {
+  //WORK:
+  console.log(context);
 }
