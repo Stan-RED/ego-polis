@@ -4,14 +4,20 @@ import { IntlProvider } from "react-intl";
 import Helmet from "react-helmet";
 import { DraftAlert } from "../components/DraftAlert";
 import { GitHub } from "../components/icons";
-import { Link } from "../components";
-import { useSiteMetadata, LayoutContext, LayoutContextProps } from "../lib";
+//WORK:
+//import { Link } from "../components";
+import { Link } from "gatsby";
+import { useSiteMetadata, MeshContext, MeshNode } from "../lib";
 import i18messages from "../locale";
+import { Debug } from "../components/Debug";
 
 import "../styles/index.css";
 
-type LayoutProps = LayoutContextProps & {
+type LayoutProps = {
     children: ReactNode;
+    pageContext: {
+        mesh: MeshNode;
+    };
 };
 
 const mdxComponents = {
@@ -20,18 +26,18 @@ const mdxComponents = {
 
 const Layout = (props: LayoutProps) => {
     const site = useSiteMetadata();
-    const meta = props.pageContext && props.pageContext.frontmatter;
-    const lang = props.pageContext && props.pageContext.langKey;
+    const mesh = props.pageContext.mesh;
+    const lang = mesh.language;
 
     return (
-        <LayoutContext.Provider value={props}>
+        <MeshContext.Provider value={mesh}>
             <IntlProvider locale={lang} messages={i18messages[lang]}>
                 <MDXProvider components={mdxComponents}>
                     <Helmet
                         htmlAttributes={{
                             lang
                         }}
-                        title={meta && meta.title}
+                        title={mesh && mesh.title}
                         titleTemplate={`%s | ${site.title}`}
                         meta={
                             [
@@ -88,9 +94,11 @@ const Layout = (props: LayoutProps) => {
                         </header>
 
                         <main className="flex-1 max-w-4xl mx-auto p-4 md:px-8 md:py-16 w-full">
-                            {meta && <h1>{meta.title}</h1>}
+                            {mesh && <h1>{mesh.title}</h1>}
 
-                            {meta && (meta.status === null || meta.status === "draft") && (
+                            <Debug value={mesh} />
+
+                            {mesh && (mesh.status === null || mesh.status === "draft") && (
                                 <DraftAlert />
                             )}
 
@@ -99,7 +107,7 @@ const Layout = (props: LayoutProps) => {
                     </div>
                 </MDXProvider>
             </IntlProvider>
-        </LayoutContext.Provider>
+        </MeshContext.Provider>
     );
 };
 
