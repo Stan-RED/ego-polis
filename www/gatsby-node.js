@@ -95,16 +95,18 @@ exports.createPages = async ({ getNodesByType, actions }) => {
       + (prev.language || "").localeCompare(next.language || "")
     );
 
-  mesh.forEach(async (node, index) => {
-    const path = node.language ? `/${node.language}/${node.slug}` : `/${node.slug}`;
+  const parent = [];
+  mesh.forEach(async node => {
+    console.log(node.path, node.language, parent); //WORK:
 
+    const path = node.language ? `/${node.language}/${node.slug}` : `/${node.slug}`;
     const page = {
       path,
       component: node.component,
       context: { mesh: node },
     };
 
-    console.log(`${page.path} (${node.language}:${node.path}) ${node.title} ${node.component}`); //WORK:
+    //    console.log(`${page.path} (${node.language}:${node.path}) ${node.title} ${node.component}`); //WORK:
 
     await createPage(page);
   })
