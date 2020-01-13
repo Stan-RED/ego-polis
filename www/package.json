@@ -46,7 +46,7 @@
     "start": "run-s develop",
     "serve": "gatsby serve",
     "test:jest": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watchAll",
     "test": "run-s test:jest"
   }
 }

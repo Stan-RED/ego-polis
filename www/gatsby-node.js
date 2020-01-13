@@ -92,6 +92,7 @@ exports.createPages = async ({ getNodesByType, actions }) => {
     .filter(node => node.component && node.status)
     .sort((prev, next) =>
       prev.path.localeCompare(next.path) * 10
+      //TODO:Sort using language order (e.g.: undefined, en, ru, bg)
       + (prev.language || "").localeCompare(next.language || "")
     );
 

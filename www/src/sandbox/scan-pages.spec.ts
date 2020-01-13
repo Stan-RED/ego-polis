@@ -1,4 +1,5 @@
-const mesh = [
+//TODO:0 Как быть с типизацией?
+const mesh: any[] = [
     {
         id: '63efa677-8943-58cc-8fef-3fac06506dc9',
         children: [],
@@ -286,18 +287,95 @@ const mesh = [
     }
 ]
 
+//TODO:0 Make dependent on some translation interface/type?
+const initNode = (node: any) => {
+    node.master = node;
+    node.languages = {};
+    node.languages[node.language || 0] = node;
+}
+
 test("scan-pages", async () => {
-    const parent: string[] = [];
+    let last: any = undefined; //TODO:0 owner или другие синонимы
+    const breadcrumb: any[] = []; //TODO:0 Do I need this object?
+
     mesh.forEach(node => {
-        console.log(
-            node.path,
-            "\n\tlang:",
-            node.language,
-            "\n\tparent:",
-            parent,
-            "\n\tcomponent:",
-            node.component
-        ); //WORK:
+        //TODO:0
+        const debug: any = {
+            path: node.path,
+            lang: node.language,
+            component: node.component.replace("C:/Projects/ego-polis/www/src/pages", ""),
+            slug: node.slug
+        }
+
+        //TODO:0 Первый язык в узле будет нейтральным. Остальные будут на него ссылаться. В принципе, у меня массив так и организован. Только нет кросс-ссылок между языками.
+
+        if (last) {
+            // If path is equal to previous then this is a translation.
+            if (node.path === last.path) {
+                debug.pathEqual = true; //TODO:0
+
+                if (node.language === last.language) {
+                    throw Error("Duplicate languages for the same page");
+                }
+
+                // Share the same languages collections as previous and add the new language.
+                node.languages = last.languages;
+                node.languages[node.language || 0] = node;
+                node.master = last.master;
+                node.scope = last.scope;
+            } else {
+                debug.pathEqual = false; //TODO:0
+
+                const path = node.path.split("/");
+                let mode = "";
+                let index = 0;
+
+                while (mode === "") {
+                    //TODO:0 Move main code here?
+                    if (breadcrumb.length === index) {
+                        mode = "child";
+                    } else if (path.length === index) {
+                        mode = "parent";
+                    } else if (path[index] != breadcrumb[index]) {
+                        mode = "sibling";
+                    } else {
+                        index++;
+                    }
+                }
+
+                if (mode === "parent" || mode === "sibling") {
+                    // Move back to the common scope
+                    while (breadcrumb.length > index) {
+                        breadcrumb.pop();
+                        last = last.scope;
+                    }
+                }
+
+                // When breadcrumb is less than current path, we have a child node.
+                if (mode === "child" || mode === "sibling") {
+                    if (path.length - index > 1) {
+                        throw Error(`Child node has ${path.length - 1} levels difference`);
+                    }
+
+                    initNode(node);
+                    node.scope = last;
+
+                    const name = path[index];
+                    breadcrumb.push(name);
+                }
+
+                debug.index = index; //TODO:0
+                debug.mode = mode; //TODO:0
+            }
+        } else {
+            // Initialize first node
+            initNode(node);
+            node.scope = node;
+        }
+
+        last = node;
+
+        console.log(JSON.stringify(debug)); //TODO:0
     })
 
     expect(0).toBe(0);
