@@ -1,7 +1,9 @@
 @import "~normalize.css";
+@import "~typeface-roboto";
 
 $bgColor: #f9f9f9;
 
 body {
     background-color: $bgColor;
+    font-family: Roboto, sans-serif;
 }
