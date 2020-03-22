@@ -5,7 +5,9 @@
   "scripts": {
     "next:dev": "next dev",
     "next:build": "next build",
-    "next:start": "next start"
+    "next:start": "next start",
+    "next:export": "next export -o .out/",
+    "next:publish": "run-s next:build next:export"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.5.7",
