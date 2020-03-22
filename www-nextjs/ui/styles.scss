@@ -1,9 +1,51 @@
+@use "sass:math";
+
 @import "~normalize.css";
 @import "~typeface-roboto";
+//TODO: @import "~typeface-roboto-condensed";
+//TODO: @import "~typeface-open-sans";
+//TODO: @import "~typeface-montserrat";
 
-$bgColor: #f9f9f9;
+// TODO: Extract to some vars.scss?
+$line-width: 1000;
+
+// TODO: https://pearsonified.com/projects/golden-ratio-typography/
+// @requires $content-width
+$golden-ratio: (1 + math.sqrt(5)) / 2;
+$line-height: math.sqrt($line-width);
+$font-size: $line-height / $golden-ratio;
+
+@function golden($level) {
+    $pow: (3 - $level) * 0.5;
+    @return round($font-size * math.pow($golden-ratio, 1 + $pow));
+}
 
 body {
-    background-color: $bgColor;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto, "Franklin Gothic Medium", Tahoma, sans-serif;
+    font-size: #{round($font-size)}px;
+}
+
+main {
+    max-width: #{$line-width}px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: #{golden(1)}px;
+}
+
+h2 {
+    font-size: #{golden(2)}px;
+}
+
+h3 {
+    font-size: #{golden(3)}px;
+}
+
+h4 {
+    font-size: #{golden(4)}px;
+}
+
+h5 {
+    font-size: #{golden(5)}px;
 }
